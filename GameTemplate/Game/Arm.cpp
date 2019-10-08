@@ -19,5 +19,5 @@ bool Arm::Start()
 
 void Arm::Update()
 {
-	if(Pad(0).is)
+	if(Pad(0).)
 }
