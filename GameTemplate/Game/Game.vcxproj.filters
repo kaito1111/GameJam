@@ -22,6 +22,7 @@
     <ClCompile Include="ClaftScreen.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="score.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -32,6 +33,7 @@
     <ClInclude Include="ClaftScreen.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="score.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
@@ -47,10 +49,8 @@
     <ImageContentTask Include="Assets\sprite\dummy.png">
       <Filter>Assets\sprite</Filter>
     </ImageContentTask>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\sprite\GGJ_title.dds">
+    <ImageContentTask Include="Assets\sprite\GGJ_title.png">
       <Filter>Assets\sprite</Filter>
-    </Image>
+    </ImageContentTask>
   </ItemGroup>
 </Project>

@@ -1806,7 +1806,7 @@
     <ImageContentTask Include="Assets\sprite\dummy.png" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\sprite\GGJ_title.dds" />
+    <ImageContentTask Include="Assets\sprite\GGJ_title.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
