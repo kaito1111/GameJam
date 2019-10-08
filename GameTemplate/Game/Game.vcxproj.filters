@@ -21,6 +21,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="ClaftScreen.cpp" />
     <ClCompile Include="GameCamera.cpp" />
+    <ClCompile Include="score.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -30,6 +31,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="ClaftScreen.h" />
     <ClInclude Include="GameCamera.h" />
+    <ClInclude Include="score.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
