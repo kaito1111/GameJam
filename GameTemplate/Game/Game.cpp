@@ -15,6 +15,7 @@ Game::~Game()
 }
 bool Game::Start()
 {
+	NewGO<BeltCon>(0, "BC");
 	NewGO<ClaftScreen>(0,"cs");
 	NewGO<GameCamera>(0,"gc");
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);

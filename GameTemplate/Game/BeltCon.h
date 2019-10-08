@@ -9,5 +9,7 @@ public:
 	//メンバ変数//
 	//モデルレンダー
 	prefab::CSkinModelRender* m_skinModelRender;
+	CVector3 scale;
+	CVector3 m_position = CVector3::Zero;
 };
 

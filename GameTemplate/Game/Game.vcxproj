@@ -1763,10 +1763,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BeltCon.cpp" />
+    <ClCompile Include="Buhin.cpp" />
     <ClCompile Include="ClaftScreen.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="result.cpp" />
     <ClCompile Include="score.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -1792,10 +1794,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BeltCon.h" />
+    <ClInclude Include="Buhin.h" />
     <ClInclude Include="ClaftScreen.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <CLInclude Include="resource.h" />
+    <ClInclude Include="result.h" />
     <ClInclude Include="score.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Title.h" />
