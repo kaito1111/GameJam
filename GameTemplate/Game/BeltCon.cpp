@@ -32,6 +32,7 @@ bool BeltCon::Start()
 /*ここから部品をランダムに流す処理を書いていく
 乱数をXで割ってでた余りの値に応じて
 どの部品を流すのか決定していく*/
+//★緑が部品1、青が部品2、黒がゴミ
 //Generatorみたいな感じ
 void BeltCon::Update()
 {
@@ -42,7 +43,7 @@ void BeltCon::Update()
 		//乱数
 		rand = Random().GetRandInt();
 		// %X をいじるとゴミがでる割合を変えれます
-		rand = rand % 10;
+		rand = rand % 8;
 
 		/*それぞれの乱数に対応した"部品"のインスタンスをここで作成します
 		"部品"を追加したい場合をこことBuhin.cppに追加してください*/
