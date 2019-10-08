@@ -1,5 +1,5 @@
 #pragma once
-class Arm
+class Arm : public IGameObject
 {
 public:
 	Arm();

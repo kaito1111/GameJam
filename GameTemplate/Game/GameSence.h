@@ -1,5 +1,5 @@
 #pragma once
-class GameSence
+class GameSence : public IGameObject
 {
 public:
 	GameSence();

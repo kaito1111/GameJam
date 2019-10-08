@@ -1766,6 +1766,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="score.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Middle|Win32'">Create</PrecompiledHeader>
@@ -1793,6 +1794,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <CLInclude Include="resource.h" />
+    <ClInclude Include="score.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Title.h" />
     <ResourceCompile Include="Game.rc" />
@@ -1803,6 +1805,9 @@
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\dummy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\sprite\GGJ_title.dds" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
