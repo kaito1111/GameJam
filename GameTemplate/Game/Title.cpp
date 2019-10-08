@@ -9,7 +9,7 @@ Title::~Title()
 }
 bool::Title::Start()
 {
-	return false;
+	return true;
 }
 
 void Title::Update()

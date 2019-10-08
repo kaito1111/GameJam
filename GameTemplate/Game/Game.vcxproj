@@ -1766,6 +1766,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="result.cpp" />
     <ClCompile Include="score.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -1794,6 +1795,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <CLInclude Include="resource.h" />
+    <ClInclude Include="result.h" />
     <ClInclude Include="score.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Title.h" />

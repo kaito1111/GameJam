@@ -22,6 +22,8 @@
     <ClCompile Include="ClaftScreen.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="score.cpp" />
+    <ClCompile Include="result.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -32,6 +34,8 @@
     <ClInclude Include="ClaftScreen.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="score.h" />
+    <ClInclude Include="result.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
