@@ -1807,7 +1807,10 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\BeltC.FBX" />
+    <MeshContentTask Include="Assets\modelData\buhin1.FBX" />
+    <MeshContentTask Include="Assets\modelData\buhin2.FBX" />
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
+    <MeshContentTask Include="Assets\modelData\Gomi.FBX" />
     <MeshContentTask Include="Assets\modelData\unityChan.fbx" />
   </ItemGroup>
   <ItemGroup>
