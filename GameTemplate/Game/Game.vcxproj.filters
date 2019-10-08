@@ -19,6 +19,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameSence.cpp" />
+    <ClCompile Include="Arm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -26,6 +28,8 @@
     </CLInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameSence.h" />
+    <ClInclude Include="Arm.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
