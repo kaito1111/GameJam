@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "GameCamera.h"
 #include "ClaftScreen.h"
+#include "BeltCon.h"
 #include "tkEngine/light/tkDirectionLight.h"
 
 Game::Game()

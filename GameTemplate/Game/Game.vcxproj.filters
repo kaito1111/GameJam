@@ -23,6 +23,7 @@
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="score.cpp" />
+    <ClCompile Include="BeltCon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -34,6 +35,7 @@
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="score.h" />
+    <ClInclude Include="BeltCon.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
@@ -45,6 +47,9 @@
       <Filter>Assets\modelData</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX">
+      <Filter>Assets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\BeltC.FBX">
       <Filter>Assets\modelData</Filter>
     </MeshContentTask>
   </ItemGroup>
