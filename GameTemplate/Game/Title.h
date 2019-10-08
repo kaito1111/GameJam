@@ -6,5 +6,8 @@ public:
 	~Title();
 	bool Start();
 	void Update();
+	//メンバ変数//
+	//スプライトレンダー
+	prefab::CSpriteRender* m_spriteRender;
 };
 
