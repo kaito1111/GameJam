@@ -23,7 +23,10 @@
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="score.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="result.cpp" />
+=======
+>>>>>>> bcead7dfc736d1bfcb895de0c8d11c7ddbae7f91
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -35,7 +38,10 @@
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="score.h" />
+<<<<<<< HEAD
     <ClInclude Include="result.h" />
+=======
+>>>>>>> bcead7dfc736d1bfcb895de0c8d11c7ddbae7f91
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
@@ -54,10 +60,8 @@
     <ImageContentTask Include="Assets\sprite\dummy.png">
       <Filter>Assets\sprite</Filter>
     </ImageContentTask>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\sprite\GGJ_title.dds">
+    <ImageContentTask Include="Assets\sprite\GGJ_title.png">
       <Filter>Assets\sprite</Filter>
-    </Image>
+    </ImageContentTask>
   </ItemGroup>
 </Project>
