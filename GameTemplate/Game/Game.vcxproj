@@ -1762,9 +1762,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Arm.cpp" />
+    <ClCompile Include="ClaftScreen.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameSence.cpp" />
+    <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -1788,9 +1788,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Arm.h" />
+    <ClInclude Include="ClaftScreen.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameSence.h" />
+    <ClInclude Include="GameCamera.h" />
     <CLInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ResourceCompile Include="Game.rc" />
