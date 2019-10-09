@@ -30,22 +30,31 @@ void Arm::Update()
 	{
 		m_MoveSpeed.x = 10.0f;
 	}
-	if (Pad(0).IsPress(enButtonB))
+	if (Set && Pad(0).IsPress(enButtonB))
 	{
 		m_MoveSpeed.y = -20.0f;
+		Set = false;
+	}
+	if (ArmDown >= 1.0f)
+	{
+		m_ArmPosition.y += 40.0f;
 	}
 	m_ArmPosition += m_MoveSpeed;
 	if (m_ArmPosition.x <= -50.0f)
 	{
 		m_ArmPosition.x = -50.0f;
 	}
-
+	if (m_ArmPosition.y <= -300.0f)
+	{
+		m_ArmPosition.y = -300.0f;
+		ArmDown += GameTime().GetFrameDeltaTime();
+	}
 	QueryGOs<Buhin>("Gomi", [&](Buhin* m_Gomi)->bool
 		{
 			float ArmX = m_ArmPosition.x;
 			float GomiX = m_Gomi->m_position.x;
 			float hantei = GomiX - ArmX;
-			if (hantei>=10.0f)
+			if (hantei <= 10.0f)
 			{
 				Catch = true;
 			}
@@ -59,5 +68,6 @@ void Arm::Update()
 	{
 		HoldUp += GameTime().GetFrameDeltaTime();
 	}
+
 	m_ArmModel->SetPosition(m_ArmPosition);
 }

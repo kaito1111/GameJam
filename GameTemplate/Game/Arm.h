@@ -14,6 +14,7 @@ public:
 	CVector3 m_Scale = CVector3::One;							//クレーンのサイズ
 	bool Catch = false;											//つかめたかどうかを判定する
 	bool Drop = false;
+	bool Set = true;
 	float HoldUp = 0.0f;
-
+	float ArmDown = 0.0f;
 };
