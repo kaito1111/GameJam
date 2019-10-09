@@ -3,6 +3,7 @@
 #include "GameCamera.h"
 #include "ClaftScreen.h"
 #include "tkEngine/light/tkDirectionLight.h"
+#include "test.h"
 
 Game::Game()
 {

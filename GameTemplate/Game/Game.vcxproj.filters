@@ -1,67 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns:atg="http://atg.xbox.com" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Assets">
-      <UniqueIdentifier>{ed0b04a6-fecd-4a2c-a462-59a8f4639f36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{8e114980-c1a3-4ada-ad7c-83caadf5daeb}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
-    </Filter>
-    <Filter Include="Assets\modelData">
-      <UniqueIdentifier>{06086914-6aa4-4cad-9b07-6f9d357f04df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Assets\sprite">
-      <UniqueIdentifier>{a6ce300a-b532-440d-b914-b4661d3015ad}</UniqueIdentifier>
-    </Filter>
+    <ImageContentTask Include="Assets\sprite\dummy.png" />
+    <ImageContentTask Include="Assets\sprite\GGJ_title.png" />
+    <ImageContentTask Include="Assets\sprite\空test.png" />
+    <ImageContentTask Include="Assets\sprite\test緑.png" />
+    <ImageContentTask Include="Assets\sprite\test白.png" />
+    <ImageContentTask Include="Assets\sprite\test桃.png" />
+    <ImageContentTask Include="Assets\sprite\test赤.png" />
+    <ImageContentTask Include="Assets\sprite\test青.png" />
+    <ImageContentTask Include="Assets\sprite\test黒.png" />
+    <ImageContentTask Include="Assets\sprite\test黄.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="ClaftScreen.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
-    <ClCompile Include="Title.cpp" />
-    <ClCompile Include="score.cpp" />
-<<<<<<< HEAD
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="result.cpp" />
-=======
->>>>>>> bcead7dfc736d1bfcb895de0c8d11c7ddbae7f91
+    <ClCompile Include="score.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="GameSence.cpp" />
+    <ClCompile Include="Arm.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CLInclude Include="resource.h">
-      <Filter>Resource Files</Filter>
-    </CLInclude>
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Game.h" />
+    <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
+    <MeshContentTask Include="Assets\modelData\unityChan.fbx" />
+    <MeshContentTask Include="Assets\modelData\testSphere.FBX" />
+    <MeshContentTask Include="Assets\modelData\testBox.FBX" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="ClaftScreen.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
-    <ClInclude Include="Title.h" />
-    <ClInclude Include="score.h" />
-<<<<<<< HEAD
+    <CLInclude Include="resource.h" />
     <ClInclude Include="result.h" />
-=======
->>>>>>> bcead7dfc736d1bfcb895de0c8d11c7ddbae7f91
+    <ClInclude Include="score.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="GameSence.h" />
+    <ClInclude Include="Arm.h" />
+    <ClInclude Include="test.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Game.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <MeshContentTask Include="Assets\modelData\unityChan.fbx">
-      <Filter>Assets\modelData</Filter>
-    </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\claftscreen.FBX">
-      <Filter>Assets\modelData</Filter>
-    </MeshContentTask>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageContentTask Include="Assets\sprite\dummy.png">
-      <Filter>Assets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\GGJ_title.png">
-      <Filter>Assets\sprite</Filter>
-    </ImageContentTask>
+    <ResourceCompile Include="Game.rc" />
   </ItemGroup>
 </Project>
