@@ -9,6 +9,8 @@ Arm::Arm()
 
 Arm::~Arm()
 {
+	DeleteGO(m_ArmModel);
+	DeleteGO(m_Claft);
 }
 
 bool Arm::Start()
@@ -25,7 +27,6 @@ void Arm::Update()
 {
 	if (!m_Claft->GameOver)
 	{
-
 		CVector3 m_MoveSpeed = CVector3::Zero;
 		float DropTime = GameTime().GetFrameDeltaTime() * 200.0f;			//大体基本になる時間
 		if (Set && Pad(0).IsPress(enButtonB))								//下に動くかどうかを判定する
@@ -56,7 +57,6 @@ void Arm::Update()
 				m_MoveSpeed.x = 10.0f;
 			}
 		}
-
 		m_ArmPosition += m_MoveSpeed;							//動く速度を位置にたす
 		if (m_ArmPosition.x <= -50.0f)							//それ以上右に行くな
 		{
@@ -74,9 +74,6 @@ void Arm::Update()
 				Set = true;
 			}
 		}
-		
-
-
 	}
 	m_ArmModel->SetPosition(m_ArmPosition);					//モデルに位置を伝える
 }
