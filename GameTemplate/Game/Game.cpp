@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Game.h"
 #include "GameCamera.h"
-#include "ClaftScreen.h"
 #include "BeltCon.h"
 #include "tkEngine/light/tkDirectionLight.h"
 #include "test.h"
@@ -21,7 +20,8 @@ bool Game::Start()
 	NewGO<GameCamera>(0,"gc");
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/unityChan.cmo");
-	
+
+	m_Screen = FindGO< ClaftScreen>("cs");
 	return true;
 }
 
