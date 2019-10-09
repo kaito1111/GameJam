@@ -16,6 +16,9 @@ public:
 	int BuhinCount2 = 0;
 	int BuhinCount3 = 0;
 
+	bool Buhin1 = false;
+	bool Buhin2 = false;
+
 	void Query();
 
 	Arm* arm = nullptr;	//ÉAÅ[ÉÄ
@@ -26,7 +29,7 @@ public:
 	prefab::CSpriteRender* m_spriteRender = nullptr;
 	CVector3 m_position = CVector3::Zero;
 	prefab::CSkinModelRender* m_BuhinModelRender1 = nullptr;
-	CVector3 m_Buhinpos = CVector3::Zero;
+	CVector3 m_Buhin1pos = CVector3::Zero;
 	prefab::CSkinModelRender* m_BuhinModelRender2 = nullptr;
 	CVector3 m_Buhin2pos = CVector3::Zero;
 	prefab::CSkinModelRender* m_BuhinModelRender3 = nullptr;
