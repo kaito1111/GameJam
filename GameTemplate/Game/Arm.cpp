@@ -32,17 +32,29 @@ void Arm::Update()
 	}
 	if (Set && Pad(0).IsPress(enButtonB))
 	{
-		m_MoveSpeed.y = -20.0f;
+		m_MoveSpeed.y = -GameTime().GetFrameDeltaTime();
 		Set = false;
 	}
-	if (ArmDown >= 1.0f)
+	if (!Set)
 	{
-		m_ArmPosition.y += 40.0f;
+		m_MoveSpeed.y = -GameTime().GetFrameDeltaTime();
+		if (ArmDown >= 1.0f)
+		{
+			m_MoveSpeed.y = GameTime().GetFrameDeltaTime();
+		}
+		if (m_ArmPosition.y >= 200.0f)
+		{
+			Set = true;
+		}
 	}
 	m_ArmPosition += m_MoveSpeed;
 	if (m_ArmPosition.x <= -50.0f)
 	{
 		m_ArmPosition.x = -50.0f;
+	}
+	if (m_ArmPosition.x >= 600.0f)
+	{
+		m_ArmPosition.x = 600.0f;
 	}
 	if (m_ArmPosition.y <= -300.0f)
 	{
@@ -54,7 +66,7 @@ void Arm::Update()
 			float ArmX = m_ArmPosition.x;
 			float GomiX = m_Gomi->m_position.x;
 			float hantei = GomiX - ArmX;
-			if (hantei <= 10.0f/*&& hantei >= -10.0f*/)
+			if (hantei <= 10.0f&& hantei >= -10.0f)
 			{
 				Catch = true;
 			}
