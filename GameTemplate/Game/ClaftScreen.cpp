@@ -39,7 +39,7 @@ void ClaftScreen::Query()
 		});
 
 	QueryGOs<Arm>("Arm", [&](Arm* arm) {
-		if (BuhinCount1 == 1 && BuhinCount2 == 1)
+		if (GameOver)
 		{
 			arm->m_ArmPosition.x += 30.0f;
 		}
