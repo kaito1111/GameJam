@@ -19,7 +19,6 @@ bool Game::Start()
 	NewGO<BeltCon>(0, "BC");
 	NewGO<ClaftScreen>(0,"cs");
 	NewGO<GameCamera>(0,"gc");
-	NewGO<result>(0,"result");
 	m_Screen = FindGO< ClaftScreen>("cs");
 	return true;
 }
