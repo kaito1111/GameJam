@@ -11,7 +11,6 @@ public:
 	bool Start();
 	void Update();
 
-	int ClaftCount = 0;	//アームが画面外に行ったら１にする
 	int BuhinCount1 = 0;
 	int BuhinCount2 = 0;
 	int BuhinCount3 = 0;
@@ -21,7 +20,6 @@ public:
 
 	void Query();
 
-	Arm* arm = nullptr;	//アーム
 	Buhin* buhin1 = nullptr;	//部品1
 	Buhin* buhin2 = nullptr;	//部品2
 	Buhin* buhin3 = nullptr;	//部品3

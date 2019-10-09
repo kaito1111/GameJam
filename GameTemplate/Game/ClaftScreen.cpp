@@ -37,7 +37,6 @@ void ClaftScreen::Query()
 }
 bool ClaftScreen::Start()
 {
-	arm = FindGO<Arm>("Arm");
 	//buhin1 = FindGO<Buhin>("Buhin1");
 	//buhin2 = FindGO<Buhin>("Buhin2");
 	//buhin3 = FindGO<Buhin>("Gomi");
@@ -63,15 +62,6 @@ bool ClaftScreen::Start()
 
 void ClaftScreen::Update()
 {
-	if (ClaftCount == 0)
-	{
-		if (arm->m_ArmPosition.y >= 300.0f)
-		{
-			ClaftCount = 1;
-
-		}
-	}
-
 	Query();
 
 	if (Buhin1 == true)
