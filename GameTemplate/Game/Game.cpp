@@ -4,6 +4,7 @@
 #include "ClaftScreen.h"
 #include "BeltCon.h"
 #include "tkEngine/light/tkDirectionLight.h"
+#include "test.h"
 
 Game::Game()
 {

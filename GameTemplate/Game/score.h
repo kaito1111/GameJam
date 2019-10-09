@@ -2,6 +2,7 @@
 class score : public IGameObject
 {
 public:
+
 	score();
 	~score();
 
