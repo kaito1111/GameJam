@@ -23,6 +23,8 @@ public:
 	void Query();
 	void hituyoubuhin();
 
+	CVector3 scale = CVector3::Zero;	//スケール
+	CVector3 buhinscale = CVector3::One;	//スケール
 	CVector3 buhin1pos = CVector3::Zero;	//必要な部品１の位置
 	CVector3 buhin2pos = CVector3::Zero;	//必要な部品２の位置
 	prefab::CSpriteRender* m_spriteRender = nullptr;
