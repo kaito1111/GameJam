@@ -15,6 +15,9 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Buhin.cpp" />
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="GameSence.cpp" />
+    <ClCompile Include="Arm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
@@ -35,6 +38,9 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Buhin.h" />
+    <ClInclude Include="test.h" />
+    <ClInclude Include="GameSence.h" />
+    <ClInclude Include="Arm.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
