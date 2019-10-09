@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "ClaftScreen.h"
+#include "Arm.h"
+#include "Buhin.h"
 
 ClaftScreen::ClaftScreen()
 {
@@ -12,7 +14,7 @@ ClaftScreen::~ClaftScreen()
 }
 
 void ClaftScreen::Query()
-{
+{	
 	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin1", [&](Buhin* buhin1) {
 		if (buhin1->m_position.y >= 300.0f) {
@@ -40,7 +42,9 @@ bool ClaftScreen::Start()
 	//buhin1 = FindGO<Buhin>("Buhin1");
 	//buhin2 = FindGO<Buhin>("Buhin2");
 	//buhin3 = FindGO<Buhin>("Gomi");
-
+    Buhin* buhin1 = nullptr;	//部品1
+	Buhin* buhin2 = nullptr;	//部品2
+	Buhin* buhin3 = nullptr;	//部品3
 
 	CVector3 scale = CVector3::Zero;
 	m_spriteRender = NewGO<prefab::CSpriteRender>(0);
@@ -56,11 +60,11 @@ bool ClaftScreen::Start()
 	scale.z = 1.0f;
 
 	m_hituyoubuhin1 = NewGO<prefab::CSpriteRender>(0);
-	m_hituyoubuhin1->Init(L"sprite/buhin1.dds", 400.0f, 250.0f);
+	m_hituyoubuhin1->Init(L"sprite/hituyoubuhin1.dds", 500.0f, 100.0f);
 	CVector3 buhin1pos = CVector3::Zero;
 
-	buhin1pos.x = 300.0f;
-	buhin1pos.y = 0.0f;
+	buhin1pos.x = 400.0f;
+	buhin1pos.y = 15.0f;
 
 	m_hituyoubuhin1->SetPosition(buhin1pos);
 	m_spriteRender->SetScale(scale);
