@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Arm.h"
 #include "Buhin.h"
+#include "ClaftScreen.h"
 
 Arm::Arm()
 {

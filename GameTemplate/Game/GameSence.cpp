@@ -26,6 +26,7 @@ void GameSence::Update()
 {
 	time -= GameTime().GetFrameDeltaTime();
 	swprintf_s(timer, L"‚ ‚Æ%f.1•b", time);
+	m_TimerFont->SetText(timer);
 	if (!New) {
 		if (time < 0.0f)
 		{
