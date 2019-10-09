@@ -11,6 +11,7 @@ result::~result()
 
 bool result::Start()
 {
+
 	return true;
 }
 
