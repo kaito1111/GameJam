@@ -23,6 +23,12 @@ bool Buhin::Start()
 	belt = FindGO<BeltCon>("BC");
 	//ベルトコンベアからrandの値を参照する
 	int rand = belt->rand;
+	
+	//大きさの調整
+	CVector3 Scale;
+	Scale.x = 5;
+	Scale.y = 3;
+	Scale.z = 3;
 
 	//スキン
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
@@ -41,6 +47,8 @@ bool Buhin::Start()
 		//ゴミのモデルデータのロード
 		m_skinModelRender->Init(L"modelData/Gomi.cmo");
 	}
+
+	m_skinModelRender->SetScale(Scale);
 
 	//流れる速さ
 	m_moveSpeed.x = 2.5f;
