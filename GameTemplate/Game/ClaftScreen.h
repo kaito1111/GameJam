@@ -21,7 +21,7 @@ public:
 	bool Buhin1 = false;
 	bool Buhin2 = false;
 	bool GameOver = false;
-
+	bool senni = false;
 	void Query();
 	void hituyoubuhin();
 

@@ -13,6 +13,7 @@ BeltCon::~BeltCon()
 
 bool BeltCon::Start()
 {
+
 	//ƒf[ƒ^‚Ì“Ç‚İ‚İ
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/BeltC.cmo");
