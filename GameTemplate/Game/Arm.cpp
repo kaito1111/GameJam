@@ -2,6 +2,7 @@
 #include "Arm.h"
 #include "Buhin.h"
 #include "ClaftScreen.h"
+#include "ClaftScreen.h"
 
 Arm::Arm()
 {
@@ -33,7 +34,6 @@ void Arm::Update()
 	}
 	if (Set && Pad(0).IsPress(enButtonB))
 	{
-		m_MoveSpeed.y = -GameTime().GetFrameDeltaTime();
 		Set = false;
 	}
 	if (!Set)
@@ -67,7 +67,7 @@ void Arm::Update()
 			float ArmX = m_ArmPosition.x;
 			float GomiX = m_Gomi->m_position.x;
 			float hantei = GomiX - ArmX;
-			if (hantei <= 10.0f&& hantei >= -10.0f)
+			if (fabsf(hantei <= 10.0f)&&m_ArmPosition.y == -300.0f)
 			{
 				Catch = true;
 			}

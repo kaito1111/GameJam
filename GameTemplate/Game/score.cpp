@@ -11,9 +11,12 @@ score::~score()
 
 bool score::Start()
 {
-	return false;
+
+	Score = m_Sence->time;
+	return true;
 }
 
 void score::Update()
 {
+	
 }
