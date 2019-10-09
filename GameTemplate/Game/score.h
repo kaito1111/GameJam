@@ -17,6 +17,6 @@ public:
 	prefab::CFontRender* m_scoreFont = nullptr;
 	int Score = 0;
 	CVector3 m_FontColor = CVector3::One;
-	wchar_t ScoreMoji[4];
-	CVector2 m_FontPosition = { 0.0f,0.0f };
+	wchar_t ScoreMoji[128];
+	CVector2 m_FontPosition = { -600.0f,200.0f };
 };
