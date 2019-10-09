@@ -55,6 +55,14 @@ bool ClaftScreen::Start()
 	scale.y = 1.5f;
 	scale.z = 1.0f;
 
+	m_hituyoubuhin1 = NewGO<prefab::CSpriteRender>(0);
+	m_hituyoubuhin1->Init(L"sprite/buhin1.dds", 400.0f, 250.0f);
+	CVector3 buhin1pos = CVector3::Zero;
+
+	buhin1pos.x = 300.0f;
+	buhin1pos.y = 0.0f;
+
+	m_hituyoubuhin1->SetPosition(buhin1pos);
 	m_spriteRender->SetScale(scale);
 	m_spriteRender->SetPosition(m_position);
 	return true;

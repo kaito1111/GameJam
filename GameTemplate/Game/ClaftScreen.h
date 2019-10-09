@@ -2,6 +2,8 @@
 #include "Arm.h"
 #include "Buhin.h"
 
+class buhin;
+
 class ClaftScreen:public IGameObject
 {
 public:
@@ -26,6 +28,8 @@ public:
 
 	prefab::CSpriteRender* m_spriteRender = nullptr;
 	CVector3 m_position = CVector3::Zero;
+	prefab::CSpriteRender* m_hituyoubuhin1 = nullptr;	//必要な部品の１
+	prefab::CSpriteRender* m_hituyoubuhin2 = nullptr;	//必要な部品の２
 	prefab::CSkinModelRender* m_BuhinModelRender1 = nullptr;
 	CVector3 m_Buhin1pos = CVector3::Zero;
 	prefab::CSkinModelRender* m_BuhinModelRender2 = nullptr;
