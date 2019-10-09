@@ -1812,6 +1812,8 @@
     <ResourceCompile Include="Game.rc" />
   </ItemGroup>
   <ItemGroup>
+    <MeshContentTask Include="Assets\modelData\arm_tume.FBX" />
+    <MeshContentTask Include="Assets\modelData\arm_ude.FBX" />
     <MeshContentTask Include="Assets\modelData\BeltC.FBX" />
     <MeshContentTask Include="Assets\modelData\buhin1.FBX" />
     <MeshContentTask Include="Assets\modelData\buhin2.FBX" />
@@ -1834,6 +1836,13 @@
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\hituyoubuhin2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\result_restart.png" />
+    <ImageContentTask Include="Assets\sprite\result_title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\result_select.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
