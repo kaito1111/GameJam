@@ -3,6 +3,7 @@
 #include "Arm.h"
 #include "Buhin.h"
 #include "result.h"
+#include "BeltCon.h"
 
 ClaftScreen::ClaftScreen()
 {
@@ -18,8 +19,9 @@ void ClaftScreen::Query()
 {
 	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin1", [&](Buhin* buhin1) {
-		if (buhin1->m_position.y >= 300.0f) {
+		if (buhin1->m_position.y >= 600.0f) {
 
+			buhin1->m_position.y -= 30.0f;
 			//m_hozon = buhin1->m_position;	
 			Buhin1 = true;
 			//falseを返したらクエリは終了。
@@ -29,8 +31,9 @@ void ClaftScreen::Query()
 
 	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin2", [&](Buhin* buhin2) {
-		if (buhin2->m_position.y >= 300.0f) {
+		if (buhin2->m_position.y >= 600.0f) {
 
+			buhin2->m_position.y -= 30.0f;
 			//m_hozon = buhin2->m_position;	
 			Buhin2 = true;
 			//falseを返したらクエリは終了。
@@ -42,6 +45,13 @@ void ClaftScreen::Query()
 		if (GameOver)
 		{
 			arm->m_ArmPosition.x += 30.0f;
+		}
+		return true;
+	});
+	QueryGOs<BeltCon>("BC", [&](BeltCon* belcon) {
+		if (GameOver)
+		{
+			belcon->m_position.y -= 30.0f;
 		}
 		return true;
 	});

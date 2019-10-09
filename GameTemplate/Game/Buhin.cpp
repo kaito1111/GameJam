@@ -19,8 +19,6 @@ Buhin::~Buhin()
 bool Buhin::Start()
 {
 	arm = FindGO<Arm>("Arm");
-	//クラス変数
-	BeltCon* belt;
 	//FindしてBeltConの値を参照できるように
 	belt = FindGO<BeltCon>("BC");
 	//ベルトコンベアからrandの値を参照する
@@ -45,7 +43,7 @@ bool Buhin::Start()
 		Scale.y = 5;
 		Scale.z = 5;
 		//角度
-		qRot.SetRotationDeg(CVector3::AxisY, 90.0f);
+		//qRot.SetRotationDeg(CVector3::AxisY, 90.0f);
 
 		m_skinModelRender->SetScale(Scale);
 		m_skinModelRender->SetRotation(qRot);
@@ -76,19 +74,16 @@ void Buhin::Update()
 	QueryGOs<Arm>("Arm", [&](Arm* arm)->bool {
 		CVector3 diff = arm->m_ArmPosition - m_position;
 		//当たり判定
-		if (diff.Length() < 10) {
+		if (diff.Length() < 80) {
 			IsCatch = true;
 			return false;
 		}
 		return true;
 		});
 
-	//右から左に流す
-	m_position.x += m_moveSpeed.x;
-	m_skinModelRender->SetPosition(m_position);
-
 	if (IsCatch == true) {
-		m_position.y += 20.0f;
+		//部品の高さをアームの高さに揃える
+		m_position.y = arm->m_ArmPosition.y;
 	}
 
 	//画面外にでたら削除
@@ -98,8 +93,12 @@ void Buhin::Update()
 	//クレーンが動いてるあいだ
 	if (arm->Set == false) {
 		m_moveSpeed.x = 0.0f;
+		belt->m_timer = 0;
 	}
 	else {
 		m_moveSpeed.x = 2.5f;
 	}
+	//右から左に流す
+	m_position.x += m_moveSpeed.x;
+	m_skinModelRender->SetPosition(m_position);
 }
