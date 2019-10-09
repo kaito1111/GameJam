@@ -46,6 +46,13 @@ void Arm::Update()
 		float DropTime = GameTime().GetFrameDeltaTime() * 200.0f;			//‘å‘ÌŠî–{‚É‚È‚éŽžŠÔ
 		if (Set && Pad(0).IsPress(enButtonB))								//‰º‚É“®‚­‚©‚Ç‚¤‚©‚ð”»’è‚·‚é
 		{
+			if (!InitOto)
+			{
+				prefab::CSoundSource* m_SS = nullptr;
+				m_SS->Init(L"sound/arm_kouho1.wav");
+				m_SS->Play(false);
+				InitOto = true;
+			}
 			Set = false;
 		}
 		if (!Set)
@@ -54,12 +61,19 @@ void Arm::Update()
 			if (ArmDown >= 1.0f)								//‰º‚É‚¢‚éŽžŠÔ
 			{
 				m_MoveSpeed.y = DropTime;						//ã‚Éã‚ª‚é
+				if (!InitOto) 
+				{
+					prefab::CSoundSource* m_SS = nullptr;
+					m_SS->Init(L"sound/arm_kouho1.wav");
+					m_SS->Play(false);
+				}
 			}
 			if (m_ArmPosition.y <= -200.0f)						//‚»‚êˆÈã‰º‚És‚­‚È
 			{
 				m_ArmPosition.y = -200.0f;
 				ArmDown += GameTime().GetFrameDeltaTime();
 				Rotrate += 2.0f;
+				InitOto = false;
 			}
 		}
 		else
@@ -90,6 +104,7 @@ void Arm::Update()
 				m_ArmPosition.y = 200.0f;
 				Set = true;
 				Rotrate = 0.0f;
+				InitOto = true;
 			}
 		}
 		if (Rotrate >= 45.0f)
