@@ -1767,8 +1767,8 @@
     <ClCompile Include="Buckground.cpp" />
     <ClCompile Include="Buhin.cpp" />
     <ClCompile Include="ClaftScreen.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
+    <ClCompile Include="GameDelete.cpp" />
     <ClCompile Include="GameSence.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="result.cpp" />
@@ -1802,8 +1802,8 @@
     <ClInclude Include="Buckground.h" />
     <ClInclude Include="Buhin.h" />
     <ClInclude Include="ClaftScreen.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
+    <ClInclude Include="GameDelete.h" />
     <ClInclude Include="GameSence.h" />
     <CLInclude Include="resource.h" />
     <ClInclude Include="result.h" />

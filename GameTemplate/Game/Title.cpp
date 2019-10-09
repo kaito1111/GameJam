@@ -2,6 +2,8 @@
 #include "Title.h"
 #include "Game.h"
 #include "GameSence.h"
+#include "GameDelete.h"
+
 Title::Title()
 {
 
@@ -25,6 +27,7 @@ void Title::Update()
 	//キーボードのKで起動
 	//ゲームループはしないので後で修正
 	if (Pad(0).IsPress(enButtonB)) {
+		NewGO<GameDelete>(0,"GameDelete");
 		NewGO<GameSence>(0,"GameSence");
 		DeleteGO(this);
 	}
