@@ -1,9 +1,7 @@
 #pragma once
-#include "Arm.h"
-#include "Buhin.h"
 
 class buhin;
-
+class Arm;
 class ClaftScreen:public IGameObject
 {
 public:
@@ -22,9 +20,7 @@ public:
 
 	void Query();
 
-	Buhin* buhin1 = nullptr;	//•”•i1
-	Buhin* buhin2 = nullptr;	//•”•i2
-	Buhin* buhin3 = nullptr;	//•”•i3
+
 
 	prefab::CSpriteRender* m_spriteRender = nullptr;
 	CVector3 m_position = CVector3::Zero;

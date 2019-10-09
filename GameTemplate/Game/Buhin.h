@@ -13,6 +13,8 @@ public:
 	Arm* arm;
 	//モデルレンダー
 	prefab::CSkinModelRender* m_skinModelRender;
+	//クオータニオン
+	CQuaternion qRot = CQuaternion::Identity;
 	//部品の座標
 	CVector3 m_position = CVector3::Zero;
 	//流れる速さ

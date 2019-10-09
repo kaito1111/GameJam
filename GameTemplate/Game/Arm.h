@@ -1,7 +1,5 @@
 #pragma once
 
-#include "ClaftScreen.h"
-
 class ClaftScreen;
 
 class Arm : public IGameObject
