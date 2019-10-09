@@ -13,11 +13,30 @@ bool Arm::Start()
 {
 	m_ArmModel = NewGO < prefab::CSkinModelRender>(0);
 	m_ArmModel->Init(L"modelData/unityChan.cmo");
-
+	m_ArmModel->SetPosition(m_ArmPosition);
+	m_ArmModel->SetScale(m_Scale * 2);
 	return true;
 }
 
 void Arm::Update()
 {
-	if(Pad(0).)
+	CVector3 m_MoveSpeed = CVector3::Zero;
+	if (Pad(0).IsPress(enButtonRight))
+	{
+		m_MoveSpeed.x = -10.0f;
+	}
+	if (Pad(0).IsPress(enButtonLeft))
+	{
+		m_MoveSpeed.x = 10.0f;
+	}
+	if (Pad(0).IsPress(enButtonB))
+	{
+		m_MoveSpeed.y = -20.0f;
+	}
+	m_ArmPosition += m_MoveSpeed;
+	if (m_ArmPosition.x >= -50.0f)
+	{
+		m_ArmPosition.x = -50.0f;
+	}
+	m_ArmModel->SetPosition(m_ArmPosition);
 }

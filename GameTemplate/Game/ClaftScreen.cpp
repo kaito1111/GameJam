@@ -13,6 +13,7 @@ ClaftScreen::~ClaftScreen()
 
 bool ClaftScreen::Start()
 {
+	arm = FindGO<Arm>("Arm");
 	CVector3 scale = CVector3::Zero;
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/ClaftScreen.cmo");
@@ -33,5 +34,8 @@ bool ClaftScreen::Start()
 
 void ClaftScreen::Update()
 {
+	if(arm->m_ArmPosition.y >= 100)
+	{
 
+	}
 }
