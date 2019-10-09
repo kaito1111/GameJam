@@ -65,13 +65,24 @@ bool Buhin::Start()
 	m_moveSpeed.x = 2.5f;
 
 	//部品が出てくる初期位置
-	m_position.x = -700;
+	m_position.x = -500;
 	m_position.y = -330;
 	return true;
 }
 
 void Buhin::Update()
 {
+	//クエリでアームにキャッチされているのかの判定を行う
+	QueryGOs<Arm>("Arm", [&](Arm* arm)->bool {
+		CVector3 diff = arm->m_ArmPosition - m_position;
+		//当たり判定
+		if (diff.Length() < 10) {
+			IsCatch = true;
+			return false;
+		}
+		return true;
+		});
+
 	//右から左に流す
 	m_position.x += m_moveSpeed.x;
 	m_skinModelRender->SetPosition(m_position);
