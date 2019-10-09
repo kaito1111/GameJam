@@ -42,18 +42,27 @@ bool Buhin::Start()
 		Scale.x = 3;
 		Scale.y = 5;
 		Scale.z = 5;
+		m_skinModelRender->SetScale(Scale);
+
+		//座標
+		m_position.x = -700;
+		m_position.y = -350;
+		m_position.z = 0;
+
 		//角度
 		//qRot.SetRotationDeg(CVector3::AxisY, 90.0f);
-
-		m_skinModelRender->SetScale(Scale);
 		m_skinModelRender->SetRotation(qRot);
 	}
 	else if (belt->rand == 1) {
+		m_position.x = -700;
+		m_position.y = -330;
 		//buhin2のモデルデータのロード
 		m_skinModelRender->Init(L"modelData/buhin2.cmo");
 	}
 	else {
 		//ゴミのモデルデータのロード
+		m_position.x = -800;
+		m_position.y = -330;
 		m_skinModelRender->Init(L"modelData/Gomi.cmo");
 	}
 
@@ -63,8 +72,6 @@ bool Buhin::Start()
 	m_moveSpeed.x = 2.5f;
 
 	//部品が出てくる初期位置
-	m_position.x = -500;
-	m_position.y = -330;
 	return true;
 }
 
@@ -104,7 +111,8 @@ void Buhin::Update()
 		m_moveSpeed.x = 2.5f;
 	}
 	//Y軸が画面外になるとそのオブジェクトを消す
-	if (m_position.y >= 600) {
+	//★600以下にしないでください★
+	if (m_position.y >= 650) {
 		DeleteGO(this);
 		arm->Catch = false;
 	}

@@ -9,6 +9,7 @@
     <ImageContentTask Include="Assets\sprite\result_title.png" />
     <ImageContentTask Include="Assets\sprite\result_restart.png" />
     <ImageContentTask Include="Assets\sprite\result_select.png" />
+    <ImageContentTask Include="Assets\sprite\haikei.png" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BeltCon.cpp" />
@@ -24,6 +25,7 @@
     <ClCompile Include="test.cpp" />
     <ClCompile Include="GameSence.cpp" />
     <ClCompile Include="Arm.cpp" />
+    <ClCompile Include="Buckground.cpp" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
@@ -50,8 +52,12 @@
     <ClInclude Include="test.h" />
     <ClInclude Include="GameSence.h" />
     <ClInclude Include="Arm.h" />
+    <ClInclude Include="Buckground.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\GGJ_sozai\haikei.png" />
   </ItemGroup>
 </Project>

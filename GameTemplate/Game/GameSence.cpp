@@ -2,6 +2,7 @@
 #include "GameSence.h"
 #include "Game.h"
 #include "Arm.h"
+#include "Buckground.h"
 #include "result.h"
 
 GameSence::GameSence()
@@ -16,6 +17,7 @@ bool GameSence::Start()
 {
 	NewGO<Game>(0,"Game");
 	NewGO<Arm>(0,"Arm");
+	NewGO<Buckground>(0, "Buckground");
 
 	m_TimerFont = NewGO<prefab::CFontRender>(0);
 	m_TimerFont->SetText(L"‚ ‚Æ120.0•b");
