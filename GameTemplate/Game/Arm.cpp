@@ -28,14 +28,6 @@ void Arm::Update()
 
 		CVector3 m_MoveSpeed = CVector3::Zero;
 		float DropTime = GameTime().GetFrameDeltaTime() * 200.0f;			//‘å‘ÌŠî–{‚É‚È‚éŠÔ
-		if (Pad(0).IsPress(enButtonRight))									//‰E‚É“®‚©‚·
-		{
-			m_MoveSpeed.x = -10.0f;
-		}
-		if (Pad(0).IsPress(enButtonLeft))									//¶‚É“®‚­
-		{
-			m_MoveSpeed.x = 10.0f;
-		}
 		if (Set && Pad(0).IsPress(enButtonB))								//‰º‚É“®‚­‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
 		{
 			Set = false;
@@ -51,6 +43,17 @@ void Arm::Update()
 			{
 				m_ArmPosition.y = -300.0f;
 				ArmDown += GameTime().GetFrameDeltaTime();
+			}
+		}
+		else
+		{
+			if (Pad(0).IsPress(enButtonRight))									//‰E‚É“®‚©‚·
+			{
+				m_MoveSpeed.x = -10.0f;
+			}
+			if (Pad(0).IsPress(enButtonLeft))									//¶‚É“®‚­
+			{
+				m_MoveSpeed.x = 10.0f;
 			}
 		}
 
