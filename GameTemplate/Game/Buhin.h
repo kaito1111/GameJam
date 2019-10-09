@@ -1,5 +1,6 @@
 #pragma once
 #include "Arm.h"
+class ClaftScreen;
 class Buhin : public IGameObject
 {
 public:
