@@ -1,4 +1,5 @@
 #pragma once
+#include "GameDelete.h"
 
 class ClaftScreen;
 
@@ -26,4 +27,5 @@ public:
 	float Rotrate = 0.0f;
 	CQuaternion m_Rot = CQuaternion::Identity;
 	bool InitOto = false;
+	GameDelete* m_Delete = nullptr;
 };

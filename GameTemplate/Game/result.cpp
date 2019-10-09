@@ -2,6 +2,7 @@
 #include "result.h"
 #include "score.h"
 #include "title.h"
+#include "GameSence.h"
 
 result::result()
 {
@@ -9,6 +10,9 @@ result::result()
 
 result::~result()
 {
+	DeleteGO(m_SpriteTitle);
+	DeleteGO(m_SpriteReStart);
+	DeleteGO(m_SpriteSelect);
 }
 
 bool result::Start()
@@ -49,9 +53,11 @@ void result::Update()
 	if (m_SelectPosition.x == 200.0f&&Pad(0).IsPress(enButtonB))
 	{
 		NewGO<GameSence>(0, "GameSence");
+		DeleteGO(this);
 	}
 	if (m_SelectPosition.x == -200.0f && Pad(0).IsPress(enButtonB))
 	{
-		NewGO<Title>(0);;
+		NewGO<Title>(0);
+		DeleteGO(this);
 	}
 }

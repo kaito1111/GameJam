@@ -11,6 +11,8 @@ Arm::~Arm()
 {
 	DeleteGO(m_ArmModel);
 	DeleteGO(m_Claft);
+	DeleteGO(m_ArmtumeRight);
+	DeleteGO(m_ArmtumeLeft);
 }
 
 bool Arm::Start()
@@ -32,12 +34,17 @@ bool Arm::Start()
 	m_Rot.SetRotationDeg(CVector3::AxisY, 180.0f);
 	m_ArmtumeLeft->SetRotation(m_Rot);
 	m_Claft = FindGO<ClaftScreen>("cs");
+
+	m_Delete = FindGO<GameDelete>("GameDelete");
 	return true;
 }
 
 void Arm::Update()
 {
-
+	if (m_Delete->DeleteArm)
+	{
+		DeleteGO(this);
+	}
 	CQuaternion m_ChechRotLeft = CQuaternion::Identity;
 	CQuaternion m_ChechRotRight = CQuaternion::Identity;
 	if (!m_Claft->GameOver)
@@ -48,9 +55,8 @@ void Arm::Update()
 		{
 			if (!InitOto)
 			{
-				prefab::CSoundSource* m_SS = nullptr;
+				prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
 				m_SS->Init(L"sound/arm_kouho1.wav");
-				m_SS->Play(false);
 				InitOto = true;
 			}
 			Set = false;
@@ -63,9 +69,8 @@ void Arm::Update()
 				m_MoveSpeed.y = DropTime;						//è„Ç…è„Ç™ÇÈ
 				if (!InitOto) 
 				{
-					prefab::CSoundSource* m_SS = nullptr;
+					prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
 					m_SS->Init(L"sound/arm_kouho1.wav");
-					m_SS->Play(false);
 				}
 			}
 			if (m_ArmPosition.y <= -200.0f)						//ÇªÇÍà»è„â∫Ç…çsÇ≠Ç»

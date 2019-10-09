@@ -1,4 +1,5 @@
 #pragma once
+#include "GameDelete.h"
 class GameSence : public IGameObject
 {
 public:
@@ -16,4 +17,5 @@ public:
 	float time = 120.0f;
 	bool New = false;
 	bool GameOver = false;
+	GameDelete* m_Delete = nullptr;
 };
