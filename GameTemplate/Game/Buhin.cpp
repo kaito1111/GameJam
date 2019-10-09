@@ -23,7 +23,7 @@ bool Buhin::Start()
 	belt = FindGO<BeltCon>("BC");
 	//ベルトコンベアからrandの値を参照する
 	int rand = belt->rand;
-	
+
 	//大きさの調整
 	CVector3 Scale;
 	Scale.x = 5;
@@ -75,7 +75,7 @@ void Buhin::Update()
 	QueryGOs<Arm>("Arm", [&](Arm* arm)->bool {
 		CVector3 diff = arm->m_ArmPosition - m_position;
 		//当たり判定
-		if (diff.Length() < 80){
+		if (diff.Length() < 80) {
 			IsCatch = true;
 			if (!IamGomi)
 			{
@@ -114,6 +114,7 @@ void Buhin::Update()
 	if (IamGomi && arm->m_ArmPosition.y >= 200)
 	{
 		m_position.y = -330.0f;
+		IsCatch = false;
 	}
 	//右から左に流す
 	m_position.x += m_moveSpeed.x;

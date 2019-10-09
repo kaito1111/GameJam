@@ -65,8 +65,11 @@ void BeltCon::Update()
 		else if(arm->Set == true){
 			NewGO<Buhin>(0, "Gomi");
 			m_timer = 0;
-			Buhin* m_Gomi = FindGO<Buhin>("Gomi");
-			m_Gomi->IamGomi = true;
+			//ゴミですフラグ
+			QueryGOs< Buhin>("Gomi", [&](Buhin* m_Gomi)->bool {
+				m_Gomi->IamGomi = true;
+				return true;
+				});
 			//ゴミが連続ででないように調整
 			waru--;
 		}
