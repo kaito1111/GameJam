@@ -2,6 +2,7 @@
 #include "ClaftScreen.h"
 #include "Arm.h"
 #include "Buhin.h"
+#include "result.h"
 
 ClaftScreen::ClaftScreen()
 {
@@ -14,7 +15,7 @@ ClaftScreen::~ClaftScreen()
 }
 
 void ClaftScreen::Query()
-{	
+{
 	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin1", [&](Buhin* buhin1) {
 		if (buhin1->m_position.y >= 300.0f) {
@@ -24,7 +25,7 @@ void ClaftScreen::Query()
 			//falseを返したらクエリは終了。
 		}
 		return true;
-	});
+		});
 
 	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin2", [&](Buhin* buhin2) {
@@ -33,6 +34,14 @@ void ClaftScreen::Query()
 			//m_hozon = buhin2->m_position;	
 			Buhin2 = true;
 			//falseを返したらクエリは終了。
+		}
+		return true;
+		});
+
+	QueryGOs<Arm>("Arm", [&](Arm* arm) {
+		if (BuhinCount1 == 1 && BuhinCount2 == 1)
+		{
+			arm->m_ArmPosition.x += 30.0f;
 		}
 		return true;
 	});
@@ -127,7 +136,7 @@ void ClaftScreen::Update()
 		{
 			Buhin1 = true;
 			m_BuhinModelRender1 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
-			m_BuhinModelRender1->Init(L"modelData/buhin1.cmo");
+			m_BuhinModelRender1->Init(L"modelData/wheel.cmo");
 			m_Buhin1pos.x = -300.0f;
 			m_Buhin1pos.y = 200.0f;
 			//エフェクトを作成。
@@ -180,6 +189,8 @@ void ClaftScreen::Update()
 	{
 		if (BuhinCount1 == 1 && BuhinCount2 == 1)
 		{
+			GameOver = true;
+
 			scale.x += 0.05f;
 			scale.y += 0.045f;
 			buhinscale.x += 0.05f;
@@ -193,8 +204,14 @@ void ClaftScreen::Update()
 			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
 			m_BuhinModelRender2->SetScale(buhinscale);
 			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
+			count++;
 		}
 	}
 
+	if (count >= 60)
+	{
+
+		NewGO<result>(0);
+	}
 	m_spriteRender->SetScale(scale);
 }

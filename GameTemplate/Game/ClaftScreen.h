@@ -14,11 +14,13 @@ public:
 	int BuhinCount1 = 0;
 	int BuhinCount2 = 0;
 	int BuhinCount3 = 0;
+	int count = 0;
 
 	bool hituyoubuhin1 = false;
 	bool hituyoubuhin2 = false;
 	bool Buhin1 = false;
 	bool Buhin2 = false;
+	bool GameOver = false;
 
 	void Query();
 	void hituyoubuhin();
