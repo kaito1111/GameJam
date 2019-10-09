@@ -1828,6 +1828,9 @@
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\ClaftScreen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\buhin1.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.targets" />
