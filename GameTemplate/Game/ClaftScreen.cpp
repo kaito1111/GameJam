@@ -37,6 +37,45 @@ void ClaftScreen::Query()
 		return true;
 	});
 }
+
+void ClaftScreen::hituyoubuhin()
+{
+	if (hituyoubuhin1 == false)
+	{
+		if (BuhinCount1 == 1)
+		{
+			buhin1pos.x += 8.0f;
+
+		}
+		if (buhin1pos.x >= 900.0f)
+		{
+			DeleteGO(m_hituyoubuhin1);
+			hituyoubuhin1 = true;
+		}
+	}
+
+	if (hituyoubuhin2 == false)
+	{
+		if (BuhinCount2 == 1)
+		{
+			buhin2pos.x += 8.0f;
+		}	
+		if (hituyoubuhin1 == true)
+		{
+			if (buhin2pos.y <= 25.0f)
+			{
+				buhin2pos.y += 2;
+			}
+		}
+		if (buhin2pos.x >= 900.0f)
+		{
+			DeleteGO(m_hituyoubuhin2);
+			hituyoubuhin2 = true;
+		}
+	}
+	m_hituyoubuhin1->SetPosition(buhin1pos);
+	m_hituyoubuhin2->SetPosition(buhin2pos);
+}
 bool ClaftScreen::Start()
 {
 	//buhin1 = FindGO<Buhin>("Buhin1");
@@ -60,13 +99,19 @@ bool ClaftScreen::Start()
 	scale.z = 1.0f;
 
 	m_hituyoubuhin1 = NewGO<prefab::CSpriteRender>(0);
-	m_hituyoubuhin1->Init(L"sprite/hituyoubuhin1.dds", 500.0f, 100.0f);
-	CVector3 buhin1pos = CVector3::Zero;
+	m_hituyoubuhin1->Init(L"sprite/hituyoubuhin1.dds", 500.0f, 80.0f);
 
 	buhin1pos.x = 400.0f;
-	buhin1pos.y = 15.0f;
+	buhin1pos.y = 25.0f;
 
-	m_hituyoubuhin1->SetPosition(buhin1pos);
+	m_hituyoubuhin2 = NewGO<prefab::CSpriteRender>(0);
+	m_hituyoubuhin2->Init(L"sprite/hituyoubuhin2.dds", 500.0f, 80.0f);
+
+
+	buhin2pos.x = 400.0f;
+	buhin2pos.y = -50.0f;
+
+
 	m_spriteRender->SetScale(scale);
 	m_spriteRender->SetPosition(m_position);
 	return true;
@@ -129,4 +174,5 @@ void ClaftScreen::Update()
 		}
 	}
 
+	hituyoubuhin();
 }

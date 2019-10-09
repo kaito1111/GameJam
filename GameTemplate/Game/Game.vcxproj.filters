@@ -5,6 +5,7 @@
     <ImageContentTask Include="Assets\sprite\GGJ_title.png" />
     <ImageContentTask Include="Assets\sprite\ClaftScreen.png" />
     <ImageContentTask Include="Assets\sprite\hituyoubuhin1.png" />
+    <ImageContentTask Include="Assets\sprite\hituyoubuhin2.png" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BeltCon.cpp" />
