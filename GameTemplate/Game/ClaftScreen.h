@@ -2,7 +2,7 @@
 
 class buhin;
 class Arm;
-class ClaftScreen:public IGameObject
+class ClaftScreen : public IGameObject
 {
 public:
 	ClaftScreen();

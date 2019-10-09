@@ -2,7 +2,6 @@
 #include "Arm.h"
 #include "Buhin.h"
 #include "ClaftScreen.h"
-#include "ClaftScreen.h"
 
 Arm::Arm()
 {
@@ -27,7 +26,7 @@ void Arm::Update()
 	if (!m_Claft->GameOver) {
 
 		CVector3 m_MoveSpeed = CVector3::Zero;
-		float DropTime = GameTime().GetFrameDeltaTime() * 100.0f;			//大体基本になる時間
+		float DropTime = GameTime().GetFrameDeltaTime() * 200.0f;			//大体基本になる時間
 		if (Pad(0).IsPress(enButtonRight))									//右に動かす
 		{
 			m_MoveSpeed.x = -10.0f;
@@ -59,63 +58,22 @@ void Arm::Update()
 		{
 			m_ArmPosition.x = -50.0f;
 		}
-		if (m_ArmPosition.x >= 600.0f)							//それ以上左に行くな
+		if (m_ArmPosition.x >= 300.0f)							//それ以上左に行くな
 		{
-			m_ArmPosition.x = 600.0f;
-			ArmDown = 0;
+			m_ArmPosition.x = 300.0f;
 		}
-
-		QueryGOs<Buhin>("Gomi", [&](Buhin* m_Gomi)->bool		//ゴミを拾う
-			{
-				float ArmX = m_ArmPosition.x;
-				float GomiX = m_Gomi->m_position.x;
-				float hantei = GomiX - ArmX;
-				if (fabsf(hantei <= 10.0f) && m_ArmPosition.y == -300.0f)
-				{
-					Catch = true;
-				}
-				if (Catch && HoldUp >= 1.0f)
-				{
-					m_Gomi->m_position.y += 20.0f;
-				}
-				return true;
-			});
-		QueryGOs<Buhin>("Buhin1", [&](Buhin* m_Buhin1)->bool	//タイヤを拾う
-			{
-				float ArmX = m_ArmPosition.x;
-				float m_Buhin1X = m_Buhin1->m_position.x;
-				float hantei = m_Buhin1X - ArmX;
-				if (hantei <= 10.0f)
-				{
-					Catch = true;
-				}
-				if (Catch && HoldUp >= 1.0f)
-				{
-					m_Buhin1->m_position.y += 20.0f;
-				}
-				return true;
-			});
-		QueryGOs<Buhin>("Buhin2", [&](Buhin* m_Buhin2)->bool	//フレームを拾う
-			{
-				float ArmX = m_ArmPosition.x;
-				float m_Buhin2X = m_Buhin2->m_position.x;
-				float hantei = m_Buhin2X - ArmX;
-				if (hantei <= 10.0f)
-				{
-					Catch = true;
-				}
-				if (Catch && HoldUp >= 1.0f)
-				{
-					m_Buhin2->m_position.y += 20.0f;
-				}
-				return true;
-			});
+		if (m_ArmPosition.y >= 250.0f)						//それ以上下に行くな
+		{
+			ArmDown = 0;
+			m_ArmPosition.y = 250.0f;
+			Set = true;
+		}
 		if (Catch)												//取ったどおおお
 		{
 			HoldUp += GameTime().GetFrameDeltaTime();
 		}
 
 
-		m_ArmModel->SetPosition(m_ArmPosition);					//モデルに位置を伝える
 	}
+	m_ArmModel->SetPosition(m_ArmPosition);					//モデルに位置を伝える
 }
