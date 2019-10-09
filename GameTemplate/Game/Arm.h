@@ -16,8 +16,8 @@ public:
 	CVector3 m_ArmPosition = { 0.0f,200.0f,0.0f };					//クレーンのポジション
 	CVector3 m_Scale = CVector3::One;							//クレーンのサイズ
 	bool Catch = false;											//つかめたかどうかを判定する
-	bool Drop = false;
-	bool Set = true;
-	float HoldUp = 0.0f;
-	float ArmDown = 0.0f;
+	bool Drop = false;											//謎
+	bool Set = true;											//Bボタンを押せるようにする
+	float HoldUp = 0.0f;										//つかンで下にいる時間
+	float ArmDown = 0.0f;										//下にいつずける時間
 };
