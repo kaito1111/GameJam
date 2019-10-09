@@ -9,6 +9,7 @@
     <ImageContentTask Include="Assets\sprite\result_title.png" />
     <ImageContentTask Include="Assets\sprite\result_restart.png" />
     <ImageContentTask Include="Assets\sprite\result_select.png" />
+    <ImageContentTask Include="Assets\sprite\空test.png" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BeltCon.cpp" />

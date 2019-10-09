@@ -16,15 +16,30 @@ Arm::~Arm()
 bool Arm::Start()
 {
 	m_ArmModel = NewGO < prefab::CSkinModelRender>(0);					//モデルを出した
-	m_ArmModel->Init(L"modelData/unityChan.cmo");
+	m_ArmModel->Init(L"modelData/arm_ude.cmo");
 	m_ArmModel->SetPosition(m_ArmPosition);								//位置をセットした
-	m_ArmModel->SetScale(m_Scale * 2);									//大きさをセットした
+	m_ArmModel->SetScale(m_Scale * 2);									//大きさをセットした	
+	m_ArmtumeRight = NewGO<prefab::CSkinModelRender>(0);
+	m_ArmtumeRight->Init(L"modelData/arm_tume.cmo");
+	m_TumePos = m_ArmPosition;
+	m_TumePos.y = m_ArmPosition.y - 20.0f;
+	m_ArmtumeRight->SetPosition(m_TumePos);
+	m_ArmtumeRight->SetScale(m_Scale * 2);
+	m_ArmtumeLeft = NewGO<prefab::CSkinModelRender>(0);
+	m_ArmtumeLeft->Init(L"modelData/arm_tume.cmo");
+	m_ArmtumeLeft->SetPosition(m_TumePos);
+	m_ArmtumeLeft->SetScale(m_Scale * 2);
+	m_Rot.SetRotationDeg(CVector3::AxisY, 180.0f);
+	m_ArmtumeLeft->SetRotation(m_Rot);
 	m_Claft = FindGO<ClaftScreen>("cs");
 	return true;
 }
 
 void Arm::Update()
 {
+
+	CQuaternion m_ChechRotLeft = CQuaternion::Identity;
+	CQuaternion m_ChechRotRight = CQuaternion::Identity;
 	if (!m_Claft->GameOver)
 	{
 		CVector3 m_MoveSpeed = CVector3::Zero;
@@ -40,10 +55,11 @@ void Arm::Update()
 			{
 				m_MoveSpeed.y = DropTime;						//上に上がる
 			}
-			if (m_ArmPosition.y <= -300.0f)						//それ以上下に行くな
+			if (m_ArmPosition.y <= -200.0f)						//それ以上下に行くな
 			{
-				m_ArmPosition.y = -300.0f;
+				m_ArmPosition.y = -200.0f;
 				ArmDown += GameTime().GetFrameDeltaTime();
+				Rotrate += 2.0f;
 			}
 		}
 		else
@@ -65,15 +81,30 @@ void Arm::Update()
 		if (m_ArmPosition.x >= 600.0f)							//それ以上左に行くな
 		{
 			m_ArmPosition.x = 600.0f;
-		}if (!Catch)												//取ったないおおお
+		}
+		if (!Catch)												//取ってないおおお
 		{
 			if (m_ArmPosition.y >= 200.0f)						//それ以上上に行くな
 			{
 				ArmDown = 0;
 				m_ArmPosition.y = 200.0f;
 				Set = true;
+				Rotrate = 0.0f;
 			}
 		}
+		if (Rotrate >= 45.0f)
+		{
+			Rotrate = 45.0f;
+		}
 	}
+	m_ChechRotLeft.SetRotationDeg(CVector3::AxisZ, Rotrate);
+	m_ChechRotRight.SetRotationDeg(CVector3::AxisZ, Rotrate);
+	m_ChechRotLeft.Multiply(m_Rot);
+	m_TumePos = m_ArmPosition;
+	m_TumePos.y = m_ArmPosition.y - 20.0f;
+	m_ArmtumeRight->SetPosition(m_TumePos);
+	m_ArmtumeRight->SetRotation(m_ChechRotRight);
+	m_ArmtumeLeft->SetPosition(m_TumePos);
+	m_ArmtumeLeft->SetRotation(m_ChechRotLeft);
 	m_ArmModel->SetPosition(m_ArmPosition);					//モデルに位置を伝える
 }
