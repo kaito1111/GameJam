@@ -19,7 +19,7 @@ bool Buhin::Start()
 {
 	//クラス変数
 	BeltCon* belt;
-	//Find
+	//FindしてBeltConの値を参照できるように
 	belt = FindGO<BeltCon>("BC");
 	//ベルトコンベアからrandの値を参照する
 	int rand = belt->rand;
