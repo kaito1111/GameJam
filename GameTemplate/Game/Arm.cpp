@@ -23,7 +23,8 @@ bool Arm::Start()
 
 void Arm::Update()
 {
-	if (!m_Claft->GameOver) {
+	if (!m_Claft->GameOver)
+	{
 
 		CVector3 m_MoveSpeed = CVector3::Zero;
 		float DropTime = GameTime().GetFrameDeltaTime() * 200.0f;			//大体基本になる時間
@@ -61,17 +62,16 @@ void Arm::Update()
 		if (m_ArmPosition.x >= 600.0f)							//それ以上左に行くな
 		{
 			m_ArmPosition.x = 600.0f;
-		}
-		if (m_ArmPosition.y >= 200.0f)						//それ以上下に行くな
+		}if (!Catch)												//取ったどおおお
 		{
-			ArmDown = 0;
-			m_ArmPosition.y = 200.0f;
-			Set = true;
+			if (m_ArmPosition.y >= 200.0f)						//それ以上上に行くな
+			{
+				ArmDown = 0;
+				m_ArmPosition.y = 200.0f;
+				Set = true;
+			}
 		}
-		if (Catch)												//取ったどおおお
-		{
-			HoldUp += GameTime().GetFrameDeltaTime();
-		}
+		
 
 
 	}
