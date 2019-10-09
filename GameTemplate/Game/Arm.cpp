@@ -24,7 +24,7 @@ bool Arm::Start()
 
 void Arm::Update()
 {
-	if (m_Claft->GameOver) {
+	if (!m_Claft->GameOver) {
 
 		CVector3 m_MoveSpeed = CVector3::Zero;
 		float DropTime = GameTime().GetFrameDeltaTime() * 100.0f;			//‘å‘ÌŠî–{‚É‚È‚éŽžŠÔ
