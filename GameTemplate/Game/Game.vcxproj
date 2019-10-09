@@ -1818,6 +1818,7 @@
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
     <MeshContentTask Include="Assets\modelData\Gomi.FBX" />
     <MeshContentTask Include="Assets\modelData\unityChan.fbx" />
+    <MeshContentTask Include="Assets\modelData\wheel.FBX" />
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\dummy.png" />
