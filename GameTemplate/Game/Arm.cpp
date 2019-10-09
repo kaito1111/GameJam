@@ -64,6 +64,36 @@ void Arm::Update()
 			}
 			return true;
 		});
+	QueryGOs<Buhin>("buhin1", [&](Buhin* m_Gomi)->bool
+		{
+			float ArmX = m_ArmPosition.x;
+			float GomiX = m_Gomi->m_position.x;
+			float hantei = GomiX - ArmX;
+			if (hantei <= 10.0f)
+			{
+				Catch = true;
+			}
+			if (Catch && HoldUp >= 1.0f)
+			{
+				m_Gomi->m_position.y += 20.0f;
+			}
+			return true;
+		});
+		QueryGOs<Buhin>("buhin2", [&](Buhin* m_Gomi)->bool
+			{
+				float ArmX = m_ArmPosition.x;
+				float GomiX = m_Gomi->m_position.x;
+				float hantei = GomiX - ArmX;
+				if (hantei <= 10.0f)
+				{
+					Catch = true;
+				}
+				if (Catch && HoldUp >= 1.0f)
+				{
+					m_Gomi->m_position.y += 20.0f;
+				}
+				return true;
+			});
 	if (Catch)
 	{
 		HoldUp += GameTime().GetFrameDeltaTime();
