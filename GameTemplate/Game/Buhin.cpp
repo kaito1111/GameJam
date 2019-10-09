@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Buhin.h"
+#include "Arm.h"
 #include "BeltCon.h"
 
 Buhin::Buhin()
@@ -17,6 +18,7 @@ Buhin::~Buhin()
 
 bool Buhin::Start()
 {
+	arm = FindGO<Arm>("Arm");
 	//クラス変数
 	BeltCon* belt;
 	//FindしてBeltConの値を参照できるように
@@ -68,5 +70,12 @@ void Buhin::Update()
 	//画面外にでたら削除
 	if (m_position.x > 750) {
 		DeleteGO(this);
+	}
+	//クレーンが動いてるあいだ
+	if (arm->Set == false) {
+		m_moveSpeed.x = 0.0f;
+	}
+	else {
+		m_moveSpeed.x = 2.5f;
 	}
 }

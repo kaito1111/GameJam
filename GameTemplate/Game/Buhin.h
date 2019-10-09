@@ -1,4 +1,6 @@
 #pragma once
+#include "Arm.h"
+class ClaftScreen;
 class Buhin : public IGameObject
 {
 public:
@@ -7,6 +9,8 @@ public:
 	bool Start();
 	void Update();
 	//メンバ変数//
+	//クラス変数
+	Arm* arm;
 	//モデルレンダー
 	prefab::CSkinModelRender* m_skinModelRender;
 	//部品の座標
