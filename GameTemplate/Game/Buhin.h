@@ -24,5 +24,6 @@ public:
 	CVector3 m_position = CVector3::Zero;
 	//—¬‚ê‚é‘¬‚³
 	CVector3 m_moveSpeed = CVector3::Zero;
+	bool IamGomi = false;
 };
 

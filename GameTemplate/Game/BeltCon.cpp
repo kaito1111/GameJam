@@ -65,6 +65,8 @@ void BeltCon::Update()
 		else if(arm->Set == true){
 			NewGO<Buhin>(0, "Gomi");
 			m_timer = 0;
+			Buhin* m_Gomi = FindGO<Buhin>("Gomi");
+			m_Gomi->IamGomi = true;
 			//ƒSƒ~‚ª˜A‘±‚Å‚Å‚È‚¢‚æ‚¤‚É’²®
 			waru--;
 		}

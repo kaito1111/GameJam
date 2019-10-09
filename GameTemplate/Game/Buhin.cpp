@@ -77,7 +77,10 @@ void Buhin::Update()
 		//当たり判定
 		if (diff.Length() < 80){
 			IsCatch = true;
-			arm->Catch = true;
+			if (!IamGomi)
+			{
+				arm->Catch = true;
+			}
 			return false;
 		}
 		return true;
@@ -101,9 +104,16 @@ void Buhin::Update()
 		m_moveSpeed.x = 2.5f;
 	}
 	//Y軸が画面外になるとそのオブジェクトを消す
-	if (m_position.y >= 350) {
+	if (m_position.y >= 600) {
 		DeleteGO(this);
 		arm->Catch = false;
+	}
+	else {
+		//arm->Catch = false;
+	}
+	if (IamGomi && arm->m_ArmPosition.y >= 200)
+	{
+		m_position.y = -330.0f;
 	}
 	//右から左に流す
 	m_position.x += m_moveSpeed.x;
