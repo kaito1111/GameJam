@@ -1,5 +1,6 @@
 #pragma once
 #include "Arm.h"
+#include "BeltCon.h"
 class ClaftScreen;
 class Buhin : public IGameObject
 {
@@ -11,6 +12,8 @@ public:
 	//メンバ変数//
 	//クラス変数
 	Arm* arm;
+	//クラス変数
+	BeltCon* belt;
 	//モデルレンダー
 	prefab::CSkinModelRender* m_skinModelRender;
 	//つかまれた判定
