@@ -39,7 +39,16 @@ bool Buhin::Start()
 	//ベルトコンベアクラスでbuhin1が作られたら
 	if (belt->rand == 0) {
 		//buhin1のモデルデータのロード
-		m_skinModelRender->Init(L"modelData/buhin1.cmo");
+		m_skinModelRender->Init(L"modelData/wheel.cmo");
+		//大きさ
+		Scale.x = 3;
+		Scale.y = 5;
+		Scale.z = 5;
+		//角度
+		qRot.SetRotationDeg(CVector3::AxisY, 90.0f);
+
+		m_skinModelRender->SetScale(Scale);
+		m_skinModelRender->SetRotation(qRot);
 	}
 	else if (belt->rand == 1) {
 		//buhin2のモデルデータのロード

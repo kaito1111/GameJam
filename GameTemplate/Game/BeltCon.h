@@ -18,8 +18,8 @@ public:
 	//乱数　Buhinクラスで使用するので.hで定義
 	int rand = 0;
 	//waru と waruh の値をいじるとゴミがでる割合を変えれます
-	int waru = 8;
+	int waru = 3;
 	//waruhは初期化用なのでcpp変更しないでください。
-	int waruh = 8;
+	int waruh = 3;
 };
 
