@@ -87,6 +87,10 @@ void Buhin::Update()
 	m_position.x += m_moveSpeed.x;
 	m_skinModelRender->SetPosition(m_position);
 
+	if (IsCatch == true) {
+		m_position.y += 20.0f;
+	}
+
 	//‰æ–ÊŠO‚É‚Å‚½‚çíœ
 	if (m_position.x > 750) {
 		DeleteGO(this);
