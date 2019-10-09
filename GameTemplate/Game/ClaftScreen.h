@@ -1,9 +1,7 @@
 #pragma once
-#include "Arm.h"
-#include "Buhin.h"
 
 class buhin;
-
+class Arm;
 class ClaftScreen:public IGameObject
 {
 public:
@@ -17,24 +15,25 @@ public:
 	int BuhinCount2 = 0;
 	int BuhinCount3 = 0;
 
+	bool hituyoubuhin1 = false;
+	bool hituyoubuhin2 = false;
 	bool Buhin1 = false;
 	bool Buhin2 = false;
 
 	void Query();
+	void hituyoubuhin();
 
-	Buhin* buhin1 = nullptr;	//部品1
-	Buhin* buhin2 = nullptr;	//部品2
-	Buhin* buhin3 = nullptr;	//部品3
-
+	CVector3 buhin1pos = CVector3::Zero;	//必要な部品１の位置
+	CVector3 buhin2pos = CVector3::Zero;	//必要な部品２の位置
 	prefab::CSpriteRender* m_spriteRender = nullptr;
 	CVector3 m_position = CVector3::Zero;
 	prefab::CSpriteRender* m_hituyoubuhin1 = nullptr;	//必要な部品の１
 	prefab::CSpriteRender* m_hituyoubuhin2 = nullptr;	//必要な部品の２
-	prefab::CSkinModelRender* m_BuhinModelRender1 = nullptr;
+	prefab::CSkinModelRender* m_BuhinModelRender1 = nullptr;	//右上に表示する部品１
 	CVector3 m_Buhin1pos = CVector3::Zero;
-	prefab::CSkinModelRender* m_BuhinModelRender2 = nullptr;
+	prefab::CSkinModelRender* m_BuhinModelRender2 = nullptr;	//右上に表示する部品２
 	CVector3 m_Buhin2pos = CVector3::Zero;
-	prefab::CSkinModelRender* m_BuhinModelRender3 = nullptr;
+	prefab::CSkinModelRender* m_BuhinModelRender3 = nullptr;	//右上に表示する部品３
 	CVector3 m_Buhin3pos = CVector3::Zero;
 	CVector3 m_hozon = CVector3::Zero;
 };

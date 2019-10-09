@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "ClaftScreen.h"
+#include "Arm.h"
+#include "Buhin.h"
 
 ClaftScreen::ClaftScreen()
 {
@@ -12,7 +14,7 @@ ClaftScreen::~ClaftScreen()
 }
 
 void ClaftScreen::Query()
-{
+{	
 	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin1", [&](Buhin* buhin1) {
 		if (buhin1->m_position.y >= 300.0f) {
@@ -35,12 +37,53 @@ void ClaftScreen::Query()
 		return true;
 	});
 }
+
+void ClaftScreen::hituyoubuhin()
+{
+	if (hituyoubuhin1 == false)
+	{
+		if (BuhinCount1 == 1)
+		{
+			buhin1pos.x += 8.0f;
+
+		}
+		if (buhin1pos.x >= 900.0f)
+		{
+			DeleteGO(m_hituyoubuhin1);
+			hituyoubuhin1 = true;
+		}
+	}
+
+	if (hituyoubuhin2 == false)
+	{
+		if (BuhinCount2 == 1)
+		{
+			buhin2pos.x += 8.0f;
+		}	
+		if (hituyoubuhin1 == true)
+		{
+			if (buhin2pos.y <= 25.0f)
+			{
+				buhin2pos.y += 2;
+			}
+		}
+		if (buhin2pos.x >= 900.0f)
+		{
+			DeleteGO(m_hituyoubuhin2);
+			hituyoubuhin2 = true;
+		}
+	}
+	m_hituyoubuhin1->SetPosition(buhin1pos);
+	m_hituyoubuhin2->SetPosition(buhin2pos);
+}
 bool ClaftScreen::Start()
 {
 	//buhin1 = FindGO<Buhin>("Buhin1");
 	//buhin2 = FindGO<Buhin>("Buhin2");
 	//buhin3 = FindGO<Buhin>("Gomi");
-
+    Buhin* buhin1 = nullptr;	//部品1
+	Buhin* buhin2 = nullptr;	//部品2
+	Buhin* buhin3 = nullptr;	//部品3
 
 	CVector3 scale = CVector3::Zero;
 	m_spriteRender = NewGO<prefab::CSpriteRender>(0);
@@ -56,13 +99,19 @@ bool ClaftScreen::Start()
 	scale.z = 1.0f;
 
 	m_hituyoubuhin1 = NewGO<prefab::CSpriteRender>(0);
-	m_hituyoubuhin1->Init(L"sprite/buhin1.dds", 400.0f, 250.0f);
-	CVector3 buhin1pos = CVector3::Zero;
+	m_hituyoubuhin1->Init(L"sprite/hituyoubuhin1.dds", 500.0f, 80.0f);
 
-	buhin1pos.x = 300.0f;
-	buhin1pos.y = 0.0f;
+	buhin1pos.x = 400.0f;
+	buhin1pos.y = 25.0f;
 
-	m_hituyoubuhin1->SetPosition(buhin1pos);
+	m_hituyoubuhin2 = NewGO<prefab::CSpriteRender>(0);
+	m_hituyoubuhin2->Init(L"sprite/hituyoubuhin2.dds", 500.0f, 80.0f);
+
+
+	buhin2pos.x = 400.0f;
+	buhin2pos.y = -50.0f;
+
+
 	m_spriteRender->SetScale(scale);
 	m_spriteRender->SetPosition(m_position);
 	return true;
@@ -125,4 +174,5 @@ void ClaftScreen::Update()
 		}
 	}
 
+	hituyoubuhin();
 }
