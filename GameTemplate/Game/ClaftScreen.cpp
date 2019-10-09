@@ -208,10 +208,13 @@ void ClaftScreen::Update()
 		}
 	}
 
-	if (count >= 60)
+	if (senni == false)
 	{
-
-		NewGO<result>(0);
+		if (count >= 60)
+		{
+			NewGO<result>(0);
+			senni = true;
+		}
 	}
 	m_spriteRender->SetScale(scale);
 }
