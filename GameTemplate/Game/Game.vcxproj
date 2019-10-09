@@ -1762,11 +1762,11 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Arm.cpp" />
+    <ClCompile Include="BeltCon.cpp" />
+    <ClCompile Include="Buhin.cpp" />
     <ClCompile Include="ClaftScreen.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
-    <ClCompile Include="GameSence.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="score.cpp" />
@@ -1790,27 +1790,27 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview_Middle|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview_Low|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Arm.h" />
+    <ClInclude Include="BeltCon.h" />
+    <ClInclude Include="Buhin.h" />
     <ClInclude Include="ClaftScreen.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
-    <ClInclude Include="GameSence.h" />
     <CLInclude Include="resource.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="score.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="test.h" />
     <ClInclude Include="Title.h" />
     <ResourceCompile Include="Game.rc" />
   </ItemGroup>
   <ItemGroup>
+    <MeshContentTask Include="Assets\modelData\BeltC.FBX" />
+    <MeshContentTask Include="Assets\modelData\buhin1.FBX" />
+    <MeshContentTask Include="Assets\modelData\buhin2.FBX" />
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
-    <MeshContentTask Include="Assets\modelData\testBox.FBX" />
-    <MeshContentTask Include="Assets\modelData\testSphere.FBX" />
+    <MeshContentTask Include="Assets\modelData\Gomi.FBX" />
     <MeshContentTask Include="Assets\modelData\unityChan.fbx" />
   </ItemGroup>
   <ItemGroup>
@@ -1818,16 +1818,6 @@
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\GGJ_title.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ImageContentTask Include="Assets\sprite\test桃.png" />
-    <ImageContentTask Include="Assets\sprite\test白.png" />
-    <ImageContentTask Include="Assets\sprite\test緑.png" />
-    <ImageContentTask Include="Assets\sprite\test赤.png" />
-    <ImageContentTask Include="Assets\sprite\test青.png" />
-    <ImageContentTask Include="Assets\sprite\test黄.png" />
-    <ImageContentTask Include="Assets\sprite\test黒.png" />
-    <ImageContentTask Include="Assets\sprite\空test.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,16 +3,9 @@
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\dummy.png" />
     <ImageContentTask Include="Assets\sprite\GGJ_title.png" />
-    <ImageContentTask Include="Assets\sprite\空test.png" />
-    <ImageContentTask Include="Assets\sprite\test緑.png" />
-    <ImageContentTask Include="Assets\sprite\test白.png" />
-    <ImageContentTask Include="Assets\sprite\test桃.png" />
-    <ImageContentTask Include="Assets\sprite\test赤.png" />
-    <ImageContentTask Include="Assets\sprite\test青.png" />
-    <ImageContentTask Include="Assets\sprite\test黒.png" />
-    <ImageContentTask Include="Assets\sprite\test黄.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BeltCon.cpp" />
     <ClCompile Include="ClaftScreen.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
@@ -21,17 +14,18 @@
     <ClCompile Include="score.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Title.cpp" />
-    <ClCompile Include="GameSence.cpp" />
-    <ClCompile Include="Arm.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="Buhin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
     <MeshContentTask Include="Assets\modelData\unityChan.fbx" />
-    <MeshContentTask Include="Assets\modelData\testSphere.FBX" />
-    <MeshContentTask Include="Assets\modelData\testBox.FBX" />
+    <MeshContentTask Include="Assets\modelData\BeltC.FBX" />
+    <MeshContentTask Include="Assets\modelData\buhin1.FBX" />
+    <MeshContentTask Include="Assets\modelData\buhin2.FBX" />
+    <MeshContentTask Include="Assets\modelData\Gomi.FBX" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BeltCon.h" />
     <ClInclude Include="ClaftScreen.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
@@ -40,9 +34,7 @@
     <ClInclude Include="score.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Title.h" />
-    <ClInclude Include="GameSence.h" />
-    <ClInclude Include="Arm.h" />
-    <ClInclude Include="test.h" />
+    <ClInclude Include="Buhin.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
