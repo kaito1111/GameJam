@@ -54,7 +54,7 @@ void Arm::Update()
 			float ArmX = m_ArmPosition.x;
 			float GomiX = m_Gomi->m_position.x;
 			float hantei = GomiX - ArmX;
-			if (hantei <= 10.0f)
+			if (hantei <= 10.0f/*&& hantei >= -10.0f*/)
 			{
 				Catch = true;
 			}
@@ -64,33 +64,33 @@ void Arm::Update()
 			}
 			return true;
 		});
-	QueryGOs<Buhin>("buhin1", [&](Buhin* m_Gomi)->bool
+	QueryGOs<Buhin>("Buhin1", [&](Buhin* m_Buhin1)->bool
 		{
 			float ArmX = m_ArmPosition.x;
-			float GomiX = m_Gomi->m_position.x;
-			float hantei = GomiX - ArmX;
+			float m_Buhin1X = m_Buhin1->m_position.x;
+			float hantei = m_Buhin1X - ArmX;
 			if (hantei <= 10.0f)
 			{
 				Catch = true;
 			}
 			if (Catch && HoldUp >= 1.0f)
 			{
-				m_Gomi->m_position.y += 20.0f;
+				m_Buhin1->m_position.y += 20.0f;
 			}
 			return true;
 		});
-		QueryGOs<Buhin>("buhin2", [&](Buhin* m_Gomi)->bool
+		QueryGOs<Buhin>("Buhin2", [&](Buhin* m_Buhin2)->bool
 			{
 				float ArmX = m_ArmPosition.x;
-				float GomiX = m_Gomi->m_position.x;
-				float hantei = GomiX - ArmX;
+				float m_Buhin2X = m_Buhin2->m_position.x;
+				float hantei = m_Buhin2X - ArmX;
 				if (hantei <= 10.0f)
 				{
 					Catch = true;
 				}
 				if (Catch && HoldUp >= 1.0f)
 				{
-					m_Gomi->m_position.y += 20.0f;
+					m_Buhin2->m_position.y += 20.0f;
 				}
 				return true;
 			});
