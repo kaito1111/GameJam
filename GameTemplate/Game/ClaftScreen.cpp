@@ -19,7 +19,7 @@ void ClaftScreen::Query()
 	QueryGOs<Buhin>("Buhin1", [&](Buhin* buhin1) {
 		if (buhin1->m_position.y >= 300.0f) {
 
-			m_hozon = buhin1->m_position;	
+			//m_hozon = buhin1->m_position;	
 			Buhin1 = true;
 			//falseを返したらクエリは終了。
 		}
@@ -30,7 +30,7 @@ void ClaftScreen::Query()
 	QueryGOs<Buhin>("Buhin2", [&](Buhin* buhin2) {
 		if (buhin2->m_position.y >= 300.0f) {
 
-			m_hozon = buhin2->m_position;	
+			//m_hozon = buhin2->m_position;	
 			Buhin2 = true;
 			//falseを返したらクエリは終了。
 		}
@@ -85,7 +85,7 @@ bool ClaftScreen::Start()
 	Buhin* buhin2 = nullptr;	//部品2
 	Buhin* buhin3 = nullptr;	//部品3
 
-	CVector3 scale = CVector3::Zero;
+
 	m_spriteRender = NewGO<prefab::CSpriteRender>(0);
 	m_spriteRender->Init(L"sprite/ClaftScreen.dds",400.0f,250.0f);
 
@@ -128,8 +128,8 @@ void ClaftScreen::Update()
 			Buhin1 = true;
 			m_BuhinModelRender1 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
 			m_BuhinModelRender1->Init(L"modelData/buhin1.cmo");
-			m_hozon.x = -300.0f;
-			m_hozon.y = 200.0f;
+			m_Buhin1pos.x = -300.0f;
+			m_Buhin1pos.y = 200.0f;
 			//エフェクトを作成。
 			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
 			//エフェクトを再生。
@@ -140,8 +140,8 @@ void ClaftScreen::Update()
 			scale.z = 15.0f;
 
 			effect->SetScale(scale);
-			effect->SetPosition(m_hozon);
-			m_BuhinModelRender1->SetPosition(m_hozon);
+			effect->SetPosition(m_Buhin1pos);
+			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
 
 			BuhinCount1 = 1;
 			Buhin1 = false;
@@ -154,8 +154,8 @@ void ClaftScreen::Update()
 		{
 			m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin2");
 			m_BuhinModelRender2->Init(L"modelData/buhin2.cmo");
-			m_hozon.x = -400.0f;
-			m_hozon.y = 200.0f;
+			m_Buhin2pos.x = -400.0f;
+			m_Buhin2pos.y = 200.0f;
 			//エフェクトを作成。
 			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
 			//エフェクトを再生。
@@ -166,8 +166,8 @@ void ClaftScreen::Update()
 			scale.z = 15.0f;
 
 			effect->SetScale(scale);
-			effect->SetPosition(m_hozon);
-			m_BuhinModelRender2->SetPosition(m_hozon);
+			effect->SetPosition(m_Buhin2pos);
+			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
 
 			BuhinCount2 = 1;
 			Buhin2 = false;
@@ -175,4 +175,26 @@ void ClaftScreen::Update()
 	}
 
 	hituyoubuhin();
+
+	if (scale.x <= 5.8f)
+	{
+		if (BuhinCount1 == 1 && BuhinCount2 == 1)
+		{
+			scale.x += 0.05f;
+			scale.y += 0.045f;
+			buhinscale.x += 0.05f;
+			buhinscale.y += 0.05f;
+			buhinscale.z += 0.05f;
+			m_Buhin1pos.x += 4.0f;
+			m_Buhin1pos.y -= 3.0f;
+			m_Buhin2pos.x += 4.0f;
+			m_Buhin2pos.y -= 3.0f;
+			m_BuhinModelRender1->SetScale(buhinscale);	
+			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
+			m_BuhinModelRender2->SetScale(buhinscale);
+			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
+		}
+	}
+
+	m_spriteRender->SetScale(scale);
 }
