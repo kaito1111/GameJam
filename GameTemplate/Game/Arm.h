@@ -9,8 +9,11 @@ public:
 	void Update();
 
 	prefab::CSkinModelRender* m_ArmModel = nullptr;				//クレーンのスキンモデル
+
 	CVector3 m_ArmPosition = { 0.0f,200.0f,0.0f };					//クレーンのポジション
 	CVector3 m_Scale = CVector3::One;							//クレーンのサイズ
 	bool Catch = false;											//つかめたかどうかを判定する
 	bool Drop = false;
+	float HoldUp = 0.0f;
+
 };

@@ -8,4 +8,6 @@ public:
 
 	bool Start();
 	void Update();
+
+	int Score = 0;
 };

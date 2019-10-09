@@ -26,8 +26,13 @@ void GameSence::Update()
 {
 	time -= GameTime().GetFrameDeltaTime();
 	swprintf_s(timer, L"‚ ‚Æ%f.1•b", time);
-	if (time < 0.0f)
-	{
-		NewGO<result>(0);
+	if (!New) {
+		if (time < 0.0f)
+		{
+			NewGO<result>(0, "result");
+			GameOver = true;
+
+		}
+		New = true;
 	}
 }
