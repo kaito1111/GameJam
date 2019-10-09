@@ -1,4 +1,5 @@
 #pragma once
+#include "Arm.h"
 class BeltCon : public IGameObject
 {
 public:
@@ -9,6 +10,8 @@ public:
 	//メンバ変数//
 	//モデルレンダー
 	prefab::CSkinModelRender* m_skinModelRender;
+	//クラス変数
+	Arm* arm;
 	//スケール
 	CVector3 scale;
 	//座標

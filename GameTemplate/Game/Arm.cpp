@@ -58,14 +58,14 @@ void Arm::Update()
 		{
 			m_ArmPosition.x = -50.0f;
 		}
-		if (m_ArmPosition.x >= 300.0f)							//それ以上左に行くな
+		if (m_ArmPosition.x >= 600.0f)							//それ以上左に行くな
 		{
-			m_ArmPosition.x = 300.0f;
+			m_ArmPosition.x = 600.0f;
 		}
-		if (m_ArmPosition.y >= 250.0f)						//それ以上下に行くな
+		if (m_ArmPosition.y >= 200.0f)						//それ以上下に行くな
 		{
 			ArmDown = 0;
-			m_ArmPosition.y = 250.0f;
+			m_ArmPosition.y = 200.0f;
 			Set = true;
 		}
 		if (Catch)												//取ったどおおお
