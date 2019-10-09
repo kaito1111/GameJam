@@ -71,11 +71,13 @@ bool Buhin::Start()
 void Buhin::Update()
 {
 	//クエリでアームにキャッチされているのかの判定を行う
+
 	QueryGOs<Arm>("Arm", [&](Arm* arm)->bool {
 		CVector3 diff = arm->m_ArmPosition - m_position;
 		//当たり判定
-		if (diff.Length() < 80) {
+		if (diff.Length() < 80){
 			IsCatch = true;
+			arm->Catch = true;
 			return false;
 		}
 		return true;
@@ -97,6 +99,11 @@ void Buhin::Update()
 	}
 	else {
 		m_moveSpeed.x = 2.5f;
+	}
+	//Y軸が画面外になるとそのオブジェクトを消す
+	if (m_position.y >= 350) {
+		DeleteGO(this);
+		arm->Catch = false;
 	}
 	//右から左に流す
 	m_position.x += m_moveSpeed.x;
