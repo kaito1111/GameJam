@@ -39,7 +39,7 @@ void ClaftScreen::Query()
 		});
 
 	QueryGOs<Arm>("Arm", [&](Arm* arm) {
-		if (BuhinCount1 == 1 && BuhinCount2 == 1)
+		if (GameOver)
 		{
 			arm->m_ArmPosition.x += 30.0f;
 		}
@@ -208,10 +208,13 @@ void ClaftScreen::Update()
 		}
 	}
 
-	if (count >= 60)
+	if (senni == false)
 	{
-
-		NewGO<result>(0);
+		if (count >= 60)
+		{
+			NewGO<result>(0);
+			senni = true;
+		}
 	}
 	m_spriteRender->SetScale(scale);
 }

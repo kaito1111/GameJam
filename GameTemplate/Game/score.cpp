@@ -17,7 +17,7 @@ bool score::Start()
 	m_scoreFont = NewGO<prefab::CFontRender>(0);
 	m_scoreFont->SetText(ScoreMoji);
 	m_scoreFont->SetColor(m_FontColor);
-
+	m_scoreFont->SetPosition(m_FontPosition);
 	return true;
 }
 

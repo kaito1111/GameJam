@@ -2,7 +2,7 @@
 
 class buhin;
 class Arm;
-class ClaftScreen:public IGameObject
+class ClaftScreen : public IGameObject
 {
 public:
 	ClaftScreen();
@@ -21,7 +21,7 @@ public:
 	bool Buhin1 = false;
 	bool Buhin2 = false;
 	bool GameOver = false;
-
+	bool senni = false;
 	void Query();
 	void hituyoubuhin();
 

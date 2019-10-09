@@ -18,5 +18,5 @@ public:
 	int Score = 0;
 	CVector3 m_FontColor = CVector3::One;
 	wchar_t ScoreMoji[4];
-
+	CVector2 m_FontPosition = { 0.0f,0.0f };
 };
