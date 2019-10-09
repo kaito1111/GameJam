@@ -25,6 +25,7 @@
     <ClCompile Include="test.cpp" />
     <ClCompile Include="GameSence.cpp" />
     <ClCompile Include="Arm.cpp" />
+    <ClCompile Include="Buckground.cpp" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
@@ -51,6 +52,7 @@
     <ClInclude Include="test.h" />
     <ClInclude Include="GameSence.h" />
     <ClInclude Include="Arm.h" />
+    <ClInclude Include="Buckground.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />

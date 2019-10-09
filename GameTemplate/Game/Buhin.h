@@ -1,6 +1,7 @@
 #pragma once
 #include "Arm.h"
 #include "BeltCon.h"
+#include "ClaftScreen.h"
 class ClaftScreen;
 class Buhin : public IGameObject
 {
@@ -9,11 +10,18 @@ public:
 	~Buhin();
 	bool Start();
 	void Update();
+	void hantei();
 	//メンバ変数//
-	//クラス変数
+	//仕分け用
+	bool IamWheel = false;
+	bool Iamframe = false;
+	bool IamGomi = false;
+	//アームクラス
 	Arm* arm;
-	//クラス変数
+	//ベルトコンベアクラス
 	BeltCon* belt;
+	//クラフトスクリーンクラス
+	ClaftScreen* CS;
 	//モデルレンダー
 	prefab::CSkinModelRender* m_skinModelRender;
 	//つかまれた判定
@@ -24,6 +32,6 @@ public:
 	CVector3 m_position = CVector3::Zero;
 	//流れる速さ
 	CVector3 m_moveSpeed = CVector3::Zero;
-	bool IamGomi = false;
+	int rand;
 };
 

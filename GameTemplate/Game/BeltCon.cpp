@@ -49,27 +49,29 @@ void BeltCon::Update()
 
 		/*それぞれの乱数に対応した"部品"のインスタンスをここで作成します
 		"部品"を追加したい場合をこことBuhin.cppに追加してください*/
-		if (rand == 0 && arm->Set == true) {
+		//少しでも被りを少なくするためにコードがややこしいですがパーツのインスタンスを作っているだけです
+		if(count[1] > 2 || rand == 1 && arm->Set == true) {
+			rand = 1;
+			NewGO<Buhin>(0, "Buhin2");
+			m_timer = 0;
+			//でたので初期化
+			waru = waruh;
+			count[0]++;
+			count[1] = 0;
+		}
+		else if (count[0] > 2 || rand == 0 && arm->Set == true) {
+			rand = 0;
 			NewGO<Buhin>(0, "Buhin1");
 			//タイマーを初期化
 			m_timer = 0;
 			//でたので初期化
 			waru = waruh;
-		}
-		else if(rand == 1 && arm->Set == true){
-			NewGO<Buhin>(0, "Buhin2");
-			m_timer = 0;
-			//でたので初期化
-			waru = waruh;
+			count[1]++;
+			count[0] = 0;
 		}
 		else if(arm->Set == true){
 			NewGO<Buhin>(0, "Gomi");
 			m_timer = 0;
-			//ゴミですフラグ
-			QueryGOs< Buhin>("Gomi", [&](Buhin* m_Gomi)->bool {
-				m_Gomi->IamGomi = true;
-				return true;
-				});
 			//ゴミが連続ででないように調整
 			waru--;
 		}

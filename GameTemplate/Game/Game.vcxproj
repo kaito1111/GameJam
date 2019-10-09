@@ -1764,6 +1764,7 @@
   <ItemGroup>
     <ClCompile Include="Arm.cpp" />
     <ClCompile Include="BeltCon.cpp" />
+    <ClCompile Include="Buckground.cpp" />
     <ClCompile Include="Buhin.cpp" />
     <ClCompile Include="ClaftScreen.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -1798,6 +1799,7 @@
   <ItemGroup>
     <ClInclude Include="Arm.h" />
     <ClInclude Include="BeltCon.h" />
+    <ClInclude Include="Buckground.h" />
     <ClInclude Include="Buhin.h" />
     <ClInclude Include="ClaftScreen.h" />
     <ClInclude Include="Game.h" />

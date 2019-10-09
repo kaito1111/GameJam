@@ -24,5 +24,6 @@ public:
 	int waru = 3;
 	//waruh‚Í‰Šú‰»—p‚È‚Ì‚Åcpp•ÏX‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B
 	int waruh = 3;
+	int count[2] = { 0,0 };
 };
 

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Buhin.h"
 #include "Arm.h"
+#include "ClaftScreen.h"
 #include "BeltCon.h"
 
 Buhin::Buhin()
@@ -19,10 +20,12 @@ Buhin::~Buhin()
 bool Buhin::Start()
 {
 	arm = FindGO<Arm>("Arm");
+	CS = FindGO<ClaftScreen>("cs");
 	//FindしてBeltConの値を参照できるように
 	belt = FindGO<BeltCon>("BC");
 	//ベルトコンベアからrandの値を参照する
-	int rand = belt->rand;
+	rand = belt->rand;
+	hantei();
 
 	//大きさの調整
 	CVector3 Scale;
@@ -39,22 +42,21 @@ bool Buhin::Start()
 		//buhin1のモデルデータのロード
 		m_skinModelRender->Init(L"modelData/wheel.cmo");
 		//大きさ
-		Scale.x = 3;
-		Scale.y = 5;
-		Scale.z = 5;
+		//Scale.x = 6;
+		Scale.z = 3;
+		Scale.y = 3;
 		m_skinModelRender->SetScale(Scale);
 
 		//座標
-		m_position.x = -700;
-		m_position.y = -350;
-		m_position.z = 0;
+		m_position.x = -800;
+		m_position.y = -310;
 
 		//角度
-		//qRot.SetRotationDeg(CVector3::AxisY, 90.0f);
+		qRot.SetRotationDeg(CVector3::AxisY, 90.0f);
 		m_skinModelRender->SetRotation(qRot);
 	}
 	else if (belt->rand == 1) {
-		m_position.x = -700;
+		m_position.x = -800;
 		m_position.y = -330;
 		//buhin2のモデルデータのロード
 		m_skinModelRender->Init(L"modelData/buhin2.cmo");
@@ -67,7 +69,6 @@ bool Buhin::Start()
 	}
 
 	m_skinModelRender->SetScale(Scale);
-
 	//流れる速さ
 	m_moveSpeed.x = 2.5f;
 
@@ -80,22 +81,44 @@ void Buhin::Update()
 	//クエリでアームにキャッチされているのかの判定を行う
 
 	QueryGOs<Arm>("Arm", [&](Arm* arm)->bool {
-		CVector3 diff = arm->m_ArmPosition - m_position;
-		//当たり判定
+		CVector3 diff;
+		diff.y = arm->m_ArmPosition.y - m_position.y;
+		/*dif.yだけの方を少し下げることで当たりX軸の当たり判定はそのままで
+		Y軸の当たり判定を無理やり広める*/
+		//Y軸の当たり判定を調整
+		diff.y -= 50;
+		diff.x = arm->m_ArmPosition.x - m_position.x;
+		//当たり判定を大きくするときはここを調整
 		if (diff.Length() < 80) {
+			//とりあえずキャッチ
 			IsCatch = true;
-			if (!IamGomi)
+			if (IamWheel == 1 && CS->BuhinCount1 == 0 ||
+				Iamframe == 1 && CS->BuhinCount2 == 0)
 			{
+
+				//これが必要なパーツならとる
 				arm->Catch = true;
+			}
+			else {
+				//いらないパーツなら
+				if (arm->m_ArmPosition.y >= 200)
+				{
+					//ベルトコンベアに戻す
+					m_position.y = -320.0f;
+					//何ももってない
+					IsCatch = false;
+				}
 			}
 			return false;
 		}
 		return true;
 		});
 
+	//何かものをつかんでいるならば
 	if (IsCatch == true) {
 		//部品の高さをアームの高さに揃える
-		m_position.y = arm->m_ArmPosition.y;
+		//アームのモデルが変わるたびyに-Yしてください
+		m_position.y = arm->m_ArmPosition.y - 110;
 	}
 
 	//画面外にでたら削除
@@ -107,6 +130,7 @@ void Buhin::Update()
 		m_moveSpeed.x = 0.0f;
 		belt->m_timer = 0;
 	}
+	//クレーンが動いていないなら
 	else {
 		m_moveSpeed.x = 2.5f;
 	}
@@ -114,17 +138,28 @@ void Buhin::Update()
 	//★600以下にしないでください★
 	if (m_position.y >= 650) {
 		DeleteGO(this);
+		//何ももってない
 		arm->Catch = false;
 	}
-	else {
-		//arm->Catch = false;
-	}
-	if (IamGomi && arm->m_ArmPosition.y >= 200)
-	{
-		m_position.y = -330.0f;
-		IsCatch = false;
-	}
+
 	//右から左に流す
 	m_position.x += m_moveSpeed.x;
 	m_skinModelRender->SetPosition(m_position);
+}
+
+//BeltConで生成された乱数をもとに
+//それがどの部品なのかを仕分けする関数
+void Buhin::hantei() {
+	if (rand == 0) {
+		//車輪
+		IamWheel = 1;
+	}
+	else if (rand == 1) {
+		//フレーム
+		Iamframe = 1;
+	}
+	else {
+		//ゴミ
+		IamGomi = 1;
+	}
 }
