@@ -13,6 +13,8 @@ public:
 	Arm* arm;
 	//モデルレンダー
 	prefab::CSkinModelRender* m_skinModelRender;
+	//つかまれた判定
+	bool IsCatch = false;
 	//クオータニオン
 	CQuaternion qRot = CQuaternion::Identity;
 	//部品の座標
