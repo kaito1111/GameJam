@@ -8,7 +8,11 @@ public:
 	bool Start();
 	void Update();
 
-	prefab::CSpriteRender* m_Sprite = nullptr;
-	prefab::CSpriteRender* m_Sprite = nullptr;
-	CVector3 m_Position = CVector3::Zero;
+	prefab::CSpriteRender* m_SpriteTitle = nullptr;
+	prefab::CSpriteRender* m_SpriteReStart = nullptr;
+	prefab::CSpriteRender* m_SpriteSelect = nullptr;
+	CVector3 m_TitlePosition = { -200.0f,-100.0f,0.0f };
+	CVector3 m_ReStartPosition = { 200.0f,-100.0f,0.0f };
+	CVector3 m_SelectPosition= { -200.0f,-100.0f,0.0f };
+
 };

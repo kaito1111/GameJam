@@ -62,7 +62,7 @@ void Arm::Update()
 		if (m_ArmPosition.x >= 600.0f)							//‚»‚êˆÈã¶‚És‚­‚È
 		{
 			m_ArmPosition.x = 600.0f;
-		}if (!Catch)												//Žæ‚Á‚½‚Ç‚¨‚¨‚¨
+		}if (!Catch)												//Žæ‚Á‚½‚È‚¢‚¨‚¨‚¨
 		{
 			if (m_ArmPosition.y >= 200.0f)						//‚»‚êˆÈãã‚És‚­‚È
 			{
