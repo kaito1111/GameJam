@@ -3,6 +3,7 @@
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\dummy.png" />
     <ImageContentTask Include="Assets\sprite\GGJ_title.png" />
+    <ImageContentTask Include="Assets\sprite\ClaftScreen.png" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BeltCon.cpp" />
