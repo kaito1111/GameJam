@@ -16,6 +16,7 @@ void ClaftScreen::Query()
 	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin1", [&](Buhin* buhin1) {
 		if (buhin1->m_position.y >= 300.0f) {
+			Buhin1 = true;
 			//falseを返したらクエリは終了。
 		}
 		return true;
@@ -89,8 +90,8 @@ void ClaftScreen::Update()
 		Buhin1 = true;
 		m_BuhinModelRender1 = NewGO < prefab::CSkinModelRender>(0, "Buhin1");
 		m_BuhinModelRender1->Init(L"modelData/buhin1");
-		m_Buhin1pos.x = 0.0f;
-		m_Buhin1pos.y = 0.0f;
+		m_Buhin1pos.x = 100.0f;
+		m_Buhin1pos.y = 100.0f;
 
 		m_BuhinModelRender1->SetPosition(m_Buhin1pos);
 	}
@@ -99,8 +100,8 @@ void ClaftScreen::Update()
 	{
 		m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "Buhin2");
 		m_BuhinModelRender2->Init(L"modelData/buhin2");
-		m_Buhin2pos.x = 0.0f;
-		m_Buhin2pos.y = 0.0f;
+		m_Buhin2pos.x = 100.0f;
+		m_Buhin2pos.y = 100.0f;
 
 		m_BuhinModelRender2->SetPosition(m_Buhin2pos);
 	}

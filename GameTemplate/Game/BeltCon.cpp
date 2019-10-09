@@ -26,6 +26,7 @@ bool BeltCon::Start()
 	m_position.y = -350.0f;
 	m_skinModelRender->SetPosition(m_position);
 
+
 	return true;
 }
 
@@ -42,8 +43,8 @@ void BeltCon::Update()
 	if (m_timer > 2.0f) {
 		//乱数
 		rand = Random().GetRandInt();
-		// %X をいじるとゴミがでる割合を変えれます
-		rand = rand % 8;
+		//randの値をwaru個に分ける
+		rand = rand % waru;
 
 		/*それぞれの乱数に対応した"部品"のインスタンスをここで作成します
 		"部品"を追加したい場合をこことBuhin.cppに追加してください*/
@@ -51,14 +52,20 @@ void BeltCon::Update()
 			NewGO<Buhin>(0, "Buhin1");
 			//タイマーを初期化
 			m_timer = 0;
+			//でたので初期化
+			waru = waruh;
 		}
 		else if(rand == 1){
 			NewGO<Buhin>(0, "Buhin2");
 			m_timer = 0;
+			//でたので初期化
+			waru = waruh;
 		}
 		else {
 			NewGO<Buhin>(0, "Gomi");
 			m_timer = 0;
+			//ゴミが連続ででないように調整
+			waru--;
 		}
 	}
 }
