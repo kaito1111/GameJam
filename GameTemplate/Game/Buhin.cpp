@@ -74,7 +74,7 @@ void Buhin::Update()
 	QueryGOs<Arm>("Arm", [&](Arm* arm)->bool {
 		CVector3 diff = arm->m_ArmPosition - m_position;
 		//“–‚½‚è”»’è
-		if (diff.Length() < 50) {
+		if (diff.Length() < 80) {
 			IsCatch = true;
 			belt->m_timer = 0;
 			return false;
