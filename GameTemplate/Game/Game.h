@@ -15,7 +15,6 @@ public:
 	~Game();
 	bool Start();
 	void Update();
-	prefab::CSkinModelRender* m_skinModelRender = nullptr;		//スキンモデルレンダラー。
 	test* m_test = nullptr;
 	ClaftScreen* m_Screen = nullptr;
 };

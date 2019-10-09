@@ -25,7 +25,7 @@ void Title::Update()
 	//キーボードのKで起動
 	//ゲームループはしないので後で修正
 	if (Pad(0).IsPress(enButtonB)) {
-		NewGO<GameSence>(0);
+		NewGO<GameSence>(0,"GameSence");
 		DeleteGO(this);
 	}
 }
