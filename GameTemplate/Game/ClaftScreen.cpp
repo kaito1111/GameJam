@@ -73,7 +73,17 @@ void ClaftScreen::Update()
 			m_BuhinModelRender1->Init(L"modelData/buhin1.cmo");
 			m_hozon.x = -300.0f;
 			m_hozon.y = 200.0f;
+			//エフェクトを作成。
+			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
+			//エフェクトを再生。
+			effect->Play(L"effect/create.efk");
+			CVector3 scale = CVector3::One;
+			scale.x = 15.0f;
+			scale.y = 15.0f;
+			scale.z = 15.0f;
 
+			effect->SetScale(scale);
+			effect->SetPosition(m_hozon);
 			m_BuhinModelRender1->SetPosition(m_hozon);
 
 			BuhinCount1 = 1;
@@ -89,7 +99,17 @@ void ClaftScreen::Update()
 			m_BuhinModelRender2->Init(L"modelData/buhin2.cmo");
 			m_hozon.x = -400.0f;
 			m_hozon.y = 200.0f;
+			//エフェクトを作成。
+			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
+			//エフェクトを再生。
+			effect->Play(L"effect/create.efk");
+			CVector3 scale = CVector3::One;
+			scale.x = 15.0f;
+			scale.y = 15.0f;
+			scale.z = 15.0f;
 
+			effect->SetScale(scale);
+			effect->SetPosition(m_hozon);
 			m_BuhinModelRender2->SetPosition(m_hozon);
 
 			BuhinCount2 = 1;
