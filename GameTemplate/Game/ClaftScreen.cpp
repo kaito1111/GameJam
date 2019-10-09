@@ -37,7 +37,6 @@ void ClaftScreen::Query()
 }
 bool ClaftScreen::Start()
 {
-	arm = FindGO<Arm>("Arm");
 	//buhin1 = FindGO<Buhin>("Buhin1");
 	//buhin2 = FindGO<Buhin>("Buhin2");
 	//buhin3 = FindGO<Buhin>("Gomi");
@@ -63,40 +62,39 @@ bool ClaftScreen::Start()
 
 void ClaftScreen::Update()
 {
-	if (ClaftCount == 0)
-	{
-		if (arm->m_ArmPosition.y >= 300.0f)
-		{
-			ClaftCount = 1;
+	Query();
 
+	if (BuhinCount1 == 0)
+	{
+		if (Buhin1 == true)
+		{
+			Buhin1 = true;
+			m_BuhinModelRender1 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
+			m_BuhinModelRender1->Init(L"modelData/buhin1.cmo");
+			m_hozon.x = -300.0f;
+			m_hozon.y = 200.0f;
+
+			m_BuhinModelRender1->SetPosition(m_hozon);
+
+			BuhinCount1 = 1;
+			Buhin1 = false;
 		}
 	}
 
-	Query();
-
-	if (Buhin1 == true)
+	if (BuhinCount2 == 0)
 	{
-		Buhin1 = true;
-		m_BuhinModelRender1 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
-		m_BuhinModelRender1->Init(L"modelData/buhin1.cmo");
-		m_hozon.x = 100.0f;
-		m_hozon.y = 100.0f;
+		if (Buhin2 == true)
+		{
+			m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin2");
+			m_BuhinModelRender2->Init(L"modelData/buhin2.cmo");
+			m_hozon.x = -400.0f;
+			m_hozon.y = 200.0f;
 
-		m_BuhinModelRender1->SetPosition(m_hozon);
+			m_BuhinModelRender2->SetPosition(m_hozon);
 
-		Buhin1 = false;
-	}
-
-	if (Buhin2 == true)
-	{
-		m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin2");
-		m_BuhinModelRender2->Init(L"modelData/buhin2.cmo");
-		m_hozon.x = 100.0f;
-		m_hozon.y = 100.0f;
-
-		m_BuhinModelRender2->SetPosition(m_hozon);
-
-		Buhin2 = false;
+			BuhinCount2 = 1;
+			Buhin2 = false;
+		}
 	}
 
 }
