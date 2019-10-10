@@ -10,4 +10,5 @@ public:
 	bool DeleteArm = false;
 	bool DeleteGameSence=false;
 	bool DeleteScore = false;
+	bool DeleteClaftScreen = false;
 };
