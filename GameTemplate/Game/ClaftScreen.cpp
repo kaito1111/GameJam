@@ -227,7 +227,7 @@ void ClaftScreen::claft()
 			//音を再生
 			sound();
 			m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin2");
-			m_BuhinModelRender2->Init(L"modelData/buhin2.cmo");
+			m_BuhinModelRender2->Init(L"modelData/body.cmo");
 			m_Buhin2pos.x = -400.0f;
 			m_Buhin2pos.y = 200.0f;
 			//エフェクトを作成。
