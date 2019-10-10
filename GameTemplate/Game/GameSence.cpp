@@ -2,10 +2,10 @@
 #include "GameSence.h"
 #include "Arm.h"
 #include "Buckground.h"
-#include "result.h"
 #include "GameCamera.h"
 #include "ClaftScreen.h"
 #include "BeltCon.h"
+#include "result.h"
 
 GameSence::GameSence()
 {
@@ -21,12 +21,11 @@ GameSence::~GameSence()
 
 bool GameSence::Start()
 {
-	NewGO<GameCamera>(0, "gc");
-	NewGO<Buckground>(0, "Buckground");
+	NewGO<GameCamera>(1, "gc");
 	NewGO<Arm>(0, "Arm");
 	NewGO<ClaftScreen>(0, "cs");
 	NewGO<BeltCon>(0, "BC");
-	NewGO<result>(0, "result");
+	NewGO<Buckground>(0, "Buckground");
 
 	m_TimerFont = NewGO<prefab::CFontRender>(0);
 	m_TimerFont->SetText(L"‚ ‚Æ120.0•b");
