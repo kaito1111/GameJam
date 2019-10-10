@@ -33,6 +33,7 @@ public:
 	void hituyoubuhin();
 	void rotation();
 	void claft();
+	void sound();
 
 	GameDelete* GD = nullptr;	//デリートするよ！
 
@@ -60,5 +61,6 @@ public:
 	prefab::CSkinModelRender* m_BuhinModelRender1_4 = nullptr;	//右上に表示する部品1_4
 	CVector3 m_Buhin1_4pos = CVector3::Zero;
 	CVector3 m_hozon = CVector3::Zero;
+	prefab::CSoundSource* m_bgmSoundSource = nullptr;	//BGM用のサウンドソース。
 };
 

@@ -176,6 +176,8 @@ void ClaftScreen::claft()
 	{
 		if (Buhin1 == true)
 		{
+			//‰¹‚ğÄ¶
+			sound();
 			Buhin1 = true;
 			m_BuhinModelRender1 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
 			m_BuhinModelRender1->Init(L"modelData/wheel.cmo");
@@ -222,6 +224,8 @@ void ClaftScreen::claft()
 	{
 		if (Buhin2 == true)
 		{
+			//‰¹‚ğÄ¶
+			sound();
 			m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin2");
 			m_BuhinModelRender2->Init(L"modelData/buhin2.cmo");
 			m_Buhin2pos.x = -400.0f;
@@ -245,6 +249,13 @@ void ClaftScreen::claft()
 	}
 }
 
+void ClaftScreen::sound()
+{
+	prefab::CSoundSource* ss;
+	ss = NewGO<prefab::CSoundSource>(0);
+	ss->Init(L"sound/buhin_atari_kouho2.wav");
+	ss->Play(false);
+}
 bool ClaftScreen::Start()
 {
     Buhin* buhin1 = nullptr;	//•”•i1
