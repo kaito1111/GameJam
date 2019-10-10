@@ -49,72 +49,75 @@ void Arm::Update()
 	CQuaternion m_ChechRotRight = CQuaternion::Identity;
 	if (!m_Claft->GameOver)
 	{
-		CVector3 m_MoveSpeed = CVector3::Zero;
-		float DropTime = GameTime().GetFrameDeltaTime() * 200.0f;			//大体基本になる時間
-		if (Set && Pad(0).IsPress(enButtonB))								//下に動くかどうかを判定する
-		{
-			if (!InitOto)
+		if (Drop) {
+			CVector3 m_MoveSpeed = CVector3::Zero;
+			float DropTime = GameTime().GetFrameDeltaTime() * 200.0f;			//大体基本になる時間
+			if (Set && Pad(0).IsPress(enButtonB))								//下に動くかどうかを判定する
 			{
-				prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
-				m_SS->Init(L"sound/arm_kouho1.wav");
-				InitOto = true;
-			}
-			Set = false;
-		}
-		if (!Set)
-		{
-			m_MoveSpeed.y = -DropTime;							//下に動く
-			if (ArmDown >= 1.0f)								//下にいる時間
-			{
-				m_MoveSpeed.y = DropTime;						//上に上がる
-				if (!InitOto) 
+				if (!InitOto)
 				{
 					prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
 					m_SS->Init(L"sound/arm_kouho1.wav");
+					InitOto = true;
+				}
+				Set = false;
+			}
+			if (!Set)
+			{
+				m_MoveSpeed.y = -DropTime;							//下に動く
+				if (ArmDown >= 1.0f)								//下にいる時間
+				{
+					m_MoveSpeed.y = DropTime;						//上に上がる
+					if (!InitOto)
+					{
+						prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
+						m_SS->Init(L"sound/arm_kouho1.wav");
+					}
+				}
+				if (m_ArmPosition.y <= -150.0f)						//それ以上下に行くな
+				{
+					m_ArmPosition.y = -150.0f;
+					ArmDown += GameTime().GetFrameDeltaTime();
+					Rotrate += 2.0f;
+					InitOto = false;
 				}
 			}
-			if (m_ArmPosition.y <= -200.0f)						//それ以上下に行くな
+			else
 			{
-				m_ArmPosition.y = -200.0f;
-				ArmDown += GameTime().GetFrameDeltaTime();
-				Rotrate += 2.0f;
-				InitOto = false;
+				if (Pad(0).IsPress(enButtonRight))									//右に動かす
+				{
+					m_MoveSpeed.x = -10.0f;
+				}
+				if (Pad(0).IsPress(enButtonLeft))									//左に動く
+				{
+					m_MoveSpeed.x = 10.0f;
+				}
 			}
-		}
-		else
-		{
-			if (Pad(0).IsPress(enButtonRight))									//右に動かす
+			m_ArmPosition += m_MoveSpeed;							//動く速度を位置にたす
+			if (m_ArmPosition.x <= -50.0f)							//それ以上右に行くな
 			{
-				m_MoveSpeed.x = -10.0f;
+				m_ArmPosition.x = -50.0f;
 			}
-			if (Pad(0).IsPress(enButtonLeft))									//左に動く
+			if (m_ArmPosition.x >= 600.0f)							//それ以上左に行くな
 			{
-				m_MoveSpeed.x = 10.0f;
+				m_ArmPosition.x = 600.0f;
 			}
-		}
-		m_ArmPosition += m_MoveSpeed;							//動く速度を位置にたす
-		if (m_ArmPosition.x <= -50.0f)							//それ以上右に行くな
-		{
-			m_ArmPosition.x = -50.0f;
-		}
-		if (m_ArmPosition.x >= 600.0f)							//それ以上左に行くな
-		{
-			m_ArmPosition.x = 600.0f;
-		}
-		if (!Catch)												//取ってないおおお
-		{
-			if (m_ArmPosition.y >= 200.0f)						//それ以上上に行くな
+			if (!Catch)												//取ってないおおお
 			{
-				ArmDown = 0;
-				m_ArmPosition.y = 200.0f;
-				Set = true;
-				Rotrate = 0.0f;
-				InitOto = true;
+				if (m_ArmPosition.y >= 200.0f)						//それ以上上に行くな
+				{
+					ArmDown = 0;
+					m_ArmPosition.y = 200.0f;
+					Set = true;
+					Rotrate = 0.0f;
+					InitOto = true;
+				}
 			}
-		}
-		if (Rotrate >= 45.0f)
-		{
-			Rotrate = 45.0f;
+			if (Rotrate >= 15.0f)
+			{
+				Rotrate = 15.0f;
+			}
+
 		}
 	}
 	m_ChechRotLeft.SetRotationDeg(CVector3::AxisZ, Rotrate);
