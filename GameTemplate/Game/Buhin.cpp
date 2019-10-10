@@ -27,48 +27,81 @@ bool Buhin::Start()
 	rand = belt->rand;
 	hantei();
 
-	//大きさの調整
-	CVector3 Scale;
-	Scale.x = 5;
-	Scale.y = 3;
-	Scale.z = 3;
+	//大きさの初期化
+	Scale.x = 1;
+	Scale.y = 1;
+	Scale.z = 1;
 
 	//スキン
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 
 	//"部品"を追加したらこことBeltCon.cppに追加してください//
 	//ベルトコンベアクラスでbuhin1が作られたら
-	if (belt->rand == 0) {
-		//buhin1のモデルデータのロード
-		m_skinModelRender->Init(L"modelData/wheel.cmo");
+	//車輪なら
+	if (IamWheel == 1) {
 		//大きさ
-		//Scale.x = 6;
 		Scale.z = 3;
 		Scale.y = 3;
 		m_skinModelRender->SetScale(Scale);
 
 		//座標
 		m_position.x = -800;
-		m_position.y = -310;
+		m_position.y = -300;
 
 		//角度
 		qRot.SetRotationDeg(CVector3::AxisY, 90.0f);
 		m_skinModelRender->SetRotation(qRot);
+
+		//buhin1のモデルデータのロード
+		m_skinModelRender->Init(L"modelData/wheel.cmo");
 	}
-	else if (belt->rand == 1) {
+	//フレームなら
+	else if (Iamframe == 1) {
+		//座標
 		m_position.x = -800;
 		m_position.y = -330;
+		
+		//大きさ
+		Scale.x = 5;
+		Scale.y = 3;
+		Scale.z = 3;
+		m_skinModelRender->SetScale(Scale);
+
 		//buhin2のモデルデータのロード
 		m_skinModelRender->Init(L"modelData/buhin2.cmo");
 	}
-	else {
-		//ゴミのモデルデータのロード
+	//ゴミなら
+	else if(IamGomi == 1){
+
+		//座標
 		m_position.x = -800;
 		m_position.y = -330;
-		m_skinModelRender->Init(L"modelData/Gomi.cmo");
+
+		//大きさ
+		Scale.x = 2;
+		Scale.y = 2;
+		Scale.z = 1;
+		m_skinModelRender->SetScale(Scale);
+
+		//ゴミのモデルデータのロード
+		m_skinModelRender->Init(L"modelData/garakuta1.cmo");
+	}
+	//扉なら
+	else if (IamGomi2 == 1) {
+		//座標
+		m_position.x = -800;
+		m_position.y = -350;
+
+		//大きさ
+		Scale.x = 1;
+		Scale.y = 1;
+		Scale.z = 1;
+		m_skinModelRender->SetScale(Scale);
+
+		//ゴミのモデルデータのロード
+		m_skinModelRender->Init(L"modelData/garakuta2.cmo");
 	}
 
-	m_skinModelRender->SetScale(Scale);
 	//流れる速さ
 	m_moveSpeed.x = 2.5f;
 
@@ -158,8 +191,11 @@ void Buhin::hantei() {
 		//フレーム
 		Iamframe = 1;
 	}
-	else {
+	else if(rand <= 2){
 		//ゴミ
 		IamGomi = 1;
+	}
+	else {
+		IamGomi2 = 1;
 	}
 }

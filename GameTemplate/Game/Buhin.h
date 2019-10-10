@@ -16,6 +16,7 @@ public:
 	bool IamWheel = false;
 	bool Iamframe = false;
 	bool IamGomi = false;
+	bool IamGomi2 = false;
 	//アームクラス
 	Arm* arm;
 	//ベルトコンベアクラス
@@ -28,6 +29,8 @@ public:
 	bool IsCatch = false;
 	//クオータニオン
 	CQuaternion qRot = CQuaternion::Identity;
+	//大きさの調整
+	CVector3 Scale;
 	//部品の座標
 	CVector3 m_position = CVector3::Zero;
 	//流れる速さ
