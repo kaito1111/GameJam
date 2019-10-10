@@ -7,6 +7,7 @@ public:
 
 	void Update();
 
+	bool DeleteBuhin = false;
 	bool DeleteArm = false;
 	bool DeleteGameSence=false;
 	bool DeleteScore = false;
