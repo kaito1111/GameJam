@@ -16,7 +16,7 @@ public:
 	prefab::CSkinModelRender* m_ArmtumeRight = nullptr;
 	prefab::CSkinModelRender* m_ArmtumeLeft = nullptr;			
 	ClaftScreen* m_Claft = nullptr;
-	CVector3 m_ArmPosition = { 0.0f,200.0f,0.0f };				//クレーンのポジション
+	CVector3 m_ArmPosition = { 0.0f,100.0f,0.0f };				//クレーンのポジション
 	CVector3 m_TumePos = CVector3::Zero;
 	CVector3 m_Scale = CVector3::One;							//クレーンのサイズ
 	bool Catch = false;											//つかめたかどうかを判定する

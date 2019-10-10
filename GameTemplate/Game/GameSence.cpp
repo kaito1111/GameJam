@@ -2,10 +2,10 @@
 #include "GameSence.h"
 #include "Arm.h"
 #include "Buckground.h"
-#include "result.h"
 #include "GameCamera.h"
 #include "ClaftScreen.h"
 #include "BeltCon.h"
+#include "result.h"
 
 GameSence::GameSence()
 {
@@ -15,17 +15,15 @@ GameSence::~GameSence()
 {
 	DeleteGO(m_TimerFont);
 	DeleteGO(m_Spritefade);
-	DeleteGO(m_Arm);
 }
 
 bool GameSence::Start()
 {
-	NewGO<GameCamera>(0, "gc");
-	NewGO<Buckground>(0, "Buckground");
+	NewGO<GameCamera>(1, "gc");
 	NewGO<Arm>(0, "Arm");
 	NewGO<ClaftScreen>(0, "cs");
 	NewGO<BeltCon>(0, "BC");
-	NewGO<result>(0, "result");
+	NewGO<Buckground>(0, "Buckground");
 
 	m_TimerFont = NewGO<prefab::CFontRender>(0);
 	m_TimerFont->SetText(L"‚ ‚Æ120.0•b");
@@ -36,7 +34,13 @@ bool GameSence::Start()
 	m_Spritefade->Init(L"sprite/‹ótest.dds", 1280.0f, 720.0f);
 	m_Spritefade->SetMulColor(m_FadeColor);
 
-	
+
+	m_BGM = NewGO<prefab::CSoundSource>(0);
+	m_BGM->Init(L"sound/bgm_kakutei.wav");
+	m_BGM->Play(true);
+	m_BGM->SetVolume(1.0f);
+
+	m_Arm = FindGO<Arm>("Arm");
 	m_Delete = FindGO<GameDelete>("GameDelete");
 	return true;
 }
@@ -46,13 +50,12 @@ void GameSence::Update()
 	if (m_FadeColor.a <= 0.0f)
 	{
 		StartGame += GameTime().GetFrameDeltaTime();
-		if (StartGame>=1.0f)
+		if (StartGame >= 1.0f)
 		{
 			if (!move)
 			{
-			m_Arm = FindGO<Arm>("Arm");
-			m_Arm->Drop = true;
-			move = true;
+				m_Arm->Drop = true;
+				move = true;
 			}
 		}
 		time -= GameTime().GetFrameDeltaTime();
@@ -61,7 +64,7 @@ void GameSence::Update()
 		if (!New) {
 			if (time < 0.0f)
 			{
-				NewGO<result>(0, "result");
+				NewGO<result>(2, "result");
 				GameOver = true;
 			}
 			New = true;

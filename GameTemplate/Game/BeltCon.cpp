@@ -9,6 +9,8 @@ BeltCon::BeltCon()
 
 BeltCon::~BeltCon()
 {
+	DeleteGO(ss);
+	DeleteGO(m_skinModelRender);
 }
 
 bool BeltCon::Start()
@@ -17,6 +19,13 @@ bool BeltCon::Start()
 	//データの読み込み
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/BeltC.cmo");
+
+	//サウンド
+	ss = NewGO<prefab::CSoundSource>(0);
+	float vol = 0.5f;
+	ss->Init(L"sound/Beltcon.wav");
+	ss->SetVolume(vol);
+	ss->Play(true);
 
 	//大きさの調整
 	scale.x = 18.0f;
@@ -38,6 +47,17 @@ bool BeltCon::Start()
 //Generatorみたいな感じ
 void BeltCon::Update()
 {
+	if (m_position.y <= -500) {
+		DeleteGO(this);
+	}
+	//アームが動いてる間はサウンドを消す
+	if (arm->Set == true) {
+		ss->Play(true);
+	}
+	else {
+		ss->Stop();
+	}
+
 	//経過時間
 	m_timer += GameTime().GetFrameDeltaTime();
 	// m_timer > Xf のXの値をいじるとスポーン時間が変わります

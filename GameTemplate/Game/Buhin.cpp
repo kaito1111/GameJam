@@ -59,16 +59,16 @@ bool Buhin::Start()
 	else if (Iamframe == 1) {
 		//座標
 		m_position.x = -800;
-		m_position.y = -330;
+		m_position.y = -250;
 		
 		//大きさ
-		Scale.x = 5;
-		Scale.y = 3;
-		Scale.z = 3;
+		Scale.x = 1;
+		Scale.y = 1;
+		Scale.z = 1;
 		m_skinModelRender->SetScale(Scale);
 
 		//buhin2のモデルデータのロード
-		m_skinModelRender->Init(L"modelData/buhin2.cmo");
+		m_skinModelRender->Init(L"modelData/body.cmo");
 	}
 	//ゴミなら
 	else if(IamGomi == 1){
@@ -120,14 +120,17 @@ void Buhin::Update()
 		Y軸の当たり判定を無理やり広める*/
 		//Y軸の当たり判定を調整
 		if (IamGomi2 == 1) {
-			diff.y -= 120;
+			diff.y -= 180;
+		}
+		else if(Iamframe == 1){
+			diff.y -= 60;
 		}
 		else {
-			diff.y -= 100;
+			diff.y -= 150;
 		}
 		diff.x = arm->m_ArmPosition.x - m_position.x;
 		//当たり判定を大きくするときはここを調整
-		if (diff.Length() < 80) {
+		if (diff.Length() < 100) {
 			//とりあえずキャッチ
 			IsCatch = true;
 			if (IamWheel == 1 && CS->BuhinCount1 == 0 ||
@@ -137,12 +140,23 @@ void Buhin::Update()
 				//これが必要なパーツならとる
 				arm->Catch = true;
 			}
+			//いらないパーツなら
 			else if(arm->Catch == false){
-				//いらないパーツなら
-				if (arm->m_ArmPosition.y >= 200)
+				if (arm->m_ArmPosition.y >= 100)
 				{
-					//ベルトコンベアに戻す
-					m_position.y = -320.0f;
+					if (IamWheel == 1) {
+						//ベルトコンベアに戻す
+						m_position.y = -300.0f;
+					}
+					else if (Iamframe == 1) {
+						m_position.y = -250.0f;
+					}
+					else if (IamGomi == 1) {
+						m_position.y = -330.0f;
+					}
+					else {
+						m_position.y = -350.0f;
+					}
 					//何ももってない
 					IsCatch = false;
 				}
@@ -154,9 +168,17 @@ void Buhin::Update()
 
 	//何かものをつかんでいるならば
 	if (IsCatch == true) {
-		//部品の高さをアームの高さに揃える
-		//アームのモデルが変わるたびyに-Yしてください
-		m_position.y = arm->m_ArmPosition.y - 120;
+		if (IamGomi2){
+			m_position.y = arm->m_ArmPosition.y - 180;
+		}
+		else if (Iamframe) {
+			m_position.y = arm->m_ArmPosition.y - 100;
+		}
+		else {
+			//部品の高さをアームの高さに揃える
+			//アームのモデルが変わるたびyに-Yしてください
+			m_position.y = arm->m_ArmPosition.y - 200;
+		}
 	}
 
 	//画面外にでたら削除

@@ -18,27 +18,31 @@ ClaftScreen::~ClaftScreen()
 //クエリ関係
 void ClaftScreen::Query()
 {
-	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin1", [&](Buhin* buhin1) {
 		if (buhin1->m_position.y >= 600.0f) {
 
-			buhin1->m_position.y -= 30.0f;
 			Buhin1 = true;
 			//falseを返したらクエリは終了。
 		}
+		if (GameOver)
+		{
+			buhin1->m_position.y -= 30.0f;
+		}
 		return true;
-		});
+	});
 
-	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin2", [&](Buhin* buhin2) {
-		if (buhin2->m_position.y >= 600.0f) {
-
-			buhin2->m_position.y -= 30.0f;	
+		if (buhin2->m_position.y >= 600.0f) 
+		{
 			Buhin2 = true;
 			//falseを返したらクエリは終了。
 		}
+		if (GameOver)
+		{
+			buhin2->m_position.y -= 30.0f;
+		}
 		return true;
-		});
+	});
 
 	QueryGOs<Arm>("Arm", [&](Arm* arm) {
 		if (GameOver)
@@ -99,74 +103,29 @@ void ClaftScreen::hituyoubuhin()
 //クリア後の回転
 void ClaftScreen::rotation()
 {	
-	mRot.MakeRotationFromQuaternion(qRot);
-	m_forward.x = mRot.m[2][0];
-	m_forward.y = mRot.m[2][1];
-	m_forward.z = mRot.m[2][2];
-	m_forward.Normalize();
-	m_right.x = mRot.m[0][0];
-	m_right.y = mRot.m[0][1];
-	m_right.z = mRot.m[0][2];
-	m_right.Normalize();
-	m_up.x = mRot.m[1][0];
-	m_up.y = mRot.m[1][1];
-	m_up.z = mRot.m[1][2];
-	m_up.Normalize();
+	rot1 = 0.2f;
 
-	CVector3 tyuusin = CVector3::Zero;	
-	CQuaternion qrot = CQuaternion::Identity;
-
-	//部品から中心に向けてのベクトル
-	CVector3 toZero1_1 = m_Buhin1pos - tyuusin;
-	toZero1_1.y = 0.0f;
-	toZero1_1.Normalize();
-	//回転量を計算
-	float angle1 = toZero1_1.Dot(m_forward);
-	rot1 = acosf(angle1);
-	//回転
-	qrot.SetRotation(CVector3::AxisY, rot1);
+	//タイヤ1つ目回転
+	qrot.SetRotationDeg(CVector3::AxisY, rot1);
 	qRot.Multiply(qrot);
 	//モデルに回転を反映
 	m_BuhinModelRender1->SetRotation(qRot);
 
-	//部品から中心に向けてのベクトル
-	CVector3 toZero1_2 = m_Buhin1_2pos - tyuusin;
-	toZero1_2.y = 0.0f;
-	toZero1_2.Normalize();
-	//回転量を計算
-	float angle2 = toZero1_2.Dot(m_forward);
-	rot2 = acosf(angle2);
-	//回転
-	qrot.SetRotation(CVector3::AxisY, rot2);
-	qRot.Multiply(qrot);
+	//タイヤ2つ目回転
 	//モデルに回転を反映
 	m_BuhinModelRender1_2->SetRotation(qRot);
 
-	//部品から中心に向けてのベクトル
-	CVector3 toZero1_3 = m_Buhin1_3pos - tyuusin;
-	toZero1_3.y = 0.0f;
-	toZero1_3.Normalize();
-	//回転量を計算
-	float angle3 = toZero1_3.Dot(m_forward);
-	rot3 = acosf(angle3);
-	//回転
-	qrot.SetRotation(CVector3::AxisY, rot3);
-	qRot.Multiply(qrot);
+	//タイヤ3つ目回転
 	//モデルに回転を反映
 	m_BuhinModelRender1_3->SetRotation(qRot);
 
-	//部品から中心に向けてのベクトル
-	CVector3 toZero1_4 = m_Buhin1_4pos - tyuusin;
-	toZero1_4.y = 0.0f;
-	toZero1_4.Normalize();
-	//回転量を計算
-	float angle4 = toZero1_4.Dot(m_forward);
-	rot4 = acosf(angle4);
-	//回転
-	qrot.SetRotation(CVector3::AxisY, rot4);
-	qRot.Multiply(qrot);
+	//タイヤ4つ目回転
 	//モデルに回転を反映
 	m_BuhinModelRender1_4->SetRotation(qRot);
+
+	//ボディを回転
+	//モデルに回転を反映
+	m_BuhinModelRender2->SetRotation(qRot);
 }
 
 //クラフトするときの動作
@@ -209,6 +168,26 @@ void ClaftScreen::claft()
 			scale.y = 15.0f;
 			scale.z = 15.0f;
 
+			//タイヤ1つ目回転
+			qrot2.SetRotationDeg(CVector3::AxisY, rot2);
+			qRot.Multiply(qrot2);
+			//モデルに回転を反映
+			m_BuhinModelRender1->SetRotation(qRot2);
+
+			//タイヤ2つ目回転
+			//モデルに回転を反映
+			m_BuhinModelRender1_2->SetRotation(qRot2);
+
+			//タイヤ3つ目回転
+			//モデルに回転を反映
+			m_BuhinModelRender1_3->SetRotation(qRot2);
+
+			//タイヤ4つ目回転
+			//モデルに回転を反映
+			m_BuhinModelRender1_4->SetRotation(qRot2);
+
+
+
 			effect->SetScale(scale);
 			effect->SetPosition(m_Buhin1pos);
 			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
@@ -227,7 +206,7 @@ void ClaftScreen::claft()
 			//音を再生
 			sound();
 			m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin2");
-			m_BuhinModelRender2->Init(L"modelData/buhin2.cmo");
+			m_BuhinModelRender2->Init(L"modelData/body.cmo");
 			m_Buhin2pos.x = -400.0f;
 			m_Buhin2pos.y = 200.0f;
 			//エフェクトを作成。
@@ -242,7 +221,14 @@ void ClaftScreen::claft()
 			effect->SetScale(scale);
 			effect->SetPosition(m_Buhin2pos);
 			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
-
+			//ボディを回転
+			qrot2.SetRotationDeg(CVector3::AxisY, rot2);
+			qRot2.Multiply(qrot2);
+			//モデルに回転を反映
+			m_BuhinModelRender2->SetRotation(qRot2);
+			////ボディを回転
+			////モデルに回転を反映
+			//m_BuhinModelRender2->SetRotation(qRot);
 			BuhinCount2 = 1;
 			Buhin2 = false;
 		}
@@ -258,6 +244,7 @@ void ClaftScreen::sound()
 }
 bool ClaftScreen::Start()
 {
+	GD = FindGO<GameDelete>("GameDelete");
     Buhin* buhin1 = nullptr;	//部品1
 	Buhin* buhin2 = nullptr;	//部品2
 	Buhin* buhin3 = nullptr;	//部品3
@@ -319,14 +306,20 @@ void ClaftScreen::Update()
 			buhinscale.z += 0.02f;
 			m_Buhin1pos.x += 6.0f;
 			m_Buhin1pos.y -= 3.0f;
-			m_Buhin1_2pos.x += 4.0f;
+			m_Buhin1_2pos.x += 5.0f;
 			m_Buhin1_2pos.y -= 3.0f;
 			m_Buhin1_3pos.x += 6.0f;
 			m_Buhin1_3pos.y -= 3.0f;
-			m_Buhin1_4pos.x += 4.0f;
+			m_Buhin1_4pos.x += 5.0f;
 			m_Buhin1_4pos.y -= 3.0f;
-			m_Buhin2pos.x += 4.0f;
-			m_Buhin2pos.y -= 3.0f;
+			m_Buhin2pos.x += 5.0f;
+			m_Buhin2pos.y -= 2.0f;
+
+			CVector3 buhinscale2 = CVector3::One;
+			buhinscale2.x += 0.007f;
+			buhinscale2.y += 0.007f;
+			buhinscale2.z += 0.007f;
+
 			m_BuhinModelRender1->SetScale(buhinscale);	
 			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
 			m_BuhinModelRender1_2->SetScale(buhinscale);
@@ -335,12 +328,9 @@ void ClaftScreen::Update()
 			m_BuhinModelRender1_3->SetPosition(m_Buhin1_3pos);
 			m_BuhinModelRender1_4->SetScale(buhinscale);
 			m_BuhinModelRender1_4->SetPosition(m_Buhin1_4pos);
-			m_BuhinModelRender2->SetScale(buhinscale);
+			m_BuhinModelRender2->SetScale(buhinscale2);
 			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
 	
-			//クリア後の回転
-			rotation();
-
 			count++;
 		}
 	}
@@ -348,10 +338,33 @@ void ClaftScreen::Update()
 	if (senni == false)
 	{
 		if (count >= 60)
-		{
-			NewGO<result>(0);
+		{		
+
+			//NewGO<result>(2);
 			senni = true;
 		}
 	}
+	if (senni == true)
+	{
+		CVector3 m_buhin1Kyori = m_Buhin1pos - m_Buhin2pos;
+		CVector3 m_buhin2Kyori = m_Buhin1_2pos - m_Buhin2pos;
+		CVector3 m_buhin3Kyori = m_Buhin1_3pos - m_Buhin2pos;
+		CVector3 m_buhin4Kyori = m_Buhin1_4pos - m_Buhin2pos;
+		qRot.Multiply(m_buhin1Kyori);
+		qRot.Multiply(m_buhin2Kyori);
+		qRot.Multiply(m_buhin3Kyori);
+		qRot.Multiply(m_buhin4Kyori);
+
+		m_BuhinModelRender1->SetPosition(m_buhin1Kyori);
+		m_BuhinModelRender1_2->SetPosition(m_buhin2Kyori);
+		m_BuhinModelRender1_3->SetPosition(m_buhin3Kyori);
+		m_BuhinModelRender1_4->SetPosition(m_buhin4Kyori);
+		//クリア後の回転
+		rotation();
+
+		//GD->DeleteArm = true;
+		//GD->DeleteBeltCon = true;
+	}
+	   
 	m_spriteRender->SetScale(scale);
 }

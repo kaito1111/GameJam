@@ -18,9 +18,8 @@ public:
 	int count = 0;
 
 	float rot1 = 0.0f;	//回転量
-	float rot2 = 0.0f;	//回転量
-	float rot3 = 0.0f;	//回転量
-	float rot4 = 0.0f;	//回転量
+	float rot2 = 50.0f;	//回転量
+
 
 	bool hituyoubuhin1 = false;
 	bool hituyoubuhin2 = false;
@@ -36,12 +35,10 @@ public:
 	void sound();
 
 	GameDelete* GD = nullptr;	//デリートするよ！
-
-	CMatrix mRot = CMatrix::Identity;
+	CQuaternion qrot = CQuaternion::Identity;
+	CQuaternion qrot2 = CQuaternion::Identity;
 	CQuaternion qRot;	//回転
-	CVector3 m_forward = CVector3::Front;
-	CVector3 m_right = CVector3::Right;
-	CVector3 m_up = CVector3::Up;
+	CQuaternion qRot2;	//回転
 	CVector3 scale = CVector3::Zero;	//スケール
 	CVector3 buhinscale = CVector3::One;	//スケール
 	CVector3 buhin1pos = CVector3::Zero;	//必要な部品１の位置

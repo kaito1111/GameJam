@@ -24,4 +24,5 @@ public:
 	float StartGame = 0.0f;
 	Arm* m_Arm = nullptr;
 	bool move = false;
+	prefab::CSoundSource* m_BGM = nullptr;
 };
