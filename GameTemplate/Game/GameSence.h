@@ -1,4 +1,6 @@
 #pragma once
+#include "GameDelete.h"
+class Arm;
 class GameSence : public IGameObject
 {
 public:
@@ -16,4 +18,10 @@ public:
 	float time = 120.0f;
 	bool New = false;
 	bool GameOver = false;
+	GameDelete* m_Delete = nullptr;
+	prefab::CSpriteRender* m_Spritefade = nullptr;
+	CVector4 m_FadeColor = { 1.0f,1.0f,1.0f,1.0f };
+	float StartGame = 0.0f;
+	Arm* m_Arm = nullptr;
+	bool move = false;
 };

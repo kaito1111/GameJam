@@ -1764,10 +1764,11 @@
   <ItemGroup>
     <ClCompile Include="Arm.cpp" />
     <ClCompile Include="BeltCon.cpp" />
+    <ClCompile Include="Buckground.cpp" />
     <ClCompile Include="Buhin.cpp" />
     <ClCompile Include="ClaftScreen.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
+    <ClCompile Include="GameDelete.cpp" />
     <ClCompile Include="GameSence.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="result.cpp" />
@@ -1798,10 +1799,11 @@
   <ItemGroup>
     <ClInclude Include="Arm.h" />
     <ClInclude Include="BeltCon.h" />
+    <ClInclude Include="Buckground.h" />
     <ClInclude Include="Buhin.h" />
     <ClInclude Include="ClaftScreen.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
+    <ClInclude Include="GameDelete.h" />
     <ClInclude Include="GameSence.h" />
     <CLInclude Include="resource.h" />
     <ClInclude Include="result.h" />
@@ -1812,12 +1814,17 @@
     <ResourceCompile Include="Game.rc" />
   </ItemGroup>
   <ItemGroup>
+    <MeshContentTask Include="Assets\modelData\arm_tume.FBX" />
+    <MeshContentTask Include="Assets\modelData\arm_ude.FBX" />
     <MeshContentTask Include="Assets\modelData\BeltC.FBX" />
     <MeshContentTask Include="Assets\modelData\buhin1.FBX" />
     <MeshContentTask Include="Assets\modelData\buhin2.FBX" />
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
+    <MeshContentTask Include="Assets\modelData\garakuta1.FBX" />
+    <MeshContentTask Include="Assets\modelData\garakuta2.FBX" />
     <MeshContentTask Include="Assets\modelData\Gomi.FBX" />
     <MeshContentTask Include="Assets\modelData\unityChan.fbx" />
+    <MeshContentTask Include="Assets\modelData\wheel.FBX" />
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\dummy.png" />
@@ -1830,6 +1837,22 @@
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\hituyoubuhin1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\hituyoubuhin2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\result_restart.png" />
+    <ImageContentTask Include="Assets\sprite\result_title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\result_select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\空test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\haikei.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

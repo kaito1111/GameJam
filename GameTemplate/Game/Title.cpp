@@ -2,6 +2,8 @@
 #include "Title.h"
 #include "Game.h"
 #include "GameSence.h"
+#include "GameDelete.h"
+
 Title::Title()
 {
 
@@ -17,6 +19,9 @@ bool::Title::Start()
 	m_spriteRender = NewGO<prefab::CSpriteRender>(0);
 	//タイトルの読み込み
 	m_spriteRender->Init(L"sprite/GGJ_title.dds", 1280,720,0);
+	m_BGM->Init(L"sound/bgm_kakutei.wab");
+	m_BGM->Play(true);
+	m_BGM->SetVolume(1.0f);
 	return true;
 }
 
@@ -25,7 +30,9 @@ void Title::Update()
 	//キーボードのKで起動
 	//ゲームループはしないので後で修正
 	if (Pad(0).IsPress(enButtonB)) {
-		NewGO<GameSence>(0);
+		NewGO<GameDelete>(0,"GameDelete");
+		NewGO<GameSence>(0,"GameSence");
+
 		DeleteGO(this);
 	}
 }
