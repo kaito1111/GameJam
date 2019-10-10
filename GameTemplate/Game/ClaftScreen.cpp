@@ -196,7 +196,7 @@ void ClaftScreen::claft()
 			sound();
 			m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin2");
 			m_BuhinModelRender2->Init(L"modelData/body.cmo");
-			m_Buhin2pos.x = -300.0f;
+			m_Buhin2pos.x = -400.0f;
 			m_Buhin2pos.y = 200.0f;
 			//エフェクトを作成。
 			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
@@ -231,6 +231,7 @@ void ClaftScreen::sound()
 }
 bool ClaftScreen::Start()
 {
+	GD = FindGO<GameDelete>("GameDelete");
     Buhin* buhin1 = nullptr;	//部品1
 	Buhin* buhin2 = nullptr;	//部品2
 	Buhin* buhin3 = nullptr;	//部品3
@@ -326,15 +327,27 @@ void ClaftScreen::Update()
 		if (count >= 60)
 		{		
 
-			NewGO<result>(0);
+			NewGO<result>(2);
 			senni = true;
 		}
 	}
 	if (senni == true)
 	{
+		CVector3 m_buhin1Kyori = m_Buhin1pos - m_Buhin2pos;
+		CVector3 m_buhin2Kyori = m_Buhin1_2pos - m_Buhin2pos;
+		CVector3 m_buhin3Kyori = m_Buhin1_3pos - m_Buhin2pos;
+		CVector3 m_buhin4Kyori = m_Buhin1_4pos - m_Buhin2pos;
+		qRot.Multiply(m_buhin1Kyori);
+		qRot.Multiply(m_buhin2Kyori);
+		qRot.Multiply(m_buhin3Kyori);
+		qRot.Multiply(m_buhin4Kyori);
+
+		GD->DeleteArm = true;
+		GD->DeleteBeltCon = true;
 		//クリア後の回転
 		rotation();
 	}
+
 
 	m_spriteRender->SetScale(scale);
 }

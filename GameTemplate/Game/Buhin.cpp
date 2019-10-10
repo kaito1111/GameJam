@@ -59,16 +59,16 @@ bool Buhin::Start()
 	else if (Iamframe == 1) {
 		//座標
 		m_position.x = -800;
-		m_position.y = -330;
+		m_position.y = -250;
 		
 		//大きさ
-		Scale.x = 5;
-		Scale.y = 3;
-		Scale.z = 3;
+		Scale.x = 1;
+		Scale.y = 1;
+		Scale.z = 1;
 		m_skinModelRender->SetScale(Scale);
 
 		//buhin2のモデルデータのロード
-		m_skinModelRender->Init(L"modelData/buhin2.cmo");
+		m_skinModelRender->Init(L"modelData/body.cmo");
 	}
 	//ゴミなら
 	else if(IamGomi == 1){
@@ -122,6 +122,9 @@ void Buhin::Update()
 		if (IamGomi2 == 1) {
 			diff.y -= 120;
 		}
+		else if(Iamframe == 1){
+			diff.y -= 20;
+		}
 		else {
 			diff.y -= 100;
 		}
@@ -156,6 +159,9 @@ void Buhin::Update()
 	if (IsCatch == true) {
 		if (IamGomi2){
 			m_position.y = arm->m_ArmPosition.y - 180;
+		}
+		else if (Iamframe) {
+			m_position.y = arm->m_ArmPosition.y - 100;
 		}
 		else {
 			//部品の高さをアームの高さに揃える
