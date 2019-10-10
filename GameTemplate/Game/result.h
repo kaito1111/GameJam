@@ -17,4 +17,9 @@ public:
 	float SpriteGO = 0.0f;
 	bool New = false;
 
+	prefab::CSpriteRender* m_Spritefade = nullptr;
+	CVector4 m_Color = CVector4::White;
+	CVector4 m_FadeColor = { 1.0f,1.0f,1.0f,1.0f };
+	bool fadeout = false;
+
 };

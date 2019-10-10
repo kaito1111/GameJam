@@ -66,7 +66,7 @@ void GameSence::Update()
 		if (!New) {
 			if (time < 0.0f)
 			{
-				NewGO<result>(0, "result");
+				NewGO<result>(2, "result");
 				GameOver = true;
 			}
 			New = true;
