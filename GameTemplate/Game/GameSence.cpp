@@ -25,7 +25,7 @@ bool GameSence::Start()
 	NewGO<BeltCon>(0, "BC");
 	NewGO<Buckground>(0, "Buckground");
 
-	m_TimerFont = NewGO<prefab::CFontRender>(0);
+	m_TimerFont = NewGO<prefab::CFontRender>(0);					
 	m_TimerFont->SetText(L"‚ ‚Æ120.0•b");
 	m_TimerFont->SetPosition(m_FontPosition);
 	m_TimerFont->SetScale(1.5f);

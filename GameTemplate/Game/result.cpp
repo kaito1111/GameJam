@@ -36,14 +36,14 @@ void result::Update()
 	{
 		if (!New) 
 		{
-			m_SpriteTitle->Init(L"sprite/result_restart.dds", 400.0f, 300.0f);
+			m_SpriteTitle->Init(L"sprite/result_restart.dds", 400.0f, 300.0f);			
 			m_SpriteTitle->SetPosition(m_TitlePosition);
 			m_SpriteReStart->Init(L"sprite/result_title.dds", 400.0f, 300.0f);
 			m_SpriteReStart->SetPosition(m_ReStartPosition);
 			m_SpriteSelect->Init(L"sprite/result_select.dds", 405.0f, 305.0);
 			New = true;
 		}
-		if (Pad(0).IsPress(enButtonRight))
+		if (Pad(0).IsPress(enButtonRight))							//選択肢の移動
 		{
 			m_SelectPosition.x += 600.0f;
 		}
@@ -60,7 +60,7 @@ void result::Update()
 			m_SelectPosition.x = -300.0f;
 		}
 		m_SpriteSelect->SetPosition(m_SelectPosition);
-		if (m_SelectPosition.x == 300.0f && Pad(0).IsPress(enButtonB) && fadeout)
+		if (m_SelectPosition.x == 300.0f && Pad(0).IsPress(enButtonB) && fadeout)		//フェードとリスタートの文
 		{
 			m_Spritefade->SetMulColor(m_FadeColor);
 
@@ -70,7 +70,7 @@ void result::Update()
 			m_FadeColor.a = 1.0f;
 			//DeleteGO(this);
 		}
-		if (m_SelectPosition.x == -300.0f && Pad(0).IsPress(enButtonB) && fadeout)
+		if (m_SelectPosition.x == -300.0f && Pad(0).IsPress(enButtonB) && fadeout)		//フェードとタイトルへ行く文
 		{
 			m_Spritefade->SetMulColor(m_FadeColor);
 			NewGO<Title>(0);
@@ -83,12 +83,16 @@ void result::Update()
 	{
 		m_FadeColor.a -= 0.05f;
 	}
-	if (m_FadeColor.a <= 0.0f)
+	if (m_FadeColor.a <= 0.0f)								//ゲームにあるインスタンスをすべて消す
 	{
-		m_GameDelete->DeleteBuckGround = true;
-		m_GameDelete->DeleteClaftScreen = true;
+		m_GameDelete->DeleteArm = true;
+		m_GameDelete->DeleteGameSence = true;
 		m_GameDelete->DeleteScore = true;
+		m_GameDelete->DeleteClaftScreen = true;
+		m_GameDelete->DeleteBeltCon = true;
+		m_GameDelete->DeleteBuckGround = true;
+		m_GameDelete->DeleteBuhin = true;
 		DeleteGO(this);
 	}
-	m_Spritefade->SetMulColor(m_FadeColor);
+	m_Spritefade->SetMulColor(m_FadeColor);					//絵の濃さ
 }

@@ -15,7 +15,7 @@ GameCamera::~GameCamera()
 bool GameCamera::Start()
 {
 	//ƒJƒƒ‰‚ğİ’èB
-		
+
 	MainCamera().SetTarget({ 0.0f,0.0f,0.0f });
 	MainCamera().SetNear(10.0f);
 	MainCamera().SetFar(10000.0f);
@@ -27,9 +27,10 @@ bool GameCamera::Start()
 void GameCamera::Update()
 {
 	CVector3 m_Position = CVector3::Zero;
-	QueryGOs<Buckground>("Buckground", [&](Buckground* m_Ground)->bool {
-		m_Position = m_Ground->m_SpritePos;
-		return true;
+	QueryGOs<Buckground>("Buckground", [&](Buckground* m_Ground)->bool
+		{
+			m_Position = m_Ground->m_SpritePos;
+			return true;
 		});
 
 	MainCamera().SetTarget(m_Position);
