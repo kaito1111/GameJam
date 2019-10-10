@@ -9,5 +9,6 @@ public:
 	//メンバ変数//
 	//スプライトレンダー
 	prefab::CSpriteRender* m_spriteRender;
+	prefab::CSoundSource* m_BGM = nullptr;
 };
 

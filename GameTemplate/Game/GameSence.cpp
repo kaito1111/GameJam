@@ -36,6 +36,7 @@ bool GameSence::Start()
 	m_Spritefade->Init(L"sprite/‹ótest.dds", 1280.0f, 720.0f);
 	m_Spritefade->SetMulColor(m_FadeColor);
 
+	
 	m_Delete = FindGO<GameDelete>("GameDelete");
 	return true;
 }

@@ -19,6 +19,9 @@ bool::Title::Start()
 	m_spriteRender = NewGO<prefab::CSpriteRender>(0);
 	//ƒ^ƒCƒgƒ‹‚Ì“Ç‚Ýž‚Ý
 	m_spriteRender->Init(L"sprite/GGJ_title.dds", 1280,720,0);
+	m_BGM->Init(L"sound/bgm_kakutei.wab");
+	m_BGM->Play(true);
+	m_BGM->SetVolume(1.0f);
 	return true;
 }
 
@@ -29,6 +32,7 @@ void Title::Update()
 	if (Pad(0).IsPress(enButtonB)) {
 		NewGO<GameDelete>(0,"GameDelete");
 		NewGO<GameSence>(0,"GameSence");
+
 		DeleteGO(this);
 	}
 }
