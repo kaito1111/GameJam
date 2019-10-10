@@ -59,7 +59,7 @@ bool Buhin::Start()
 	else if (Iamframe == 1) {
 		//座標
 		m_position.x = -800;
-		m_position.y = -250;
+		m_position.y = -300;
 		
 		//大きさ
 		Scale.x = 1;
@@ -175,7 +175,7 @@ void Buhin::Update()
 			m_position.y = arm->m_ArmPosition.y - 150;
 		}
 		else if (Iamframe) {
-			m_position.y = arm->m_ArmPosition.y - 100;
+			m_position.y = arm->m_ArmPosition.y - 150;
 		}
 		else {
 			//部品の高さをアームの高さに揃える
