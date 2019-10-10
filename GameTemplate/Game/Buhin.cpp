@@ -120,17 +120,17 @@ void Buhin::Update()
 		Y軸の当たり判定を無理やり広める*/
 		//Y軸の当たり判定を調整
 		if (IamGomi2 == 1) {
-			diff.y -= 120;
+			diff.y -= 180;
 		}
 		else if(Iamframe == 1){
-			diff.y -= 20;
+			diff.y -= 60;
 		}
 		else {
-			diff.y -= 100;
+			diff.y -= 150;
 		}
 		diff.x = arm->m_ArmPosition.x - m_position.x;
 		//当たり判定を大きくするときはここを調整
-		if (diff.Length() < 80) {
+		if (diff.Length() < 100) {
 			//とりあえずキャッチ
 			IsCatch = true;
 			if (IamWheel == 1 && CS->BuhinCount1 == 0 ||
@@ -142,7 +142,7 @@ void Buhin::Update()
 			}
 			//いらないパーツなら
 			else if(arm->Catch == false){
-				if (arm->m_ArmPosition.y >= 200)
+				if (arm->m_ArmPosition.y >= 100)
 				{
 					if (IamWheel == 1) {
 						//ベルトコンベアに戻す
@@ -177,7 +177,7 @@ void Buhin::Update()
 		else {
 			//部品の高さをアームの高さに揃える
 			//アームのモデルが変わるたびyに-Yしてください
-			m_position.y = arm->m_ArmPosition.y - 125;
+			m_position.y = arm->m_ArmPosition.y - 200;
 		}
 	}
 
