@@ -35,6 +35,7 @@ public:
 	void claft();
 
 	GameDelete* GD = nullptr;	//デリートするよ！
+
 	CMatrix mRot = CMatrix::Identity;
 	CQuaternion qRot;	//回転
 	CVector3 m_forward = CVector3::Front;
