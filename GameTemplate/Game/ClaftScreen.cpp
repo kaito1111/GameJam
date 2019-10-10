@@ -15,6 +15,7 @@ ClaftScreen::~ClaftScreen()
 
 }
 
+//クエリ関係
 void ClaftScreen::Query()
 {
 	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
@@ -22,7 +23,6 @@ void ClaftScreen::Query()
 		if (buhin1->m_position.y >= 600.0f) {
 
 			buhin1->m_position.y -= 30.0f;
-			//m_hozon = buhin1->m_position;	
 			Buhin1 = true;
 			//falseを返したらクエリは終了。
 		}
@@ -33,8 +33,7 @@ void ClaftScreen::Query()
 	QueryGOs<Buhin>("Buhin2", [&](Buhin* buhin2) {
 		if (buhin2->m_position.y >= 600.0f) {
 
-			buhin2->m_position.y -= 30.0f;
-			//m_hozon = buhin2->m_position;	
+			buhin2->m_position.y -= 30.0f;	
 			Buhin2 = true;
 			//falseを返したらクエリは終了。
 		}
@@ -57,6 +56,7 @@ void ClaftScreen::Query()
 	});
 }
 
+//そろっていない部品の表示
 void ClaftScreen::hituyoubuhin()
 {
 	if (hituyoubuhin1 == false)
@@ -95,11 +95,158 @@ void ClaftScreen::hituyoubuhin()
 	m_hituyoubuhin1->SetPosition(buhin1pos);
 	m_hituyoubuhin2->SetPosition(buhin2pos);
 }
+
+//クリア後の回転
+void ClaftScreen::rotation()
+{	
+	mRot.MakeRotationFromQuaternion(qRot);
+	m_forward.x = mRot.m[2][0];
+	m_forward.y = mRot.m[2][1];
+	m_forward.z = mRot.m[2][2];
+	m_forward.Normalize();
+	m_right.x = mRot.m[0][0];
+	m_right.y = mRot.m[0][1];
+	m_right.z = mRot.m[0][2];
+	m_right.Normalize();
+	m_up.x = mRot.m[1][0];
+	m_up.y = mRot.m[1][1];
+	m_up.z = mRot.m[1][2];
+	m_up.Normalize();
+
+	CVector3 tyuusin = CVector3::Zero;	
+	CQuaternion qrot = CQuaternion::Identity;
+
+	//部品から中心に向けてのベクトル
+	CVector3 toZero1_1 = m_Buhin1pos - tyuusin;
+	toZero1_1.y = 0.0f;
+	toZero1_1.Normalize();
+	//回転量を計算
+	float angle1 = toZero1_1.Dot(m_forward);
+	rot1 = acosf(angle1);
+	//回転
+	qrot.SetRotation(CVector3::AxisY, rot1);
+	qRot.Multiply(qrot);
+	//モデルに回転を反映
+	m_BuhinModelRender1->SetRotation(qRot);
+
+	//部品から中心に向けてのベクトル
+	CVector3 toZero1_2 = m_Buhin1_2pos - tyuusin;
+	toZero1_2.y = 0.0f;
+	toZero1_2.Normalize();
+	//回転量を計算
+	float angle2 = toZero1_2.Dot(m_forward);
+	rot2 = acosf(angle2);
+	//回転
+	qrot.SetRotation(CVector3::AxisY, rot2);
+	qRot.Multiply(qrot);
+	//モデルに回転を反映
+	m_BuhinModelRender1_2->SetRotation(qRot);
+
+	//部品から中心に向けてのベクトル
+	CVector3 toZero1_3 = m_Buhin1_3pos - tyuusin;
+	toZero1_3.y = 0.0f;
+	toZero1_3.Normalize();
+	//回転量を計算
+	float angle3 = toZero1_3.Dot(m_forward);
+	rot3 = acosf(angle3);
+	//回転
+	qrot.SetRotation(CVector3::AxisY, rot3);
+	qRot.Multiply(qrot);
+	//モデルに回転を反映
+	m_BuhinModelRender1_3->SetRotation(qRot);
+
+	//部品から中心に向けてのベクトル
+	CVector3 toZero1_4 = m_Buhin1_4pos - tyuusin;
+	toZero1_4.y = 0.0f;
+	toZero1_4.Normalize();
+	//回転量を計算
+	float angle4 = toZero1_4.Dot(m_forward);
+	rot4 = acosf(angle4);
+	//回転
+	qrot.SetRotation(CVector3::AxisY, rot4);
+	qRot.Multiply(qrot);
+	//モデルに回転を反映
+	m_BuhinModelRender1_4->SetRotation(qRot);
+}
+
+//クラフトするときの動作
+void ClaftScreen::claft()
+{
+	if (BuhinCount1 == 0)
+	{
+		if (Buhin1 == true)
+		{
+			Buhin1 = true;
+			m_BuhinModelRender1 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
+			m_BuhinModelRender1->Init(L"modelData/wheel.cmo");
+			m_Buhin1pos.x = -350.0f;
+			m_Buhin1pos.y = 150.0f;
+			m_Buhin1pos.z = 0.0f;
+			m_BuhinModelRender1_2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
+			m_BuhinModelRender1_2->Init(L"modelData/wheel.cmo");
+			m_Buhin1_2pos.x = -550.0f;
+			m_Buhin1_2pos.y = 150.0f;
+			m_Buhin1_2pos.z = 0.0f;
+			m_BuhinModelRender1_3 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
+			m_BuhinModelRender1_3->Init(L"modelData/wheel.cmo");
+			m_Buhin1_3pos.x = -350.0f;
+			m_Buhin1_3pos.y = 150.0f;
+			m_Buhin1_3pos.z = -50.0f;
+			m_BuhinModelRender1_4 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
+			m_BuhinModelRender1_4->Init(L"modelData/wheel.cmo");
+			m_Buhin1_4pos.x = -550.0f;
+			m_Buhin1_4pos.y = 150.0f;
+			m_Buhin1_4pos.z = -50.0f;
+
+			//エフェクトを作成。
+			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
+			//エフェクトを再生。
+			effect->Play(L"effect/create.efk");
+			CVector3 scale = CVector3::One;
+			scale.x = 15.0f;
+			scale.y = 15.0f;
+			scale.z = 15.0f;
+
+			effect->SetScale(scale);
+			effect->SetPosition(m_Buhin1pos);
+			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
+			m_BuhinModelRender1_2->SetPosition(m_Buhin1_2pos);
+			m_BuhinModelRender1_3->SetPosition(m_Buhin1_3pos);
+			m_BuhinModelRender1_4->SetPosition(m_Buhin1_4pos);
+			BuhinCount1 = 1;
+			Buhin1 = false;
+		}
+	}
+
+	if (BuhinCount2 == 0)
+	{
+		if (Buhin2 == true)
+		{
+			m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin2");
+			m_BuhinModelRender2->Init(L"modelData/buhin2.cmo");
+			m_Buhin2pos.x = -400.0f;
+			m_Buhin2pos.y = 200.0f;
+			//エフェクトを作成。
+			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
+			//エフェクトを再生。
+			effect->Play(L"effect/create.efk");
+			CVector3 scale = CVector3::One;
+			scale.x = 15.0f;
+			scale.y = 15.0f;
+			scale.z = 15.0f;
+
+			effect->SetScale(scale);
+			effect->SetPosition(m_Buhin2pos);
+			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
+
+			BuhinCount2 = 1;
+			Buhin2 = false;
+		}
+	}
+}
+
 bool ClaftScreen::Start()
 {
-	//buhin1 = FindGO<Buhin>("Buhin1");
-	//buhin2 = FindGO<Buhin>("Buhin2");
-	//buhin3 = FindGO<Buhin>("Gomi");
     Buhin* buhin1 = nullptr;	//部品1
 	Buhin* buhin2 = nullptr;	//部品2
 	Buhin* buhin3 = nullptr;	//部品3
@@ -138,65 +285,14 @@ bool ClaftScreen::Start()
 
 void ClaftScreen::Update()
 {
+
+	//クエリ関係
 	Query();
 
-	if (BuhinCount1 == 0)
-	{
-		if (Buhin1 == true)
-		{
-			Buhin1 = true;
-			m_BuhinModelRender1 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
-			m_BuhinModelRender1->Init(L"modelData/wheel.cmo");
-			m_Buhin1pos.x = -350.0f;
-			m_Buhin1pos.y = 150.0f;
-			m_BuhinModelRender1_2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
-			m_BuhinModelRender1_2->Init(L"modelData/wheel.cmo");
-			m_Buhin1_2pos.x = -550.0f;
-			m_Buhin1_2pos.y = 150.0f;
-			//エフェクトを作成。
-			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
-			//エフェクトを再生。
-			effect->Play(L"effect/create.efk");
-			CVector3 scale = CVector3::One;
-			scale.x = 15.0f;
-			scale.y = 15.0f;
-			scale.z = 15.0f;
+	//クラフトするときの動作
+	claft();
 
-			effect->SetScale(scale);
-			effect->SetPosition(m_Buhin1pos);
-			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
-			m_BuhinModelRender1_2->SetPosition(m_Buhin1_2pos);
-			BuhinCount1 = 1;
-			Buhin1 = false;
-		}
-	}
-
-	if (BuhinCount2 == 0)
-	{
-		if (Buhin2 == true)
-		{
-			m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin2");
-			m_BuhinModelRender2->Init(L"modelData/buhin2.cmo");
-			m_Buhin2pos.x = -400.0f;
-			m_Buhin2pos.y = 200.0f;
-			//エフェクトを作成。
-			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
-			//エフェクトを再生。
-			effect->Play(L"effect/create.efk");
-			CVector3 scale = CVector3::One;
-			scale.x = 15.0f;
-			scale.y = 15.0f;
-			scale.z = 15.0f;
-
-			effect->SetScale(scale);
-			effect->SetPosition(m_Buhin2pos);
-			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
-
-			BuhinCount2 = 1;
-			Buhin2 = false;
-		}
-	}
-
+	//そろっていない部品の表示
 	hituyoubuhin();
 
 	if (scale.x <= 5.8f)
@@ -207,21 +303,33 @@ void ClaftScreen::Update()
 
 			scale.x += 0.05f;
 			scale.y += 0.045f;
-			buhinscale.x += 0.05f;
-			buhinscale.y += 0.05f;
-			buhinscale.z += 0.05f;
-			m_Buhin1pos.x += 4.0f;
+			buhinscale.x += 0.02f;
+			buhinscale.y += 0.02f;
+			buhinscale.z += 0.02f;
+			m_Buhin1pos.x += 6.0f;
 			m_Buhin1pos.y -= 3.0f;
 			m_Buhin1_2pos.x += 4.0f;
 			m_Buhin1_2pos.y -= 3.0f;
+			m_Buhin1_3pos.x += 6.0f;
+			m_Buhin1_3pos.y -= 3.0f;
+			m_Buhin1_4pos.x += 4.0f;
+			m_Buhin1_4pos.y -= 3.0f;
 			m_Buhin2pos.x += 4.0f;
 			m_Buhin2pos.y -= 3.0f;
 			m_BuhinModelRender1->SetScale(buhinscale);	
 			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
 			m_BuhinModelRender1_2->SetScale(buhinscale);
 			m_BuhinModelRender1_2->SetPosition(m_Buhin1_2pos);
+			m_BuhinModelRender1_3->SetScale(buhinscale);
+			m_BuhinModelRender1_3->SetPosition(m_Buhin1_3pos);
+			m_BuhinModelRender1_4->SetScale(buhinscale);
+			m_BuhinModelRender1_4->SetPosition(m_Buhin1_4pos);
 			m_BuhinModelRender2->SetScale(buhinscale);
 			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
+	
+			//クリア後の回転
+			rotation();
+
 			count++;
 		}
 	}
