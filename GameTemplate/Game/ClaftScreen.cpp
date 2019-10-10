@@ -304,11 +304,11 @@ void ClaftScreen::Update()
 			buhinscale.x += 0.02f;
 			buhinscale.y += 0.02f;
 			buhinscale.z += 0.02f;
-			m_Buhin1pos.x += 6.0f;
+			m_Buhin1pos.x += 5.0f;
 			m_Buhin1pos.y -= 3.0f;
 			m_Buhin1_2pos.x += 5.0f;
 			m_Buhin1_2pos.y -= 3.0f;
-			m_Buhin1_3pos.x += 6.0f;
+			m_Buhin1_3pos.x += 5.0f;
 			m_Buhin1_3pos.y -= 3.0f;
 			m_Buhin1_4pos.x += 5.0f;
 			m_Buhin1_4pos.y -= 3.0f;
