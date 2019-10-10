@@ -37,6 +37,7 @@
     <MeshContentTask Include="Assets\modelData\wheel.FBX" />
     <MeshContentTask Include="Assets\modelData\arm_ude.FBX" />
     <MeshContentTask Include="Assets\modelData\arm_tume.FBX" />
+    <MeshContentTask Include="Assets\modelData\garakuta1.FBX" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BeltCon.h" />
