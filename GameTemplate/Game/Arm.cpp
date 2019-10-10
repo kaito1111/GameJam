@@ -76,9 +76,9 @@ void Arm::Update()
 						InitOto = true;
 					}
 				}
-				if (m_ArmPosition.y <= -150.0f)						//それ以上下に行くな
+				if (m_ArmPosition.y <= -100.0f)						//それ以上下に行くな
 				{
-					m_ArmPosition.y = -150.0f;
+					m_ArmPosition.y = -100.0f;
 					ArmDown += GameTime().GetFrameDeltaTime();
 					Rotrate += 2.0f;
 					InitOto = false;
@@ -112,10 +112,10 @@ void Arm::Update()
 			}
 			if (!Catch)												//取ってないおおお
 			{
-				if (m_ArmPosition.y >= 200.0f)						//それ以上上に行くな
+				if (m_ArmPosition.y >= 100.0f)						//それ以上上に行くな
 				{
 					ArmDown = 0;
-					m_ArmPosition.y = 200.0f;
+					m_ArmPosition.y = 100.0f;
 					Set = true;
 					Rotrate = 0.0f;
 					InitOto = true;
