@@ -119,7 +119,12 @@ void Buhin::Update()
 		/*dif.yだけの方を少し下げることで当たりX軸の当たり判定はそのままで
 		Y軸の当たり判定を無理やり広める*/
 		//Y軸の当たり判定を調整
-		diff.y -= 100;
+		if (IamGomi2 == 1) {
+			diff.y -= 120;
+		}
+		else {
+			diff.y -= 100;
+		}
 		diff.x = arm->m_ArmPosition.x - m_position.x;
 		//当たり判定を大きくするときはここを調整
 		if (diff.Length() < 80) {
@@ -132,7 +137,7 @@ void Buhin::Update()
 				//これが必要なパーツならとる
 				arm->Catch = true;
 			}
-			else {
+			else if(arm->Catch == false){
 				//いらないパーツなら
 				if (arm->m_ArmPosition.y >= 200)
 				{
