@@ -25,6 +25,7 @@ bool GameSence::Start()
 	NewGO<Arm>(0, "Arm");
 	NewGO<ClaftScreen>(0, "cs");
 	NewGO<BeltCon>(0, "BC");
+	NewGO<result>(0, "result");
 
 	m_TimerFont = NewGO<prefab::CFontRender>(0);
 	m_TimerFont->SetText(L"‚ ‚Æ120.0•b");
