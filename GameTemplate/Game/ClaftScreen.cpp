@@ -327,12 +327,21 @@ void ClaftScreen::Update()
 		if (count >= 60)
 		{		
 
-			NewGO<result>(0);
+			NewGO<result>(2);
 			senni = true;
 		}
 	}
 	if (senni == true)
 	{
+		CVector3 m_buhin1Kyori = m_Buhin1pos - m_Buhin2pos;
+		CVector3 m_buhin2Kyori = m_Buhin1_2pos - m_Buhin2pos;
+		CVector3 m_buhin3Kyori = m_Buhin1_3pos - m_Buhin2pos;
+		CVector3 m_buhin4Kyori = m_Buhin1_4pos - m_Buhin2pos;
+		qRot.Multiply(m_buhin1Kyori);
+		qRot.Multiply(m_buhin2Kyori);
+		qRot.Multiply(m_buhin3Kyori);
+		qRot.Multiply(m_buhin4Kyori);
+
 		GD->DeleteArm = true;
 		GD->DeleteBeltCon = true;
 		//ƒNƒŠƒAŒã‚Ì‰ñ“]
