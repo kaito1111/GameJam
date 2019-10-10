@@ -11,4 +11,7 @@ public:
 	bool DeleteGameSence=false;
 	bool DeleteScore = false;
 	bool DeleteClaftScreen = false;
+	bool DeleteBeltCon = false;
+	bool DeleteBuckGround = false;
+	bool DeleteTitle = false;
 };
