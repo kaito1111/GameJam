@@ -1817,6 +1817,7 @@
     <MeshContentTask Include="Assets\modelData\arm_tume.FBX" />
     <MeshContentTask Include="Assets\modelData\arm_ude.FBX" />
     <MeshContentTask Include="Assets\modelData\BeltC.FBX" />
+    <MeshContentTask Include="Assets\modelData\body.FBX" />
     <MeshContentTask Include="Assets\modelData\buhin1.FBX" />
     <MeshContentTask Include="Assets\modelData\buhin2.FBX" />
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
