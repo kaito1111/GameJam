@@ -119,7 +119,7 @@ void Buhin::Update()
 		/*dif.yだけの方を少し下げることで当たりX軸の当たり判定はそのままで
 		Y軸の当たり判定を無理やり広める*/
 		//Y軸の当たり判定を調整
-		diff.y -= 50;
+		diff.y -= 100;
 		diff.x = arm->m_ArmPosition.x - m_position.x;
 		//当たり判定を大きくするときはここを調整
 		if (diff.Length() < 80) {
@@ -151,7 +151,7 @@ void Buhin::Update()
 	if (IsCatch == true) {
 		//部品の高さをアームの高さに揃える
 		//アームのモデルが変わるたびyに-Yしてください
-		m_position.y = arm->m_ArmPosition.y - 110;
+		m_position.y = arm->m_ArmPosition.y - 120;
 	}
 
 	//画面外にでたら削除
