@@ -21,22 +21,28 @@ void ClaftScreen::Query()
 	QueryGOs<Buhin>("Buhin1", [&](Buhin* buhin1) {
 		if (buhin1->m_position.y >= 600.0f) {
 
-			buhin1->m_position.y -= 30.0f;
 			Buhin1 = true;
 			//false‚ð•Ô‚µ‚½‚çƒNƒGƒŠ‚ÍI—¹B
 		}
+		if (GameOver)
+		{
+			buhin1->m_position.y -= 30.0f;
+		}
 		return true;
-		});
+	});
 
 	QueryGOs<Buhin>("Buhin2", [&](Buhin* buhin2) {
-		if (buhin2->m_position.y >= 600.0f) {
-
-			buhin2->m_position.y -= 30.0f;	
+		if (buhin2->m_position.y >= 600.0f) 
+		{
 			Buhin2 = true;
 			//false‚ð•Ô‚µ‚½‚çƒNƒGƒŠ‚ÍI—¹B
 		}
+		if (GameOver)
+		{
+			buhin2->m_position.y -= 30.0f;
+		}
 		return true;
-		});
+	});
 
 	QueryGOs<Arm>("Arm", [&](Arm* arm) {
 		if (GameOver)
@@ -162,6 +168,26 @@ void ClaftScreen::claft()
 			scale.y = 15.0f;
 			scale.z = 15.0f;
 
+			//ƒ^ƒCƒ„1‚Â–Ú‰ñ“]
+			qrot2.SetRotationDeg(CVector3::AxisY, rot2);
+			qRot.Multiply(qrot2);
+			//ƒ‚ƒfƒ‹‚É‰ñ“]‚ð”½‰f
+			m_BuhinModelRender1->SetRotation(qRot2);
+
+			//ƒ^ƒCƒ„2‚Â–Ú‰ñ“]
+			//ƒ‚ƒfƒ‹‚É‰ñ“]‚ð”½‰f
+			m_BuhinModelRender1_2->SetRotation(qRot2);
+
+			//ƒ^ƒCƒ„3‚Â–Ú‰ñ“]
+			//ƒ‚ƒfƒ‹‚É‰ñ“]‚ð”½‰f
+			m_BuhinModelRender1_3->SetRotation(qRot2);
+
+			//ƒ^ƒCƒ„4‚Â–Ú‰ñ“]
+			//ƒ‚ƒfƒ‹‚É‰ñ“]‚ð”½‰f
+			m_BuhinModelRender1_4->SetRotation(qRot2);
+
+
+
 			effect->SetScale(scale);
 			effect->SetPosition(m_Buhin1pos);
 			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
@@ -196,11 +222,13 @@ void ClaftScreen::claft()
 			effect->SetPosition(m_Buhin2pos);
 			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
 			//ƒ{ƒfƒB‚ð‰ñ“]
-			qrot.SetRotationDeg(CVector3::AxisY, rot1);
-			qRot.Multiply(qrot);
+			qrot2.SetRotationDeg(CVector3::AxisY, rot2);
+			qRot2.Multiply(qrot2);
 			//ƒ‚ƒfƒ‹‚É‰ñ“]‚ð”½‰f
-			m_BuhinModelRender2->SetRotation(qRot);
-
+			m_BuhinModelRender2->SetRotation(qRot2);
+			////ƒ{ƒfƒB‚ð‰ñ“]
+			////ƒ‚ƒfƒ‹‚É‰ñ“]‚ð”½‰f
+			//m_BuhinModelRender2->SetRotation(qRot);
 			BuhinCount2 = 1;
 			Buhin2 = false;
 		}
@@ -284,7 +312,7 @@ void ClaftScreen::Update()
 			m_Buhin1_3pos.y -= 3.0f;
 			m_Buhin1_4pos.x += 5.0f;
 			m_Buhin1_4pos.y -= 3.0f;
-			m_Buhin2pos.x += 3.8f;
+			m_Buhin2pos.x += 5.0f;
 			m_Buhin2pos.y -= 2.0f;
 
 			CVector3 buhinscale2 = CVector3::One;
@@ -312,7 +340,7 @@ void ClaftScreen::Update()
 		if (count >= 60)
 		{		
 
-			NewGO<result>(2);
+			//NewGO<result>(2);
 			senni = true;
 		}
 	}
@@ -327,13 +355,16 @@ void ClaftScreen::Update()
 		qRot.Multiply(m_buhin3Kyori);
 		qRot.Multiply(m_buhin4Kyori);
 
-
-		GD->DeleteArm = true;
-		GD->DeleteBeltCon = true;
+		m_BuhinModelRender1->SetPosition(m_buhin1Kyori);
+		m_BuhinModelRender1_2->SetPosition(m_buhin2Kyori);
+		m_BuhinModelRender1_3->SetPosition(m_buhin3Kyori);
+		m_BuhinModelRender1_4->SetPosition(m_buhin4Kyori);
 		//ƒNƒŠƒAŒã‚Ì‰ñ“]
 		rotation();
+
+		//GD->DeleteArm = true;
+		//GD->DeleteBeltCon = true;
 	}
-
-
+	   
 	m_spriteRender->SetScale(scale);
 }
