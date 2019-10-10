@@ -16,7 +16,11 @@ public:
 	int BuhinCount2 = 0;
 	int BuhinCount3 = 0;
 	int count = 0;
-	float rot = 0.0f;	//‰ñ“]—Ê
+
+	float rot1 = 0.0f;	//‰ñ“]—Ê
+	float rot2 = 0.0f;	//‰ñ“]—Ê
+	float rot3 = 0.0f;	//‰ñ“]—Ê
+	float rot4 = 0.0f;	//‰ñ“]—Ê
 
 	bool hituyoubuhin1 = false;
 	bool hituyoubuhin2 = false;
@@ -24,8 +28,11 @@ public:
 	bool Buhin2 = false;
 	bool GameOver = false;
 	bool senni = false;
+
 	void Query();
 	void hituyoubuhin();
+	void rotation();
+	void claft();
 
 	GameDelete* GD = nullptr;	//ƒfƒŠ[ƒg‚·‚é‚æI
 	CMatrix mRot = CMatrix::Identity;

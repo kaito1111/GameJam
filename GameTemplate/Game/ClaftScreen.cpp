@@ -15,6 +15,7 @@ ClaftScreen::~ClaftScreen()
 
 }
 
+//クエリ関係
 void ClaftScreen::Query()
 {
 	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
@@ -22,7 +23,6 @@ void ClaftScreen::Query()
 		if (buhin1->m_position.y >= 600.0f) {
 
 			buhin1->m_position.y -= 30.0f;
-			//m_hozon = buhin1->m_position;	
 			Buhin1 = true;
 			//falseを返したらクエリは終了。
 		}
@@ -33,8 +33,7 @@ void ClaftScreen::Query()
 	QueryGOs<Buhin>("Buhin2", [&](Buhin* buhin2) {
 		if (buhin2->m_position.y >= 600.0f) {
 
-			buhin2->m_position.y -= 30.0f;
-			//m_hozon = buhin2->m_position;	
+			buhin2->m_position.y -= 30.0f;	
 			Buhin2 = true;
 			//falseを返したらクエリは終了。
 		}
@@ -57,6 +56,7 @@ void ClaftScreen::Query()
 	});
 }
 
+//そろっていない部品の表示
 void ClaftScreen::hituyoubuhin()
 {
 	if (hituyoubuhin1 == false)
@@ -95,49 +95,10 @@ void ClaftScreen::hituyoubuhin()
 	m_hituyoubuhin1->SetPosition(buhin1pos);
 	m_hituyoubuhin2->SetPosition(buhin2pos);
 }
-bool ClaftScreen::Start()
-{
-	//buhin1 = FindGO<Buhin>("Buhin1");
-	//buhin2 = FindGO<Buhin>("Buhin2");
-	//buhin3 = FindGO<Buhin>("Gomi");
-    Buhin* buhin1 = nullptr;	//部品1
-	Buhin* buhin2 = nullptr;	//部品2
-	Buhin* buhin3 = nullptr;	//部品3
 
-
-	m_spriteRender = NewGO<prefab::CSpriteRender>(0);
-	m_spriteRender->Init(L"sprite/ClaftScreen.dds",400.0f,250.0f);
-
-	//クラフト画面の位置
-	m_position.x = 450.0f;
-	m_position.y = 250.0f;
-
-	//スケール
-	scale.x = 1.5f;
-	scale.y = 1.5f;
-	scale.z = 1.0f;
-
-	m_hituyoubuhin1 = NewGO<prefab::CSpriteRender>(0);
-	m_hituyoubuhin1->Init(L"sprite/hituyoubuhin1.dds", 500.0f, 80.0f);
-
-	buhin1pos.x = 400.0f;
-	buhin1pos.y = 25.0f;
-
-	m_hituyoubuhin2 = NewGO<prefab::CSpriteRender>(0);
-	m_hituyoubuhin2->Init(L"sprite/hituyoubuhin2.dds", 500.0f, 80.0f);
-
-
-	buhin2pos.x = 400.0f;
-	buhin2pos.y = -50.0f;
-
-
-	m_spriteRender->SetScale(scale);
-	m_spriteRender->SetPosition(m_position);
-	return true;
-}
-
-void ClaftScreen::Update()
-{
+//クリア後の回転
+void ClaftScreen::rotation()
+{	
 	mRot.MakeRotationFromQuaternion(qRot);
 	m_forward.x = mRot.m[2][0];
 	m_forward.y = mRot.m[2][1];
@@ -152,10 +113,65 @@ void ClaftScreen::Update()
 	m_up.z = mRot.m[1][2];
 	m_up.Normalize();
 
-	Query();
+	CVector3 tyuusin = CVector3::Zero;	
+	CQuaternion qrot = CQuaternion::Identity;
 
+	//部品から中心に向けてのベクトル
+	CVector3 toZero1_1 = m_Buhin1pos - tyuusin;
+	toZero1_1.y = 0.0f;
+	toZero1_1.Normalize();
+	//回転量を計算
+	float angle1 = toZero1_1.Dot(m_forward);
+	rot1 = acosf(angle1);
+	//回転
+	qrot.SetRotation(CVector3::AxisY, rot1);
+	qRot.Multiply(qrot);
+	//モデルに回転を反映
+	m_BuhinModelRender1->SetRotation(qRot);
 
+	//部品から中心に向けてのベクトル
+	CVector3 toZero1_2 = m_Buhin1_2pos - tyuusin;
+	toZero1_2.y = 0.0f;
+	toZero1_2.Normalize();
+	//回転量を計算
+	float angle2 = toZero1_2.Dot(m_forward);
+	rot2 = acosf(angle2);
+	//回転
+	qrot.SetRotation(CVector3::AxisY, rot2);
+	qRot.Multiply(qrot);
+	//モデルに回転を反映
+	m_BuhinModelRender1_2->SetRotation(qRot);
 
+	//部品から中心に向けてのベクトル
+	CVector3 toZero1_3 = m_Buhin1_3pos - tyuusin;
+	toZero1_3.y = 0.0f;
+	toZero1_3.Normalize();
+	//回転量を計算
+	float angle3 = toZero1_3.Dot(m_forward);
+	rot3 = acosf(angle3);
+	//回転
+	qrot.SetRotation(CVector3::AxisY, rot3);
+	qRot.Multiply(qrot);
+	//モデルに回転を反映
+	m_BuhinModelRender1_3->SetRotation(qRot);
+
+	//部品から中心に向けてのベクトル
+	CVector3 toZero1_4 = m_Buhin1_4pos - tyuusin;
+	toZero1_4.y = 0.0f;
+	toZero1_4.Normalize();
+	//回転量を計算
+	float angle4 = toZero1_4.Dot(m_forward);
+	rot4 = acosf(angle4);
+	//回転
+	qrot.SetRotation(CVector3::AxisY, rot4);
+	qRot.Multiply(qrot);
+	//モデルに回転を反映
+	m_BuhinModelRender1_4->SetRotation(qRot);
+}
+
+//クラフトするときの動作
+void ClaftScreen::claft()
+{
 	if (BuhinCount1 == 0)
 	{
 		if (Buhin1 == true)
@@ -227,7 +243,56 @@ void ClaftScreen::Update()
 			Buhin2 = false;
 		}
 	}
+}
 
+bool ClaftScreen::Start()
+{
+    Buhin* buhin1 = nullptr;	//部品1
+	Buhin* buhin2 = nullptr;	//部品2
+	Buhin* buhin3 = nullptr;	//部品3
+
+
+	m_spriteRender = NewGO<prefab::CSpriteRender>(0);
+	m_spriteRender->Init(L"sprite/ClaftScreen.dds",400.0f,250.0f);
+
+	//クラフト画面の位置
+	m_position.x = 450.0f;
+	m_position.y = 250.0f;
+
+	//スケール
+	scale.x = 1.5f;
+	scale.y = 1.5f;
+	scale.z = 1.0f;
+
+	m_hituyoubuhin1 = NewGO<prefab::CSpriteRender>(0);
+	m_hituyoubuhin1->Init(L"sprite/hituyoubuhin1.dds", 500.0f, 80.0f);
+
+	buhin1pos.x = 400.0f;
+	buhin1pos.y = 25.0f;
+
+	m_hituyoubuhin2 = NewGO<prefab::CSpriteRender>(0);
+	m_hituyoubuhin2->Init(L"sprite/hituyoubuhin2.dds", 500.0f, 80.0f);
+
+
+	buhin2pos.x = 400.0f;
+	buhin2pos.y = -50.0f;
+
+
+	m_spriteRender->SetScale(scale);
+	m_spriteRender->SetPosition(m_position);
+	return true;
+}
+
+void ClaftScreen::Update()
+{
+
+	//クエリ関係
+	Query();
+
+	//クラフトするときの動作
+	claft();
+
+	//そろっていない部品の表示
 	hituyoubuhin();
 
 	if (scale.x <= 5.8f)
@@ -261,18 +326,10 @@ void ClaftScreen::Update()
 			m_BuhinModelRender1_4->SetPosition(m_Buhin1_4pos);
 			m_BuhinModelRender2->SetScale(buhinscale);
 			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
-			CVector3 tyuusin = CVector3::Zero;
-			CVector3 toZero1_1 = m_Buhin1pos - tyuusin;
-			toZero1_1.y = 0.0f;
-			toZero1_1.Normalize();
-			
-			float angle = toZero1_1.Dot(m_forward);
-			rot = acosf(angle);
-			
-			CQuaternion qrot = CQuaternion::Identity;
-			qrot.SetRotation(CVector3::AxisY, rot);
-			qRot.Multiply(qrot);
-			m_BuhinModelRender1->SetRotation(qRot);
+	
+			//クリア後の回転
+			rotation();
+
 			count++;
 		}
 	}
