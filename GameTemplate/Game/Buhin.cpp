@@ -146,6 +146,20 @@ void Buhin::Update()
 		return true;
 	});
 
+	//何かものをつかんでいるならば
+	if (IsCatch == true) {
+		if (IamGomi2 == 1) {
+			m_position.y = arm->m_ArmPosition.y - 220;
+		}
+		else if (Iamframe == 1) {
+			m_position.y = arm->m_ArmPosition.y - 210;
+		}
+		else {
+			//部品の高さをアームの高さに揃える
+			//アームのモデルが変わるたびyに-Yしてください
+			m_position.y = arm->m_ArmPosition.y - 190;
+		}
+	}
 	//いらないパーツなら
 	if (arm->Catch == false) {
 		if (arm->m_ArmPosition.y >= 300)
@@ -168,25 +182,14 @@ void Buhin::Update()
 		}
 	}
 
-	//何かものをつかんでいるならば
-	if (IsCatch == true) {
-		if (IamGomi2 == 1){
-			m_position.y = arm->m_ArmPosition.y - 220;
-		}
-		else if (Iamframe == 1) {
-			m_position.y = arm->m_ArmPosition.y - 210;
-		}
-		else {
-			//部品の高さをアームの高さに揃える
-			//アームのモデルが変わるたびyに-Yしてください
-			m_position.y = arm->m_ArmPosition.y - 190;
-		}
+	//Y軸が画面外になるとそのオブジェクトを消す
+	//★600以下にしないでください★
+	if (m_position.y >= 650) {
+		DeleteGO(this);
+		//何ももってない
+		arm->Catch = false;
 	}
 
-	//画面外にでたら削除
-	if (m_position.x > 1000) {
-		DeleteGO(this);
-	}
 	//クレーンが動いてるあいだ
 	if (arm->Set == false) {
 		m_moveSpeed.x = 0.0f;
@@ -196,17 +199,15 @@ void Buhin::Update()
 	else {
 		m_moveSpeed.x = 2.5f;
 	}
-	//Y軸が画面外になるとそのオブジェクトを消す
-	//★600以下にしないでください★
-	if (m_position.y >= 650) {
-		DeleteGO(this);
-		//何ももってない
-		arm->Catch = false;
-	}
 
 	//右から左に流す
 	m_position.x += m_moveSpeed.x;
 	m_skinModelRender->SetPosition(m_position);
+
+	//画面外にでたら削除
+	if (m_position.x > 1000) {
+		DeleteGO(this);
+	}
 }
 
 //BeltConで生成された乱数をもとに
