@@ -54,12 +54,11 @@ void Arm::Update()
 			float DropTime = GameTime().GetFrameDeltaTime() * 200.0f;			//ëÂëÃäÓñ{Ç…Ç»ÇÈéûä‘
 			if (Set && Pad(0).IsPress(enButtonB))								//â∫Ç…ìÆÇ≠Ç©Ç«Ç§Ç©ÇîªíËÇ∑ÇÈ
 			{
-				if (!InitOto)
-				{
 					prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
 					m_SS->Init(L"sound/arm_kouho1.wav");
-					InitOto = true;
-				}
+					m_SS->Play(false);
+					m_SS->SetVolume(0.005f);
+				
 				Set = false;
 			}
 			if (!Set)
@@ -72,6 +71,9 @@ void Arm::Update()
 					{
 						prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
 						m_SS->Init(L"sound/arm_kouho1.wav");
+						m_SS->Play(false);
+						m_SS->SetVolume(0.0025f);
+						InitOto = true;
 					}
 				}
 				if (m_ArmPosition.y <= -150.0f)						//ÇªÇÍà»è„â∫Ç…çsÇ≠Ç»
@@ -86,10 +88,16 @@ void Arm::Update()
 			{
 				if (Pad(0).IsPress(enButtonRight))									//âEÇ…ìÆÇ©Ç∑
 				{
+					prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
+					m_SS->Init(L"sound/arm_kouho2.wav");
+					m_SS->SetVolume(0.05f);
 					m_MoveSpeed.x = -10.0f;
 				}
 				if (Pad(0).IsPress(enButtonLeft))									//ç∂Ç…ìÆÇ≠
 				{
+					prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
+					m_SS->Init(L"sound/arm_kouho2.wav");
+					/*m_SS->SetVolume(0.05f);*/
 					m_MoveSpeed.x = 10.0f;
 				}
 			}
