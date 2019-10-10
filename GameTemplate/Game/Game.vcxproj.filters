@@ -34,10 +34,10 @@
     <MeshContentTask Include="Assets\modelData\buhin1.FBX" />
     <MeshContentTask Include="Assets\modelData\buhin2.FBX" />
     <MeshContentTask Include="Assets\modelData\Gomi.FBX" />
-    <MeshContentTask Include="Assets\modelData\wheel.FBX" />
     <MeshContentTask Include="Assets\modelData\arm_ude.FBX" />
     <MeshContentTask Include="Assets\modelData\arm_tume.FBX" />
     <MeshContentTask Include="Assets\modelData\garakuta1.FBX" />
+    <MeshContentTask Include="Assets\modelData\wheel.FBX" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BeltCon.h" />
