@@ -18,6 +18,6 @@ public:
 	int Score = 0;
 	CVector3 m_FontColor = CVector3::One;
 	wchar_t ScoreMoji[128];
-	CVector2 m_FontPosition = { -600.0f,200.0f }; 
+	CVector2 m_FontPosition = { -200.0f,200.0f };
 	GameDelete* m_Delete = nullptr;
 };
