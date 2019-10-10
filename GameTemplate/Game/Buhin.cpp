@@ -140,12 +140,23 @@ void Buhin::Update()
 				//これが必要なパーツならとる
 				arm->Catch = true;
 			}
+			//いらないパーツなら
 			else if(arm->Catch == false){
-				//いらないパーツなら
 				if (arm->m_ArmPosition.y >= 200)
 				{
-					//ベルトコンベアに戻す
-					m_position.y = -320.0f;
+					if (IamWheel == 1) {
+						//ベルトコンベアに戻す
+						m_position.y = -300.0f;
+					}
+					else if (Iamframe == 1) {
+						m_position.y = -250.0f;
+					}
+					else if (IamGomi == 1) {
+						m_position.y = -330.0f;
+					}
+					else {
+						m_position.y = -350.0f;
+					}
 					//何ももってない
 					IsCatch = false;
 				}

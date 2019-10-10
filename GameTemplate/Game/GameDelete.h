@@ -13,5 +13,4 @@ public:
 	bool DeleteClaftScreen = false;
 	bool DeleteBeltCon = false;
 	bool DeleteBuckGround = false;
-	bool DeleteTitle = false;
 };

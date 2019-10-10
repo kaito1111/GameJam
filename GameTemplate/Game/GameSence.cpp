@@ -15,8 +15,6 @@ GameSence::~GameSence()
 {
 	DeleteGO(m_TimerFont);
 	DeleteGO(m_Spritefade);
-	DeleteGO(m_Arm);
-	DeleteGO(m_BGM);
 }
 
 bool GameSence::Start()
@@ -42,6 +40,7 @@ bool GameSence::Start()
 	m_BGM->Play(true);
 	m_BGM->SetVolume(1.0f);
 
+	m_Arm = FindGO<Arm>("Arm");
 	m_Delete = FindGO<GameDelete>("GameDelete");
 	return true;
 }
@@ -55,7 +54,6 @@ void GameSence::Update()
 		{
 			if (!move)
 			{
-				m_Arm = FindGO<Arm>("Arm");
 				m_Arm->Drop = true;
 				move = true;
 			}
