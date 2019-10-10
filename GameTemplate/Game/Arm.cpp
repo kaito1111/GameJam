@@ -28,7 +28,7 @@ bool Arm::Start()
 	m_ArmtumeRight->SetPosition(m_TumePos);			//クレーンのつめの右のポジションを教えた
 	m_ArmtumeRight->SetScale(m_Scale * 2);			//クレーンのつめの右のスケールを教えた
 	m_ArmtumeLeft = NewGO<prefab::CSkinModelRender>(0);			//クレーンのつめの左のスキンモデル
-	m_ArmtumeLeft->Init(L"modelData/arm_tume.cmo");	
+	m_ArmtumeLeft->Init(L"modelData/arm_tume.cmo");
 	m_ArmtumeLeft->SetPosition(m_TumePos);			//クレーンのつめの左のポジションを教えた
 	m_ArmtumeLeft->SetScale(m_Scale * 2);			//クレーンのつめの左のスケールを教えた
 	m_Rot.SetRotationDeg(CVector3::AxisY, 180.0f);			//クレーンのつめの左を反転した
@@ -60,11 +60,11 @@ void Arm::Update()
 			float DropTime = GameTime().GetFrameDeltaTime() * 200.0f;//大体基本になる時間
 			if (Set && Pad(0).IsPress(enButtonB))					//下に動くかどうかを判定する
 			{
-					prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);			//下に動く音を追加した
-					m_SS->Init(L"sound/arm_kouho1.wav");
-					m_SS->Play(false);
-					m_SS->SetVolume(0.5f);
-				
+				prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);			//下に動く音を追加した
+				m_SS->Init(L"sound/arm_kouho1.wav");
+				m_SS->Play(false);
+				m_SS->SetVolume(0.5f);
+
 				Set = false;
 			}
 			if (!Set)												//動かなかったとき
@@ -75,7 +75,7 @@ void Arm::Update()
 					m_MoveSpeed.y = DropTime;						//上に上がる
 					if (!InitOto)									//音も出るよ
 					{
-						prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);					
+						prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
 						m_SS->Init(L"sound/arm_kouho1.wav");
 						m_SS->Play(false);
 						m_SS->SetVolume(0.5f);
@@ -94,24 +94,28 @@ void Arm::Update()
 			{
 				if (Pad(0).IsPress(enButtonRight))					//右に動かす
 				{
+					m_MoveSpeed.x = -10.0f;
 					if (MoveSound)
 					{
 						prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
-						m_SS->Init(L"sound/Beltcon.wav");
+						m_SS->Init(L"sound/arm_ugoku_kouho2.wav");
 						m_SS->SetVolume(0.5f);
-						m_MoveSpeed.x = -10.0f;
+						m_SS->Play(false);
 						MoveSound = false;
+						MoveOto = 0.0f;
 					}
 				}
 				if (Pad(0).IsPress(enButtonLeft))					//左に動く
 				{
+					m_MoveSpeed.x = 10.0f;
 					if (MoveSound)
 					{
 						prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);			//音も出るよ
-						m_SS->Init(L"sound/Beltcon.wav");
-						m_SS->SetVolume(0.05f);
-						m_MoveSpeed.x = 10.0f;
+						m_SS->Init(L"sound/arm_ugoku_kouho2.wav");
+						m_SS->SetVolume(0.5f);
+						m_SS->Play(false);
 						MoveSound = false;
+						MoveOto = 0.0f;
 					}
 				}
 			}

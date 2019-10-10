@@ -56,20 +56,23 @@ void GameSence::Update()
 			m_Arm->Drop = true;
 		}
 		time -= GameTime().GetFrameDeltaTime();					//ゲームのプレイ時間を表示する
-		swprintf_s(timer, L"あと%.1f秒", time);					//現在の時間を設定する
 		m_TimerFont->SetText(timer);							//テキストをセットする
 		if (!New) 
 		{
 			if (time < 0.0f)									//プレイ時間がゼロになればゲームが終了する
 			{
+				time = 0.0f;
+				m_FontPosition.x += 10.0f;
 				NewGO<result>(2, "result");
 				GameOver = true;
 			}
 			New = true;
 		}
 	}
+	swprintf_s(timer, L"あと%.1f秒", time);					//現在の時間を設定する
 	m_FadeColor.a -= 0.05f;										//フェードを薄くする
 	m_Spritefade->SetMulColor(m_FadeColor);						//フェードの色(透明度）
+	m_TimerFont->SetPosition(m_FontPosition);					//フォントの位置を教える
 	if (m_Delete->DeleteGameSence)								//trueになると死ぬ
 	{
 		DeleteGO(this);
