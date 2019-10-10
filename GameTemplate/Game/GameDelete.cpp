@@ -16,8 +16,7 @@ void GameDelete::Update()
 		DeleteScore == true &&
 		DeleteClaftScreen == true &&
 		DeleteBeltCon == true &&
-		DeleteBuckGround == true&&
-		DeleteBuhin==true)
+		DeleteBuckGround == true)
 	{
 		DeleteGO(this);
 	}

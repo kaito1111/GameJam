@@ -23,6 +23,5 @@ public:
 	CVector4 m_FadeColor = { 1.0f,1.0f,1.0f,1.0f };					//フェードの色
 	float StartGame = 0.0f; 					//ゲームが始まる
 	Arm* m_Arm = nullptr;
-	bool move = false; 					//アームを動かすのを許可する
 	prefab::CSoundSource* m_BGM = nullptr;					//BGMを出す
 };

@@ -63,7 +63,7 @@ void Arm::Update()
 					prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);			//下に動く音を追加した
 					m_SS->Init(L"sound/arm_kouho1.wav");
 					m_SS->Play(false);
-					m_SS->SetVolume(0.005f);
+					m_SS->SetVolume(0.5f);
 				
 				Set = false;
 			}
@@ -78,7 +78,7 @@ void Arm::Update()
 						prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);					
 						m_SS->Init(L"sound/arm_kouho1.wav");
 						m_SS->Play(false);
-						m_SS->SetVolume(0.0025f);
+						m_SS->SetVolume(0.5f);
 						InitOto = true;
 					}
 				}
@@ -98,7 +98,7 @@ void Arm::Update()
 					{
 						prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);
 						m_SS->Init(L"sound/Beltcon.wav");
-						m_SS->SetVolume(0.05f);
+						m_SS->SetVolume(0.5f);
 						m_MoveSpeed.x = -10.0f;
 						MoveSound = false;
 					}
@@ -109,20 +109,20 @@ void Arm::Update()
 					{
 						prefab::CSoundSource* m_SS = NewGO<prefab::CSoundSource>(0);			//音も出るよ
 						m_SS->Init(L"sound/Beltcon.wav");
-						/*m_SS->SetVolume(0.05f);*/
+						m_SS->SetVolume(0.05f);
 						m_MoveSpeed.x = 10.0f;
 						MoveSound = false;
 					}
 				}
 			}
 			m_ArmPosition += m_MoveSpeed;							//動く速度を位置にたす
-			if (m_ArmPosition.x <= -50.0f)							//それ以上右に行くな
+			if (m_ArmPosition.x <= 50.0f)							//それ以上右に行くな
 			{
-				m_ArmPosition.x = -50.0f;
+				m_ArmPosition.x = 50.0f;
 			}
-			if (m_ArmPosition.x >= 600.0f)							//それ以上左に行くな
+			if (m_ArmPosition.x >= 480.0f)							//それ以上左に行くな
 			{
-				m_ArmPosition.x = 600.0f;
+				m_ArmPosition.x = 480.0f;
 			}
 			if (!Catch)												//取ってないおおお
 			{

@@ -16,7 +16,7 @@ public:
 	prefab::CSkinModelRender* m_ArmtumeRight = nullptr;			//クレーンのつめの右のスキンモデル
 	prefab::CSkinModelRender* m_ArmtumeLeft = nullptr;			//クレーンのつめの左のスキンモデル
 	ClaftScreen* m_Claft = nullptr;
-	CVector3 m_ArmPosition = { 0.0f,300.0f,0.0f };				//クレーンのポジション
+	CVector3 m_ArmPosition = { 50.0f,300.0f,0.0f };				//クレーンのポジション
 	CVector3 m_TumePos = CVector3::Zero;						//クレーンのつめのポジション
 	CVector3 m_Scale = CVector3::One;							//クレーンのサイズ
 	bool Catch = false;											//つかめたかどうかを判定する
