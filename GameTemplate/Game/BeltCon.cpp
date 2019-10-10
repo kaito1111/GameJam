@@ -23,7 +23,7 @@ bool BeltCon::Start()
 	//ƒTƒEƒ“ƒh
 	ss = NewGO<prefab::CSoundSource>(0);
 	float vol = 0.5f;
-	ss->Init(L"sound/Beltcon.wav");
+	ss->Init(L"sound/Beltcon_Trim.wav");
 	ss->SetVolume(vol);
 	ss->Play(true);
 

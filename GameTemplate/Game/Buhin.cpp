@@ -59,7 +59,7 @@ bool Buhin::Start()
 	else if (Iamframe == 1) {
 		//座標
 		m_position.x = -800;
-		m_position.y = -300;
+		m_position.y = -320;
 		
 		//大きさ
 		Scale.x = 1;
@@ -112,7 +112,6 @@ bool Buhin::Start()
 void Buhin::Update()
 {
 	//クエリでアームにキャッチされているのかの判定を行う
-
 	QueryGOs<Arm>("Arm", [&](Arm* arm)->bool {
 		CVector3 diff;
 		diff.y = arm->m_ArmPosition.y - m_position.y;
@@ -123,7 +122,7 @@ void Buhin::Update()
 			diff.y -= 180;
 		}
 		else if(Iamframe == 1){
-			diff.y -= 60;
+			diff.y -= 120;
 		}
 		else {
 			diff.y -= 150;
@@ -139,43 +138,43 @@ void Buhin::Update()
 			if (IamWheel == 1 && CS->BuhinCount1 == 0 ||
 				Iamframe == 1 && CS->BuhinCount2 == 0)
 			{
-
 				//これが必要なパーツならとる
 				arm->Catch = true;
-			}
-			//いらないパーツなら
-			else if(arm->Catch == false){
-				if (arm->m_ArmPosition.y >= 100)
-				{
-					if (IamWheel == 1) {
-						//ベルトコンベアに戻す
-						m_position.y = -280.0f;
-					}
-					else if (Iamframe == 1) {
-						m_position.y = -250.0f;
-					}
-					else if (IamGomi == 1) {
-						m_position.y = -330.0f;
-					}
-					else {
-						m_position.y = -350.0f;
-					}
-					//何ももってない
-					IsCatch = false;
-				}
 			}
 			return false;
 		}
 		return true;
-		});
+	});
+
+	//いらないパーツなら
+	if (arm->Catch == false) {
+		if (arm->m_ArmPosition.y >= 300)
+		{
+			if (IamWheel == 1) {
+				//ベルトコンベアに戻す
+				m_position.y = -280.0f;
+			}
+			else if (Iamframe == 1) {
+				m_position.y = -320.0f;
+			}
+			else if (IamGomi == 1) {
+				m_position.y = -330.0f;
+			}
+			else {
+				m_position.y = -350.0f;
+			}
+			//何ももってない
+			IsCatch = false;
+		}
+	}
 
 	//何かものをつかんでいるならば
 	if (IsCatch == true) {
-		if (IamGomi2){
-			m_position.y = arm->m_ArmPosition.y - 150;
+		if (IamGomi2 == 1){
+			m_position.y = arm->m_ArmPosition.y - 220;
 		}
-		else if (Iamframe) {
-			m_position.y = arm->m_ArmPosition.y - 150;
+		else if (Iamframe == 1) {
+			m_position.y = arm->m_ArmPosition.y - 210;
 		}
 		else {
 			//部品の高さをアームの高さに揃える
