@@ -37,8 +37,8 @@ public:
 	CVector3 m_Buhin1pos = CVector3::Zero;
 	prefab::CSkinModelRender* m_BuhinModelRender2 = nullptr;	//右上に表示する部品２
 	CVector3 m_Buhin2pos = CVector3::Zero;
-	prefab::CSkinModelRender* m_BuhinModelRender3 = nullptr;	//右上に表示する部品３
-	CVector3 m_Buhin3pos = CVector3::Zero;
+	prefab::CSkinModelRender* m_BuhinModelRender1_2 = nullptr;	//右上に表示する部品３
+	CVector3 m_Buhin1_2pos = CVector3::Zero;
 	CVector3 m_hozon = CVector3::Zero;
 };
 

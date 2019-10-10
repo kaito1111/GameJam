@@ -122,7 +122,7 @@ void Buhin::Update()
 	}
 
 	//‰æ–ÊŠO‚É‚Å‚½‚çíœ
-	if (m_position.x > 750) {
+	if (m_position.x > 1000) {
 		DeleteGO(this);
 	}
 	//ƒNƒŒ[ƒ“‚ª“®‚¢‚Ä‚é‚ ‚¢‚¾
