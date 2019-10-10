@@ -99,74 +99,42 @@ void ClaftScreen::hituyoubuhin()
 //クリア後の回転
 void ClaftScreen::rotation()
 {	
-	mRot.MakeRotationFromQuaternion(qRot);
-	m_forward.x = mRot.m[2][0];
-	m_forward.y = mRot.m[2][1];
-	m_forward.z = mRot.m[2][2];
-	m_forward.Normalize();
-	m_right.x = mRot.m[0][0];
-	m_right.y = mRot.m[0][1];
-	m_right.z = mRot.m[0][2];
-	m_right.Normalize();
-	m_up.x = mRot.m[1][0];
-	m_up.y = mRot.m[1][1];
-	m_up.z = mRot.m[1][2];
-	m_up.Normalize();
 
-	CVector3 tyuusin = CVector3::Zero;	
-	CQuaternion qrot = CQuaternion::Identity;
 
-	//部品から中心に向けてのベクトル
-	CVector3 toZero1_1 = m_Buhin1pos - tyuusin;
-	toZero1_1.y = 0.0f;
-	toZero1_1.Normalize();
-	//回転量を計算
-	float angle1 = toZero1_1.Dot(m_forward);
-	rot1 = acosf(angle1);
-	//回転
-	qrot.SetRotation(CVector3::AxisY, rot1);
+	rot1 = 0.2f;
+
+	//タイヤ1つ目回転
+	qrot.SetRotationDeg(CVector3::AxisY, rot1);
 	qRot.Multiply(qrot);
 	//モデルに回転を反映
 	m_BuhinModelRender1->SetRotation(qRot);
 
-	//部品から中心に向けてのベクトル
-	CVector3 toZero1_2 = m_Buhin1_2pos - tyuusin;
-	toZero1_2.y = 0.0f;
-	toZero1_2.Normalize();
-	//回転量を計算
-	float angle2 = toZero1_2.Dot(m_forward);
-	rot2 = acosf(angle2);
-	//回転
-	qrot.SetRotation(CVector3::AxisY, rot2);
+
+	//タイヤ2つ目回転
+	qrot.SetRotationDeg(CVector3::AxisY, rot1);
 	qRot.Multiply(qrot);
 	//モデルに回転を反映
 	m_BuhinModelRender1_2->SetRotation(qRot);
 
-	//部品から中心に向けてのベクトル
-	CVector3 toZero1_3 = m_Buhin1_3pos - tyuusin;
-	toZero1_3.y = 0.0f;
-	toZero1_3.Normalize();
-	//回転量を計算
-	float angle3 = toZero1_3.Dot(m_forward);
-	rot3 = acosf(angle3);
-	//回転
-	qrot.SetRotation(CVector3::AxisY, rot3);
+
+	//タイヤ3つ目回転
+	qrot.SetRotationDeg(CVector3::AxisY, rot1);
 	qRot.Multiply(qrot);
 	//モデルに回転を反映
 	m_BuhinModelRender1_3->SetRotation(qRot);
 
-	//部品から中心に向けてのベクトル
-	CVector3 toZero1_4 = m_Buhin1_4pos - tyuusin;
-	toZero1_4.y = 0.0f;
-	toZero1_4.Normalize();
-	//回転量を計算
-	float angle4 = toZero1_4.Dot(m_forward);
-	rot4 = acosf(angle4);
-	//回転
-	qrot.SetRotation(CVector3::AxisY, rot4);
+
+	//タイヤ4つ目回転
+	qrot.SetRotationDeg(CVector3::AxisY, rot1);
 	qRot.Multiply(qrot);
 	//モデルに回転を反映
 	m_BuhinModelRender1_4->SetRotation(qRot);
+
+	//ボディを回転
+	qrot.SetRotationDeg(CVector3::AxisY, rot1);
+	qRot.Multiply(qrot);
+	//モデルに回転を反映
+	m_BuhinModelRender2->SetRotation(qRot);
 }
 
 //クラフトするときの動作
@@ -228,7 +196,7 @@ void ClaftScreen::claft()
 			sound();
 			m_BuhinModelRender2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin2");
 			m_BuhinModelRender2->Init(L"modelData/body.cmo");
-			m_Buhin2pos.x = -400.0f;
+			m_Buhin2pos.x = -300.0f;
 			m_Buhin2pos.y = 200.0f;
 			//エフェクトを作成。
 			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
@@ -242,6 +210,11 @@ void ClaftScreen::claft()
 			effect->SetScale(scale);
 			effect->SetPosition(m_Buhin2pos);
 			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
+			//ボディを回転
+			qrot.SetRotationDeg(CVector3::AxisY, rot1);
+			qRot.Multiply(qrot);
+			//モデルに回転を反映
+			m_BuhinModelRender2->SetRotation(qRot);
 
 			BuhinCount2 = 1;
 			Buhin2 = false;
@@ -319,14 +292,20 @@ void ClaftScreen::Update()
 			buhinscale.z += 0.02f;
 			m_Buhin1pos.x += 6.0f;
 			m_Buhin1pos.y -= 3.0f;
-			m_Buhin1_2pos.x += 4.0f;
+			m_Buhin1_2pos.x += 5.0f;
 			m_Buhin1_2pos.y -= 3.0f;
 			m_Buhin1_3pos.x += 6.0f;
 			m_Buhin1_3pos.y -= 3.0f;
-			m_Buhin1_4pos.x += 4.0f;
+			m_Buhin1_4pos.x += 5.0f;
 			m_Buhin1_4pos.y -= 3.0f;
-			m_Buhin2pos.x += 4.0f;
-			m_Buhin2pos.y -= 3.0f;
+			m_Buhin2pos.x += 3.8f;
+			m_Buhin2pos.y -= 2.0f;
+
+			CVector3 buhinscale2 = CVector3::One;
+			buhinscale2.x += 0.007f;
+			buhinscale2.y += 0.007f;
+			buhinscale2.z += 0.007f;
+
 			m_BuhinModelRender1->SetScale(buhinscale);	
 			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
 			m_BuhinModelRender1_2->SetScale(buhinscale);
@@ -335,12 +314,9 @@ void ClaftScreen::Update()
 			m_BuhinModelRender1_3->SetPosition(m_Buhin1_3pos);
 			m_BuhinModelRender1_4->SetScale(buhinscale);
 			m_BuhinModelRender1_4->SetPosition(m_Buhin1_4pos);
-			m_BuhinModelRender2->SetScale(buhinscale);
+			m_BuhinModelRender2->SetScale(buhinscale2);
 			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
 	
-			//クリア後の回転
-			rotation();
-
 			count++;
 		}
 	}
@@ -348,10 +324,17 @@ void ClaftScreen::Update()
 	if (senni == false)
 	{
 		if (count >= 60)
-		{
+		{		
+
 			NewGO<result>(0);
 			senni = true;
 		}
 	}
+	if (senni == true)
+	{
+		//クリア後の回転
+		rotation();
+	}
+
 	m_spriteRender->SetScale(scale);
 }
