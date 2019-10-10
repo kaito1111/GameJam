@@ -18,7 +18,6 @@ ClaftScreen::~ClaftScreen()
 //クエリ関係
 void ClaftScreen::Query()
 {
-	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin1", [&](Buhin* buhin1) {
 		if (buhin1->m_position.y >= 600.0f) {
 
@@ -29,7 +28,6 @@ void ClaftScreen::Query()
 		return true;
 		});
 
-	//PlayerBulletという名前のゲームオブジェクトに対してクエリ（問い合わせ）を行う。
 	QueryGOs<Buhin>("Buhin2", [&](Buhin* buhin2) {
 		if (buhin2->m_position.y >= 600.0f) {
 
@@ -99,8 +97,6 @@ void ClaftScreen::hituyoubuhin()
 //クリア後の回転
 void ClaftScreen::rotation()
 {	
-
-
 	rot1 = 0.2f;
 
 	//タイヤ1つ目回転
@@ -109,30 +105,19 @@ void ClaftScreen::rotation()
 	//モデルに回転を反映
 	m_BuhinModelRender1->SetRotation(qRot);
 
-
 	//タイヤ2つ目回転
-	qrot.SetRotationDeg(CVector3::AxisY, rot1);
-	qRot.Multiply(qrot);
 	//モデルに回転を反映
 	m_BuhinModelRender1_2->SetRotation(qRot);
 
-
 	//タイヤ3つ目回転
-	qrot.SetRotationDeg(CVector3::AxisY, rot1);
-	qRot.Multiply(qrot);
 	//モデルに回転を反映
 	m_BuhinModelRender1_3->SetRotation(qRot);
 
-
 	//タイヤ4つ目回転
-	qrot.SetRotationDeg(CVector3::AxisY, rot1);
-	qRot.Multiply(qrot);
 	//モデルに回転を反映
 	m_BuhinModelRender1_4->SetRotation(qRot);
 
 	//ボディを回転
-	qrot.SetRotationDeg(CVector3::AxisY, rot1);
-	qRot.Multiply(qrot);
 	//モデルに回転を反映
 	m_BuhinModelRender2->SetRotation(qRot);
 }
@@ -341,6 +326,7 @@ void ClaftScreen::Update()
 		qRot.Multiply(m_buhin2Kyori);
 		qRot.Multiply(m_buhin3Kyori);
 		qRot.Multiply(m_buhin4Kyori);
+
 
 		GD->DeleteArm = true;
 		GD->DeleteBeltCon = true;
