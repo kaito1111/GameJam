@@ -10,6 +10,8 @@ public:
 	//メンバ変数//
 	//モデルレンダー
 	prefab::CSkinModelRender* m_skinModelRender;
+	//サウンド
+	prefab::CSoundSource* ss;
 	//クラス変数
 	Arm* arm;
 	//スケール

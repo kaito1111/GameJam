@@ -1854,6 +1854,9 @@
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\haikei.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\sound\Beltcon.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.targets" />
