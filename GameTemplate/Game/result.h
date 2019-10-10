@@ -1,4 +1,5 @@
 #pragma once
+#include "GameDelete.h"
 class result : public IGameObject
 {
 public:
@@ -16,10 +17,10 @@ public:
 	CVector3 m_SelectPosition= { -300.0f,-300.0f,0.0f };
 	float SpriteGO = 0.0f;
 	bool New = false;
-
 	prefab::CSpriteRender* m_Spritefade = nullptr;
 	CVector4 m_Color = CVector4::White;
-	CVector4 m_FadeColor = { 1.0f,1.0f,1.0f,1.0f };
+	CVector4 m_FadeColor = { 1.0f,1.0f,1.0f,0.0f };
 	bool fadeout = false;
 
+	GameDelete* m_GameDelete = nullptr;
 };
