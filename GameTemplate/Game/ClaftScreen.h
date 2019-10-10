@@ -18,7 +18,7 @@ public:
 	int count = 0;
 
 	float rot1 = 0.0f;	//回転量
-	float rot2 = 0.0f;	//回転量
+	float rot2 = 50.0f;	//回転量
 
 
 	bool hituyoubuhin1 = false;
@@ -36,7 +36,9 @@ public:
 
 	GameDelete* GD = nullptr;	//デリートするよ！
 	CQuaternion qrot = CQuaternion::Identity;
+	CQuaternion qrot2 = CQuaternion::Identity;
 	CQuaternion qRot;	//回転
+	CQuaternion qRot2;	//回転
 	CVector3 scale = CVector3::Zero;	//スケール
 	CVector3 buhinscale = CVector3::One;	//スケール
 	CVector3 buhin1pos = CVector3::Zero;	//必要な部品１の位置
