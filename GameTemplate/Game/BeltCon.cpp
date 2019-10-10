@@ -47,6 +47,9 @@ bool BeltCon::Start()
 //Generatorみたいな感じ
 void BeltCon::Update()
 {
+	if (m_position.y <= -500) {
+		DeleteGO(this);
+	}
 	//アームが動いてる間はサウンドを消す
 	if (arm->Set == true) {
 		ss->Play(true);
