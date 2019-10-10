@@ -147,8 +147,12 @@ void ClaftScreen::Update()
 			Buhin1 = true;
 			m_BuhinModelRender1 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
 			m_BuhinModelRender1->Init(L"modelData/wheel.cmo");
-			m_Buhin1pos.x = -300.0f;
-			m_Buhin1pos.y = 200.0f;
+			m_Buhin1pos.x = -350.0f;
+			m_Buhin1pos.y = 150.0f;
+			m_BuhinModelRender1_2 = NewGO < prefab::CSkinModelRender>(0, "ClaftBuhin1");
+			m_BuhinModelRender1_2->Init(L"modelData/wheel.cmo");
+			m_Buhin1_2pos.x = -550.0f;
+			m_Buhin1_2pos.y = 150.0f;
 			//エフェクトを作成。
 			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
 			//エフェクトを再生。
@@ -161,7 +165,7 @@ void ClaftScreen::Update()
 			effect->SetScale(scale);
 			effect->SetPosition(m_Buhin1pos);
 			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
-
+			m_BuhinModelRender1_2->SetPosition(m_Buhin1_2pos);
 			BuhinCount1 = 1;
 			Buhin1 = false;
 		}
@@ -208,10 +212,14 @@ void ClaftScreen::Update()
 			buhinscale.z += 0.05f;
 			m_Buhin1pos.x += 4.0f;
 			m_Buhin1pos.y -= 3.0f;
+			m_Buhin1_2pos.x += 4.0f;
+			m_Buhin1_2pos.y -= 3.0f;
 			m_Buhin2pos.x += 4.0f;
 			m_Buhin2pos.y -= 3.0f;
 			m_BuhinModelRender1->SetScale(buhinscale);	
 			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
+			m_BuhinModelRender1_2->SetScale(buhinscale);
+			m_BuhinModelRender1_2->SetPosition(m_Buhin1_2pos);
 			m_BuhinModelRender2->SetScale(buhinscale);
 			m_BuhinModelRender2->SetPosition(m_Buhin2pos);
 			count++;
