@@ -19,10 +19,6 @@ bool::Title::Start()
 	m_spriteRender = NewGO<prefab::CSpriteRender>(0);
 	//ƒ^ƒCƒgƒ‹‚Ì“Ç‚Ýž‚Ý
 	m_spriteRender->Init(L"sprite/GGJ_title.dds", 1280,720,0);
-	m_BGM = NewGO<prefab::CSoundSource>(0);
-	m_BGM->Init(L"sound/bgm_kakutei.wab");
-	m_BGM->Play(true);
-	m_BGM->SetVolume(1.0f);
 	return true;
 }
 

@@ -16,6 +16,7 @@ GameSence::~GameSence()
 	DeleteGO(m_TimerFont);
 	DeleteGO(m_Spritefade);
 	DeleteGO(m_Arm);
+	DeleteGO(m_BGM);
 }
 
 bool GameSence::Start()
@@ -36,7 +37,12 @@ bool GameSence::Start()
 	m_Spritefade->Init(L"sprite/‹ótest.dds", 1280.0f, 720.0f);
 	m_Spritefade->SetMulColor(m_FadeColor);
 
-	
+
+	m_BGM = NewGO<prefab::CSoundSource>(0);
+	m_BGM->Init(L"sound/bgm_kakutei.wav");
+	m_BGM->Play(true);
+	m_BGM->SetVolume(1.0f);
+
 	m_Delete = FindGO<GameDelete>("GameDelete");
 	return true;
 }
@@ -46,13 +52,13 @@ void GameSence::Update()
 	if (m_FadeColor.a <= 0.0f)
 	{
 		StartGame += GameTime().GetFrameDeltaTime();
-		if (StartGame>=1.0f)
+		if (StartGame >= 1.0f)
 		{
 			if (!move)
 			{
-			m_Arm = FindGO<Arm>("Arm");
-			m_Arm->Drop = true;
-			move = true;
+				m_Arm = FindGO<Arm>("Arm");
+				m_Arm->Drop = true;
+				move = true;
 			}
 		}
 		time -= GameTime().GetFrameDeltaTime();
