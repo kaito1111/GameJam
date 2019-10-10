@@ -154,9 +154,14 @@ void Buhin::Update()
 
 	//何かものをつかんでいるならば
 	if (IsCatch == true) {
-		//部品の高さをアームの高さに揃える
-		//アームのモデルが変わるたびyに-Yしてください
-		m_position.y = arm->m_ArmPosition.y - 120;
+		if (IamGomi2){
+			m_position.y = arm->m_ArmPosition.y - 180;
+		}
+		else {
+			//部品の高さをアームの高さに揃える
+			//アームのモデルが変わるたびyに-Yしてください
+			m_position.y = arm->m_ArmPosition.y - 125;
+		}
 	}
 
 	//画面外にでたら削除

@@ -61,4 +61,7 @@
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\sound\Beltcon.wav" />
+  </ItemGroup>
 </Project>
