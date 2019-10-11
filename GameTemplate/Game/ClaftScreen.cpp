@@ -313,54 +313,56 @@ void ClaftScreen::Update()
 	//‚»‚ë‚Á‚Ä‚¢‚È‚¢•”•i‚Ì•\Ž¦
 	hituyoubuhin();
 
+
+
 	if (scale.x <= 5.8f)
 	{
 		if (BuhinCount1 == 1 && BuhinCount2 == 1)
 		{
-			GameOver = true;
+			if (GameOver == false)
+			{
+				m_BuhinModelRender1 = NewGO<prefab::CSkinModelRender>(0, "taiyakansei");
+				m_BuhinModelRender1->Init(L"modelData/taiyakansei.cmo");
+				GameOver = true;
+			}
+			if (GameOver == true)
+			{
+				scale.x += 0.05f;
+				scale.y += 0.045f;
+				buhinscale.x += 0.02f;
+				buhinscale.y += 0.02f;
+				buhinscale.z += 0.02f;
+				m_Buhin1pos.x += 5.0f;
+				m_Buhin1pos.y -= 3.0f;
+				//m_Buhin1_2pos.x += 5.0f;
+				//m_Buhin1_2pos.y -= 3.0f;
+				//m_Buhin1_3pos.x += 5.0f;
+				//m_Buhin1_3pos.y -= 3.0f;
+				//m_Buhin1_4pos.x += 5.0f;
+				//m_Buhin1_4pos.y -= 3.0f;
+				//m_Buhin2pos.x += 5.0f;
+				//m_Buhin2pos.y -= 2.0f;
 
-			scale.x += 0.05f;
-			scale.y += 0.045f;
-			buhinscale.x += 0.02f;
-			buhinscale.y += 0.02f;
-			buhinscale.z += 0.02f;
-			m_Buhin1pos.x += 5.0f;
-			m_Buhin1pos.y -= 3.0f;
-			//m_Buhin1_2pos.x += 5.0f;
-			//m_Buhin1_2pos.y -= 3.0f;
-			//m_Buhin1_3pos.x += 5.0f;
-			//m_Buhin1_3pos.y -= 3.0f;
-			//m_Buhin1_4pos.x += 5.0f;
-			//m_Buhin1_4pos.y -= 3.0f;
-			//m_Buhin2pos.x += 5.0f;
-			//m_Buhin2pos.y -= 2.0f;
+				CVector3 buhinscale2 = CVector3::One;
+				buhinscale2.x += 0.007f;
+				buhinscale2.y += 0.007f;
+				buhinscale2.z += 0.007f;
 
-			CVector3 buhinscale2 = CVector3::One;
-			buhinscale2.x += 0.007f;
-			buhinscale2.y += 0.007f;
-			buhinscale2.z += 0.007f;
-
-			m_BuhinModelRender1->SetScale(buhinscale);	
-			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
-			//m_BuhinModelRender1_2->SetScale(buhinscale);
-			//m_BuhinModelRender1_2->SetPosition(m_Buhin1_2pos);
-			//m_BuhinModelRender1_3->SetScale(buhinscale);
-			//m_BuhinModelRender1_3->SetPosition(m_Buhin1_3pos);
-			//m_BuhinModelRender1_4->SetScale(buhinscale);
-			//m_BuhinModelRender1_4->SetPosition(m_Buhin1_4pos);
-			//m_BuhinModelRender2->SetScale(buhinscale2);
-			//m_BuhinModelRender2->SetPosition(m_Buhin2pos);
-	
+				m_BuhinModelRender1->SetScale(buhinscale);
+				m_BuhinModelRender1->SetPosition(m_Buhin1pos);
+				//m_BuhinModelRender1_2->SetScale(buhinscale);
+				//m_BuhinModelRender1_2->SetPosition(m_Buhin1_2pos);
+				//m_BuhinModelRender1_3->SetScale(buhinscale);
+				//m_BuhinModelRender1_3->SetPosition(m_Buhin1_3pos);
+				//m_BuhinModelRender1_4->SetScale(buhinscale);
+				//m_BuhinModelRender1_4->SetPosition(m_Buhin1_4pos);
+				//m_BuhinModelRender2->SetScale(buhinscale2);
+				//m_BuhinModelRender2->SetPosition(m_Buhin2pos);
+			}
 			count++;
 		}
 	}
-	if (BuhinCount1 == 1 && BuhinCount2 == 1)
-	{
-		if (GameOver == false); {
-			m_BuhinModelRender1 = NewGO<prefab::CSkinModelRender>(0, "taiyakansei");
-			m_BuhinModelRender1->Init(L"modelData/taiyakansei.cmo");
-		}
-	}
+
 	if (senni == false)
 	{
 		if (count >= 60)
