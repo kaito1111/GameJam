@@ -11,7 +11,6 @@ Arm::Arm()
 Arm::~Arm()
 {
 	DeleteGO(m_ArmModel);
-	DeleteGO(m_Claft);
 	DeleteGO(m_ArmtumeRight);
 	DeleteGO(m_ArmtumeLeft);
 }
