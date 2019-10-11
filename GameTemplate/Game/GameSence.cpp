@@ -14,7 +14,6 @@ GameSence::GameSence()
 GameSence::~GameSence()
 {
 	DeleteGO(m_TimerFont);
-	DeleteGO(m_Spritefade);
 }
 
 bool GameSence::Start()
@@ -30,9 +29,6 @@ bool GameSence::Start()
 	m_TimerFont->SetPosition(m_FontPosition);					//フォントの位置を教える
 	m_TimerFont->SetScale(1.5f);								//フォントのスケールをセットする
 
-	m_Spritefade = NewGO<prefab::CSpriteRender>(0);
-	m_Spritefade->Init(L"sprite/空test.dds", 1280.0f, 720.0f);	//フェードの絵
-	m_Spritefade->SetMulColor(m_FadeColor);						//フェードの色(透明度）
 
 
 	m_BGM = NewGO<prefab::CSoundSource>(0);
@@ -48,30 +44,26 @@ bool GameSence::Start()
 
 void GameSence::Update()
 {
-	if (m_FadeColor.a <= 0.0f)									//フェードの絵が消えるとゲームが始まる
+	StartGame += GameTime().GetFrameDeltaTime();
+	if (StartGame >= 1.0f)									//1秒立つとアームが動かせるようになる
 	{
-		StartGame += GameTime().GetFrameDeltaTime();
-		if (StartGame >= 1.0f)									//1秒立つとアームが動かせるようになる
-		{
-			m_Arm->Drop = true;
-		}
-		time -= GameTime().GetFrameDeltaTime();					//ゲームのプレイ時間を表示する
-		m_TimerFont->SetText(timer);							//テキストをセットする
-		if (!New) 
-		{
-			if (time < 0.0f)									//プレイ時間がゼロになればゲームが終了する
-			{
-				time = 0.0f;
-				m_FontPosition.x += 10.0f;
-				NewGO<result>(2, "result");
-				GameOver = true;
-			}
-			New = true;
-		}
+		m_Arm->Drop = true;
+	time -= GameTime().GetFrameDeltaTime();					//ゲームのプレイ時間を表示する
+	m_TimerFont->SetText(timer);							//テキストをセットする
 	}
+	if (!New)
+	{
+		if (time < 0.0f)									//プレイ時間がゼロになればゲームが終了する
+		{
+			time = 0.0f;
+			m_FontPosition.x += 10.0f;
+			NewGO<result>(2, "result");
+			GameOver = true;
+		}
+		New = true;
+	}
+
 	swprintf_s(timer, L"あと%.1f秒", time);					//現在の時間を設定する
-	m_FadeColor.a -= 0.05f;										//フェードを薄くする
-	m_Spritefade->SetMulColor(m_FadeColor);						//フェードの色(透明度）
 	m_TimerFont->SetPosition(m_FontPosition);					//フォントの位置を教える
 	if (m_Delete->DeleteGameSence)								//trueになると死ぬ
 	{

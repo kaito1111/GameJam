@@ -64,15 +64,6 @@ void result::Update()
 		m_SpriteSelect->SetPosition(m_SelectPosition);
 		if (m_SelectPosition.x == 300.0f && Pad(0).IsPress(enButtonB) && fadeout)		//フェードとリスタートの文
 		{
-			m_Spritefade->SetMulColor(m_FadeColor);
-
-			m_GameDelete->DeleteArm = true;
-			m_GameDelete->DeleteGameSence = true;
-			m_GameDelete->DeleteScore = true;
-			m_GameDelete->DeleteClaftScreen = true;
-			m_GameDelete->DeleteBeltCon = true;
-			m_GameDelete->DeleteBuckGround = true;
-			m_GameDelete->DeleteBuhin = true;
 			m_Spritefade->Init(L"sprite/haikei.dds", 1280.0f, 720.0f);
 			NewGO<GameSence>(0, "GameSence");
 			fadeout = true;
@@ -81,7 +72,6 @@ void result::Update()
 		}
 		if (m_SelectPosition.x == -300.0f && Pad(0).IsPress(enButtonB) && fadeout)		//フェードとタイトルへ行く文
 		{
-			m_Spritefade->SetMulColor(m_FadeColor);
 			NewGO<Title>(0);
 			m_Spritefade->Init(L"sprite/haikei.dds", 1280.0f, 720.0f);
 			fadeout = true;

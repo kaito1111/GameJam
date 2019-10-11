@@ -150,14 +150,17 @@ void Buhin::Update()
 	if (IsCatch == true) {
 		if (IamGomi2 == 1) {
 			m_position.y = arm->m_ArmPosition.y - 220;
+			m_position.x = arm->m_ArmPosition.x;
 		}
 		else if (Iamframe == 1) {
 			m_position.y = arm->m_ArmPosition.y - 210;
+			m_position.x = arm->m_ArmPosition.x;
 		}
 		else {
 			//部品の高さをアームの高さに揃える
 			//アームのモデルが変わるたびyに-Yしてください
 			m_position.y = arm->m_ArmPosition.y - 190;
+			m_position.x = arm->m_ArmPosition.x;
 		}
 	}
 	//いらないパーツなら
