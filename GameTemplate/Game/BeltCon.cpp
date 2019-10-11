@@ -48,6 +48,7 @@ bool BeltCon::Start()
 //Generator‚İ‚½‚¢‚ÈŠ´‚¶
 void BeltCon::Update()
 {
+	//ƒNƒ‰ƒtƒg‰æ–Ê‚ªŠg‘å‚³‚ê‚½‚çBeltCon‚ª‰º‚É~‚è‚Ä‚Á‚ÄÁ‚¦‚é
 	if (m_position.y <= -500) {
 		DeleteGO(this);
 	}
