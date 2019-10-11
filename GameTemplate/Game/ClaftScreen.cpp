@@ -12,7 +12,13 @@ ClaftScreen::ClaftScreen()
 
 ClaftScreen::~ClaftScreen()
 {
-
+	DeleteGO(m_spriteRender);
+	DeleteGO(m_BuhinModelRender1);
+	DeleteGO(m_BuhinModelRender1_2);
+	DeleteGO(m_BuhinModelRender1_3);
+	DeleteGO(m_BuhinModelRender1_4);
+	DeleteGO(m_BuhinModelRender2);
+	DeleteGO(m_bgmSoundSource);
 }
 
 //ƒNƒGƒŠŠÖŒW
@@ -340,7 +346,7 @@ void ClaftScreen::Update()
 		if (count >= 60)
 		{		
 
-			//NewGO<result>(2);
+			NewGO<result>(2);
 			senni = true;
 		}
 	}
@@ -366,5 +372,9 @@ void ClaftScreen::Update()
 		//GD->DeleteBeltCon = true;
 	}
 	   
+	if (GD->DeleteClaftScreen == true)
+	{
+		DeleteGO(this);
+	}
 	m_spriteRender->SetScale(scale);
 }
