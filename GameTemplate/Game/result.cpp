@@ -75,6 +75,7 @@ void result::Update()
 			restart = true;
 			m_FadeColor.a = 1.0f;
 			SpriteGO = 0.0f;
+			fadedown = true;
 			//DeleteGO(this);
 		}
 		if (m_SelectPosition.x == -300.0f && Pad(0).IsPress(enButtonB) && !fadeout)		//フェードとタイトルへ行く文
@@ -89,6 +90,7 @@ void result::Update()
 			fadeout = true;
 			m_FadeColor.a = 1.0f;
 			SpriteGO = 0.0f;
+			fadedown = true;
 		}
 	}
 	if (SpriteGO >= 1.0f)
@@ -99,7 +101,7 @@ void result::Update()
 		}
 	}
 
-	if (m_FadeColor.a <= -0.05f)								//ゲームにあるインスタンスをすべて消す
+	if (m_FadeColor.a <= 0.05f&&fadedown)								//ゲームにあるインスタンスをすべて消す
 	{
 		if (restart)
 		{
