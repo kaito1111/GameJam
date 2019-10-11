@@ -1,5 +1,6 @@
 #pragma once
 #include "GameDelete.h"
+#include "GameSence.h"
 
 class buhin;
 class Arm;
@@ -34,6 +35,7 @@ public:
 	void claft();
 	void sound();
 
+	GameSence* GS = nullptr;	//ゲームシーン
 	GameDelete* GD = nullptr;	//デリートするよ！
 	CQuaternion qrot = CQuaternion::Identity;
 	CQuaternion qrot2 = CQuaternion::Identity;

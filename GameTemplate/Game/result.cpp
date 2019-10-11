@@ -105,7 +105,8 @@ void result::Update()
 	{
 		if (restart)
 		{
-			if (!Newgo) {
+			if (!Newgo) 
+			{
 				NewGO<Title>(0, "title");
 				Newgo = true;
 			}

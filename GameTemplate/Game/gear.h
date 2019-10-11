@@ -1,6 +1,7 @@
 #pragma once
 #include "GameDelete.h"
 #include "Arm.h"
+#include "GameSence.h"
 
 class gear : public IGameObject
 {
@@ -18,4 +19,5 @@ public:
 	float Rotritu = 0.0f;
 	GameDelete* m_Delete = nullptr;
 	Arm* m_Arm = nullptr;
+	GameSence* m_Sense = nullptr;
 };

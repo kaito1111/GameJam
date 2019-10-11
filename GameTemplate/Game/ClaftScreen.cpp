@@ -235,6 +235,8 @@ bool ClaftScreen::Start()
 	buhin2pos.x = 400.0f;
 	buhin2pos.y = -50.0f;
 
+	GS = FindGO<GameSence>("GameSence");
+
 	m_spriteRender->SetScale(scale);
 	m_spriteRender->SetPosition(m_position);
 	return true;
@@ -242,6 +244,10 @@ bool ClaftScreen::Start()
 
 void ClaftScreen::Update()
 {
+	if (GS->GameOver == true)
+	{
+		GameOver = true;
+	}
 	//クエリ関係
 	Query();
 	//クラフトするときの動作

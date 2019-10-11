@@ -80,9 +80,9 @@ void BeltCon::Update()
 	// m_timer > Xf のXの値をいじるとスポーン時間が変わります
 	if (m_timer > 2.0f) {
 		//乱数
-		rand = Random().GetRandInt();
+		rand = Random().GetRandInt() % waru;
 		//randの値をwaru個に分ける
-		rand = rand % waru;
+		//rand = rand ;
 
 		/*それぞれの乱数に対応した"部品"のインスタンスをここで作成します
 		"部品"を追加したい場合をこことBuhin.cppに追加してください*/
