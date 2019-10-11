@@ -1,6 +1,6 @@
 #pragma once
 #include "GameDelete.h"
-
+#include "ClaftScreen.h"
 class GameSence;
 
 class score : public IGameObject
@@ -12,7 +12,10 @@ public:
 
 	bool Start();
 	void Update();
-	
+	int hozon = 0.0f;
+
+	ClaftScreen* CS = nullptr;	//クラフトスクリーン
+
 	prefab::CFontRender* m_scoreFont = nullptr;					//時間のフォント
 	int Score = 0;												//クリアした時間
 	CVector3 m_FontColor = CVector3::One;						//フォントの文字

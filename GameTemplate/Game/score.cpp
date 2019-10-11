@@ -13,6 +13,8 @@ score::~score()
 
 bool score::Start()
 {
+	CS = FindGO<ClaftScreen>("cs");
+
 	m_Sence = FindGO< GameSence>("GameSence");
 	Score = Random().GetRandInt() % 1000;
 	if (Score < 0)
@@ -32,6 +34,10 @@ bool score::Start()
 
 void score::Update()
 {
+	if (CS->GameOver)
+	{
+		hozon = Score;
+	}
 	Setscore += GameTime().GetFrameDeltaTime();
 	if (Setscore >= 1.0f)
 	{
@@ -44,6 +50,10 @@ void score::Update()
 		{
 			Score = 0;
 		}
+	}
+	if (CS->GameOver)
+	{
+		Score = hozon;
 	}
 	swprintf_s(ScoreMoji, L"%3.3d点", Score);				//スコアのセット
 	m_scoreFont->SetText(ScoreMoji);						//文字列をセット
