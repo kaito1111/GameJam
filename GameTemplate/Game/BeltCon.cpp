@@ -61,7 +61,7 @@ void BeltCon::Update()
 	}
 
 	//Œo‰ßŽžŠÔ
-	if (!m_Sence->GameOver)
+	if (!m_Sence->GameOver && arm->Set == true)
 	{
 		m_timer += GameTime().GetFrameDeltaTime();
 	}

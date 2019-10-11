@@ -125,14 +125,17 @@ void Buhin::Update()
 		diff.y = arm->m_ArmPosition.y - m_position.y;
 		/*dif.yだけの方を少し下げることで当たりX軸の当たり判定はそのままで
 		Y軸の当たり判定を無理やり広める*/
-		//Y軸の当たり判定を調整
+		//Y軸の当たり判定がおかしいときはここの値を調整してください
 		if (IamGomi2 == 1) {
+			//どこでもドアのY軸の当たり判定調整
 			diff.y -= 180;
 		}
 		else if(Iamframe == 1){
+			//フレームのY軸の当たり判定調整
 			diff.y -= 120;
 		}
 		else {
+			//レンジとタイヤの当たり判定調整
 			diff.y -= 150;
 		}
 		diff.x = arm->m_ArmPosition.x - m_position.x;
@@ -155,19 +158,26 @@ void Buhin::Update()
 	});
 
 	//何かものをつかんでいるならば
+	//キャッチしている位置がおかしいならここを変更してください
 	if (IsCatch == true) {
 		if (IamGomi2 == 1) {
-			m_position.y = arm->m_ArmPosition.y - 220;
+			//つかまれたどこでもドアの位置調整
+			m_position.y = arm->m_ArmPosition.y - 240;
 			m_position.x = arm->m_ArmPosition.x;
 		}
 		else if (Iamframe == 1) {
+			//つかまれたフレームの位置調整
 			m_position.y = arm->m_ArmPosition.y - 150;
 			m_position.x = arm->m_ArmPosition.x;
 		}
-		else {
-			//部品の高さをアームの高さに揃える
-			//アームのモデルが変わるたびyに-Yしてください
+		else if(IamWheel == 1){
+			//つかまれたタイヤの位置調整
 			m_position.y = arm->m_ArmPosition.y - 180;
+			m_position.x = arm->m_ArmPosition.x;
+		}
+		else {
+			//つかまれたレンジの位置調整
+			m_position.y = arm->m_ArmPosition.y - 220;
 			m_position.x = arm->m_ArmPosition.x;
 		}
 	}
@@ -204,7 +214,7 @@ void Buhin::Update()
 	//クレーンが動いてるあいだ
 	if (arm->Set == false) {
 		m_moveSpeed.x = 0.0f;
-		belt->m_timer = 0;
+		//belt->m_timer = 0;
 	}
 	//クレーンが動いていないなら
 	else {
