@@ -24,7 +24,9 @@ bool result::Start()
 	m_Spritefade->Init(L"sprite/haikei.dds", 1280.0f, 720.0f);
 	m_Spritefade->SetMulColor(m_FadeColor);					//ŠG‚Ì”Z‚³
 	m_SpriteTitle = NewGO<prefab::CSpriteRender>(1);
+	m_SpriteTitle->SetPosition(m_TitlePosition);
 	m_SpriteReStart = NewGO < prefab::CSpriteRender>(1);
+	m_SpriteReStart->SetPosition(m_ReStartPosition);
 	m_SpriteSelect = NewGO<prefab::CSpriteRender>(0);
 	m_Spritefade->SetMulColor(m_FadeColor);
 	m_GameDelete = FindGO<GameDelete>("GameDelete");
@@ -39,9 +41,7 @@ void result::Update()
 		if (!New)
 		{
 			m_SpriteTitle->Init(L"sprite/result_restart.dds", 400.0f, 300.0f);
-			m_SpriteTitle->SetPosition(m_TitlePosition);
 			m_SpriteReStart->Init(L"sprite/result_title.dds", 400.0f, 300.0f);
-			m_SpriteReStart->SetPosition(m_ReStartPosition);
 			m_SpriteSelect->Init(L"sprite/result_select.dds", 405.0f, 305.0);
 			New = true;
 		}
