@@ -2,6 +2,7 @@
 #include "Arm.h"
 #include "BeltCon.h"
 #include "ClaftScreen.h"
+class GameSence;
 class ClaftScreen;
 class Buhin : public IGameObject
 {
@@ -36,5 +37,6 @@ public:
 	//—¬‚ê‚é‘¬‚³
 	CVector3 m_moveSpeed = CVector3::Zero;
 	int rand;
+	GameSence* m_Sence = nullptr;
 };
 

@@ -3,6 +3,7 @@
 #include "Arm.h"
 #include "ClaftScreen.h"
 #include "BeltCon.h"
+#include "GameSence.h"
 
 Buhin::Buhin()
 {
@@ -23,6 +24,7 @@ bool Buhin::Start()
 	CS = FindGO<ClaftScreen>("cs");
 	//FindしてBeltConの値を参照できるように
 	belt = FindGO<BeltCon>("BC");
+	m_Sence = FindGO<GameSence>("GameSence");
 	//ベルトコンベアからrandの値を参照する
 	rand = belt->rand;
 	hantei();
@@ -111,6 +113,7 @@ bool Buhin::Start()
 
 void Buhin::Update()
 {
+
 	//クエリでアームにキャッチされているのかの判定を行う
 	QueryGOs<Arm>("Arm", [&](Arm* arm)->bool {
 		CVector3 diff;
@@ -205,7 +208,11 @@ void Buhin::Update()
 
 	//右から左に流す
 	m_position.x += m_moveSpeed.x;
-	m_skinModelRender->SetPosition(m_position);
+	if (!m_Sence->GameOver)
+	{
+		m_skinModelRender->SetPosition(m_position);
+	}
+	
 
 	//画面外にでたら削除
 	if (m_position.x > 1000) {

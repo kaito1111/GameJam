@@ -1,5 +1,6 @@
 #pragma once
 #include "Arm.h"
+class GameSence;
 class BeltCon : public IGameObject
 {
 public:
@@ -27,5 +28,6 @@ public:
 	//waruh‚Í‰Šú‰»—p‚È‚Ì‚Åcpp•ÏX‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B
 	int waruh = 5;
 	int count[2] = { 0,0 };
+	GameSence* m_Sence = nullptr;
 };
 
