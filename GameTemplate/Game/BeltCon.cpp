@@ -58,6 +58,7 @@ bool BeltCon::Start()
 //Generatorみたいな感じ
 void BeltCon::Update()
 {
+	//クラフト画面が拡大されたらBeltConが下に降りてって消える
 	if (m_position.y <= -500) {
 		DeleteGO(this);
 	}
@@ -70,7 +71,7 @@ void BeltCon::Update()
 	}
 
 	//経過時間
-	if (!m_Sence->GameOver)
+	if (!m_Sence->GameOver && arm->Set == true)
 	{
 		m_timer += GameTime().GetFrameDeltaTime();
 	}
