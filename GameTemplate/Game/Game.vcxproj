@@ -1770,6 +1770,7 @@
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameDelete.cpp" />
     <ClCompile Include="GameSence.cpp" />
+    <ClCompile Include="gear.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="score.cpp" />
@@ -1805,6 +1806,7 @@
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameDelete.h" />
     <ClInclude Include="GameSence.h" />
+    <ClInclude Include="gear.h" />
     <CLInclude Include="resource.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="score.h" />
@@ -1824,6 +1826,7 @@
     <MeshContentTask Include="Assets\modelData\garakuta1.FBX" />
     <MeshContentTask Include="Assets\modelData\garakuta2.FBX" />
     <MeshContentTask Include="Assets\modelData\garakuta3.FBX" />
+    <MeshContentTask Include="Assets\modelData\gear.FBX" />
     <MeshContentTask Include="Assets\modelData\Gomi.FBX" />
     <MeshContentTask Include="Assets\modelData\taiyakansei.FBX" />
     <MeshContentTask Include="Assets\modelData\unityChan.fbx" />
