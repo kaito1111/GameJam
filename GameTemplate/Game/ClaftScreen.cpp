@@ -176,9 +176,9 @@ void ClaftScreen::claft()
 			//エフェクトを再生。
 			effect->Play(L"effect/create.efk");
 			CVector3 scale = CVector3::One;
-			scale.x = 15.0f;
-			scale.y = 15.0f;
-			scale.z = 15.0f;
+			scale.x = 50.0f;
+			scale.y = 50.0f;
+			scale.z = 50.0f;
 
 			//タイヤ1つ目回転
 			qrot2.SetRotationDeg(CVector3::AxisY, rot2);
@@ -201,6 +201,7 @@ void ClaftScreen::claft()
 
 
 			effect->SetScale(scale);
+			effect->SetPosition(m_taiyapos);
 			m_taiya->SetPosition(m_taiyapos);
 			//effect->SetPosition(m_Buhin1pos);
 			//m_BuhinModelRender1->SetPosition(m_Buhin1pos);
@@ -232,12 +233,12 @@ void ClaftScreen::claft()
 			//エフェクトを再生。
 			effect->Play(L"effect/create.efk");
 			CVector3 scale = CVector3::One;
-			scale.x = 15.0f;
-			scale.y = 15.0f;
-			scale.z = 15.0f;
+			scale.x = 50.0f;
+			scale.y = 50.0f;
+			scale.z = 50.0f;
 
 			effect->SetScale(scale);
-			//effect->SetPosition(m_Buhin2pos);
+			effect->SetPosition(m_gaisoupos);
 			//m_BuhinModelRender2->SetPosition(m_Buhin2pos);
 			//ボディを回転
 			qrot2.SetRotationDeg(CVector3::AxisY, rot2);
