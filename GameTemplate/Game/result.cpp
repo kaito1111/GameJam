@@ -36,9 +36,9 @@ void result::Update()
 	SpriteGO += GameTime().GetFrameDeltaTime();
 	if (SpriteGO >= 1.0f)
 	{
-		if (!New) 
+		if (!New)
 		{
-			m_SpriteTitle->Init(L"sprite/result_restart.dds", 400.0f, 300.0f);			
+			m_SpriteTitle->Init(L"sprite/result_restart.dds", 400.0f, 300.0f);
 			m_SpriteTitle->SetPosition(m_TitlePosition);
 			m_SpriteReStart->Init(L"sprite/result_title.dds", 400.0f, 300.0f);
 			m_SpriteReStart->SetPosition(m_ReStartPosition);
@@ -65,32 +65,60 @@ void result::Update()
 		if (m_SelectPosition.x == 300.0f && Pad(0).IsPress(enButtonB) && !fadeout)		//フェードとリスタートの文
 		{
 			m_Spritefade->Init(L"sprite/haikei.dds", 1280.0f, 720.0f);
-			NewGO<GameSence>(0, "GameSence");
+			m_GameDelete->DeleteArm = true;
+			m_GameDelete->DeleteGameSence = true;
+			m_GameDelete->DeleteScore = true;
+			m_GameDelete->DeleteClaftScreen = true;
+			m_GameDelete->DeleteBeltCon = true;
+			m_GameDelete->DeleteBuckGround = true;
+			m_GameDelete->DeleteBuhin = true;
 			fadeout = true;
+			restart = true;
 			m_FadeColor.a = 1.0f;
+			SpriteGO = 0.0f;
 			//DeleteGO(this);
 		}
 		if (m_SelectPosition.x == -300.0f && Pad(0).IsPress(enButtonB) && !fadeout)		//フェードとタイトルへ行く文
 		{
-			NewGO<Title>(0);
 			m_Spritefade->Init(L"sprite/haikei.dds", 1280.0f, 720.0f);
+			m_GameDelete->DeleteClaftScreen = true;
+			m_GameDelete->DeleteArm = true;
+			m_GameDelete->DeleteGameSence = true;
+			m_GameDelete->DeleteScore = true;
+			m_GameDelete->DeleteBeltCon = true;
+			m_GameDelete->DeleteBuckGround = true;
+			m_GameDelete->DeleteBuhin = true;
+			title = true;
 			fadeout = true;
 			m_FadeColor.a = 1.0f;
+			SpriteGO = 0.0f;
 		}
 	}
-	if (fadeout == true)
+	if (SpriteGO >= 1.0f)
 	{
-		m_FadeColor.a -= 0.05f;
+		if (fadeout == true)
+		{
+			m_FadeColor.a -= 0.05f;
+		}
 	}
-	if (m_FadeColor.a <= -0.5f)								//ゲームにあるインスタンスをすべて消す
+
+	if (m_FadeColor.a <= -0.05f)								//ゲームにあるインスタンスをすべて消す
 	{
-		m_GameDelete->DeleteArm = true;
-		m_GameDelete->DeleteGameSence = true;
-		m_GameDelete->DeleteScore = true;
-		m_GameDelete->DeleteClaftScreen = true;
-		m_GameDelete->DeleteBeltCon = true;
-		m_GameDelete->DeleteBuckGround = true;
-		m_GameDelete->DeleteBuhin = true;
+		if (restart)
+		{
+			if (!Newgo) {
+				NewGO<Title>(0, "title");
+				Newgo = true;
+			}
+		}
+		if (restart)
+		{
+			if (!Newgo)
+			{
+				NewGO<GameSence>(0, "GameSence");
+				Newgo = true;
+			}
+		}
 		DeleteGO(this);
 	}
 	m_Spritefade->SetMulColor(m_FadeColor);					//絵の濃さ

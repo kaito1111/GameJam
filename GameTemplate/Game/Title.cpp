@@ -47,7 +47,6 @@ void Title::Update()
 	if (Pad(0).IsPress(enButtonB)) {
 		if (!New)
 		{
-			NewGO<GameDelete>(0, "GameDelete");
 			NewGO<GameSence>(0, "GameSence");
 			New = true;
 		}

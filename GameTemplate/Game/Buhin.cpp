@@ -162,7 +162,7 @@ void Buhin::Update()
 		else {
 			//部品の高さをアームの高さに揃える
 			//アームのモデルが変わるたびyに-Yしてください
-			m_position.y = arm->m_ArmPosition.y - 190;
+			m_position.y = arm->m_ArmPosition.y - 180;
 			m_position.x = arm->m_ArmPosition.x;
 		}
 	}
