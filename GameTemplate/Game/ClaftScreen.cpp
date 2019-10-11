@@ -324,8 +324,8 @@ void ClaftScreen::Update()
 			buhinscale.x += 0.02f;
 			buhinscale.y += 0.02f;
 			buhinscale.z += 0.02f;
-			//m_Buhin1pos.x += 5.0f;
-			//m_Buhin1pos.y -= 3.0f;
+			m_Buhin1pos.x += 5.0f;
+			m_Buhin1pos.y -= 3.0f;
 			//m_Buhin1_2pos.x += 5.0f;
 			//m_Buhin1_2pos.y -= 3.0f;
 			//m_Buhin1_3pos.x += 5.0f;
@@ -340,8 +340,8 @@ void ClaftScreen::Update()
 			buhinscale2.y += 0.007f;
 			buhinscale2.z += 0.007f;
 
-			//m_BuhinModelRender1->SetScale(buhinscale);	
-			//m_BuhinModelRender1->SetPosition(m_Buhin1pos);
+			m_BuhinModelRender1->SetScale(buhinscale);	
+			m_BuhinModelRender1->SetPosition(m_Buhin1pos);
 			//m_BuhinModelRender1_2->SetScale(buhinscale);
 			//m_BuhinModelRender1_2->SetPosition(m_Buhin1_2pos);
 			//m_BuhinModelRender1_3->SetScale(buhinscale);
@@ -354,7 +354,13 @@ void ClaftScreen::Update()
 			count++;
 		}
 	}
-
+	if (BuhinCount1 == 1 && BuhinCount2 == 1)
+	{
+		if (GameOver == false); {
+			m_BuhinModelRender1 = NewGO<prefab::CSkinModelRender>(0, "taiyakansei");
+			m_BuhinModelRender1->Init(L"modelData/taiyakansei.cmo");
+		}
+	}
 	if (senni == false)
 	{
 		if (count >= 60)
@@ -386,9 +392,9 @@ void ClaftScreen::Update()
 		//GD->DeleteBeltCon = true;
 	}
 	   
-	if (GD->DeleteClaftScreen == true)
-	{
-		DeleteGO(this);
-	}
+	//if (GD->DeleteClaftScreen == true)
+	//{
+	//	//DeleteGO(this);
+	//}
 	m_spriteRender->SetScale(scale);
 }
