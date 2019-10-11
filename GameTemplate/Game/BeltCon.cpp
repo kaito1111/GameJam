@@ -3,6 +3,7 @@
 #include "Buhin.h"
 #include "tkEngine/timer/tkGameTime.h"
 #include "GameSence.h"
+#include "gear.h"
 
 BeltCon::BeltCon()
 {
@@ -36,8 +37,17 @@ bool BeltCon::Start()
 	//ˆÊ’u‚Ì’²®
 	m_position.y = -350.0f;
 	m_skinModelRender->SetPosition(m_position);
+	for (int i = 0; i < 5; i++)
+	{
+		char m_Name[128];
+		sprintf_s(m_Name, "gear%d", i);
+		NewGO<gear>(0, m_Name);
+		m_gear[i] = FindGO<gear>(m_Name);
+	}for (int i = 0; i < 5; i++)
+	{
 
-
+		m_gear[i]->m_Position = { 600.0f - (i * 300.0f),-450.0f,0.0f };
+	}
 	return true;
 }
 
