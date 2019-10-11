@@ -1,5 +1,7 @@
 #pragma once
 #include "Arm.h"
+#include "GameDelete.h"
+class GameSence;
 class BeltCon : public IGameObject
 {
 public:
@@ -14,6 +16,8 @@ public:
 	prefab::CSoundSource* ss;
 	//クラス変数
 	Arm* arm;
+	//クラス変数
+	GameDelete* GD;
 	//スケール
 	CVector3 scale;
 	//座標
@@ -27,5 +31,6 @@ public:
 	//waruhは初期化用なのでcpp変更しないでください。
 	int waruh = 5;
 	int count[2] = { 0,0 };
+	GameSence* m_Sence = nullptr;
 };
 

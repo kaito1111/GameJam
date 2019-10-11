@@ -20,6 +20,9 @@ public:
 	prefab::CSpriteRender* m_Spritefade = nullptr;				//フェードの絵
 	CVector4 m_FadeColor = { 1.0f,1.0f,1.0f,0.0f };				//フェードのカラー
 	bool fadeout = false;				//フェードの絵をセットする絵
+	bool restart = false;
+	bool title = false;
+	bool Newgo = false;
 
 	GameDelete* m_GameDelete = nullptr;
 };

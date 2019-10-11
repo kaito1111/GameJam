@@ -1824,6 +1824,7 @@
     <MeshContentTask Include="Assets\modelData\garakuta1.FBX" />
     <MeshContentTask Include="Assets\modelData\garakuta2.FBX" />
     <MeshContentTask Include="Assets\modelData\Gomi.FBX" />
+    <MeshContentTask Include="Assets\modelData\taiyakansei.FBX" />
     <MeshContentTask Include="Assets\modelData\unityChan.fbx" />
     <MeshContentTask Include="Assets\modelData\wheel.FBX" />
   </ItemGroup>
