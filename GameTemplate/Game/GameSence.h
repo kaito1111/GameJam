@@ -19,8 +19,6 @@ public:
 	bool New = false;								//リザルトを出すよ
 	bool GameOver = false;							//ゲームが強制的に終了するよ
 	GameDelete* m_Delete = nullptr;					
-	prefab::CSpriteRender* m_Spritefade = nullptr;	//フェードの絵
-	CVector4 m_FadeColor = { 1.0f,1.0f,1.0f,1.0f };	//フェードの色
 	float StartGame = 0.0f; 						//ゲームが始まる
 	Arm* m_Arm = nullptr;
 	prefab::CSoundSource* m_BGM = nullptr;			//BGMを出す
