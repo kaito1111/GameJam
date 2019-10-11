@@ -4,6 +4,7 @@
 #include "Buhin.h"
 #include "result.h"
 #include "BeltCon.h"
+#include "gear.h"
 
 ClaftScreen::ClaftScreen()
 {
@@ -60,6 +61,19 @@ void ClaftScreen::Query()
 		}
 		return true;
 	});
+	for (int i = 0; i < 5; i++)
+	{
+		char m_Name[128];
+		sprintf_s(m_Name, "gear%d", i);
+		QueryGOs<gear>(m_Name, [&](gear* GEAR) {
+			if (GameOver)
+			{
+				GEAR->m_Position.y -= 30.0f;
+			}
+			return true;
+			});
+	}
+
 }
 
 //‚»‚ë‚Á‚Ä‚¢‚È‚¢•”•i‚Ì•\Ž¦

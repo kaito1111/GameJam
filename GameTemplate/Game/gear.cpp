@@ -14,7 +14,7 @@ bool gear::Start()
 {
 	m_GearModel = NewGO<prefab::CSkinModelRender>(0);
 	m_GearModel->Init(L"modelData/gear.cmo");
-	m_GearModel->SetPosition(m_Position);
+
 	m_GearModel->SetScale(m_Scale);
 	m_Rot.SetRotationDeg(CVector3::AxisX, 90.0f);
 	m_GearModel->SetRotation(m_Rot);
@@ -39,4 +39,5 @@ void gear::Update()
 	{
 		DeleteGO(this);
 	}
+	m_GearModel->SetPosition(m_Position);
 }

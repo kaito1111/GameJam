@@ -43,7 +43,8 @@ bool BeltCon::Start()
 		sprintf_s(m_Name, "gear%d", i);
 		NewGO<gear>(0, m_Name);
 		m_gear[i] = FindGO<gear>(m_Name);
-	}for (int i = 0; i < 5; i++)
+	}
+	for (int i = 0; i < 5; i++)
 	{
 
 		m_gear[i]->m_Position = { 600.0f - (i * 300.0f),-450.0f,0.0f };
