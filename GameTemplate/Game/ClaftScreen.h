@@ -41,6 +41,7 @@ public:
 	CQuaternion qRot2;	//回転
 	CVector3 scale = CVector3::Zero;	//スケール
 	CVector3 buhinscale = CVector3::One;	//スケール
+	CVector3 buhinscale2 = CVector3::One;	//スケール
 	CVector3 buhin1pos = CVector3::Zero;	//必要な部品１の位置
 	CVector3 buhin2pos = CVector3::Zero;	//必要な部品２の位置
 	prefab::CSpriteRender* m_spriteRender = nullptr;
@@ -49,8 +50,8 @@ public:
 	prefab::CSpriteRender* m_hituyoubuhin2 = nullptr;	//必要な部品の２
 	prefab::CSkinModelRender* m_BuhinModelRender1 = nullptr;	//右上に表示する部品１
 	CVector3 m_Buhin1pos = CVector3::Zero;
-	//prefab::CSkinModelRender* m_BuhinModelRender2 = nullptr;	//右上に表示する部品２
-	//CVector3 m_Buhin2pos = CVector3::Zero;
+	prefab::CSkinModelRender* m_BuhinModelRender2 = nullptr;	//右上に表示する部品２
+	CVector3 m_Buhin2pos = CVector3::Zero;
 	//prefab::CSkinModelRender* m_BuhinModelRender1_2 = nullptr;	//右上に表示する部品1_2
 	//CVector3 m_Buhin1_2pos = CVector3::Zero;
 	//prefab::CSkinModelRender* m_BuhinModelRender1_3 = nullptr;	//右上に表示する部品1_3

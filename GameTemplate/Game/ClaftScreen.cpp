@@ -115,7 +115,7 @@ void ClaftScreen::rotation()
 	qrot.SetRotationDeg(CVector3::AxisY, rot1);
 	qRot.Multiply(qrot);
 	////モデルに回転を反映
-	//m_BuhinModelRender1->SetRotation(qRot);
+	m_BuhinModelRender1->SetRotation(qRot);
 
 	////タイヤ2つ目回転
 	////モデルに回転を反映
@@ -131,7 +131,7 @@ void ClaftScreen::rotation()
 
 	////ボディを回転
 	////モデルに回転を反映
-	//m_BuhinModelRender2->SetRotation(qRot);
+	m_BuhinModelRender2->SetRotation(qRot);
 }
 
 //クラフトするときの動作
@@ -325,20 +325,32 @@ void ClaftScreen::Update()
 				DeleteGO(m_gaisou);
 				m_BuhinModelRender1 = NewGO<prefab::CSkinModelRender>(0, "taiyakansei");
 				m_BuhinModelRender1->Init(L"modelData/taiyakansei.cmo");
+				m_BuhinModelRender2 = NewGO<prefab::CSkinModelRender>(0, "gaisoukansei");
+				m_BuhinModelRender2->Init(L"modelData/body.cmo");
+				m_taiyapos.x = -300.0f;
+				m_taiyapos.y = 250.0f;
+				m_gaisoupos.x = -300.0f;
+				m_gaisoupos.y = 250.0f;
 				m_BuhinModelRender1->SetPosition(m_taiyapos);
+				m_BuhinModelRender2->SetPosition(m_gaisoupos);
 				GameOver = true;
 			}
 			if (GameOver == true)
 			{
 				scale.x += 0.05f;
 				scale.y += 0.045f;
-				buhinscale.x += 0.02f;
-				buhinscale.y += 0.02f;
-				buhinscale.z += 0.02f;
-				m_taiyapos.x += 5.0f;
-				m_taiyapos.y -= 3.0f;
-				//m_Buhin1_2pos.x += 5.0f;
-				//m_Buhin1_2pos.y -= 3.0f;
+				buhinscale.x += 0.027f;
+				buhinscale.y += 0.027f;
+				buhinscale.z += 0.027f;
+				buhinscale2.x += 0.005f;
+				buhinscale2.y += 0.005f;
+				buhinscale2.z += 0.005f;
+				m_taiyapos.x += 3.4f;
+				m_taiyapos.y -= 2.5f;
+				m_taiyapos.z -= 0.3f;
+				m_gaisoupos.x += 3.4f;
+				m_gaisoupos.y -= 2.5f;
+				m_gaisoupos.z -= 0.3f;
 				//m_Buhin1_3pos.x += 5.0f;
 				//m_Buhin1_3pos.y -= 3.0f;
 				//m_Buhin1_4pos.x += 5.0f;
@@ -346,10 +358,10 @@ void ClaftScreen::Update()
 				//m_Buhin2pos.x += 5.0f;
 				//m_Buhin2pos.y -= 2.0f;
 
-				CVector3 buhinscale2 = CVector3::One;
-				buhinscale2.x += 0.007f;
-				buhinscale2.y += 0.007f;
-				buhinscale2.z += 0.007f;
+				//CVector3 buhinscale2 = CVector3::One;
+				//buhinscale2.x += 0.007f;
+				//buhinscale2.y += 0.007f;
+				//buhinscale2.z += 0.007f;
 
 				m_BuhinModelRender1->SetScale(buhinscale);
 				m_BuhinModelRender1->SetPosition(m_taiyapos);
@@ -359,8 +371,8 @@ void ClaftScreen::Update()
 				//m_BuhinModelRender1_3->SetPosition(m_Buhin1_3pos);
 				//m_BuhinModelRender1_4->SetScale(buhinscale);
 				//m_BuhinModelRender1_4->SetPosition(m_Buhin1_4pos);
-				//m_BuhinModelRender2->SetScale(buhinscale2);
-				//m_BuhinModelRender2->SetPosition(m_Buhin2pos);
+				m_BuhinModelRender2->SetScale(buhinscale2);
+				m_BuhinModelRender2->SetPosition(m_gaisoupos);
 			}
 			count++;
 		}
@@ -397,9 +409,9 @@ void ClaftScreen::Update()
 		//GD->DeleteBeltCon = true;
 	}
 	   
-	//if (GD->DeleteClaftScreen == true)
-	//{
-	//	//DeleteGO(this);
-	//}
+	if (GD->DeleteClaftScreen == true)
+	{
+		DeleteGO(this);
+	}
 	m_spriteRender->SetScale(scale);
 }
