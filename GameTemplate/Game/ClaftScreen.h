@@ -64,5 +64,6 @@ public:
 	CVector3 m_gaisoupos = CVector3::Zero;	//外装のスプライトの位置
 	CVector3 m_hozon = CVector3::Zero;
 	prefab::CSoundSource* m_bgmSoundSource = nullptr;	//BGM用のサウンドソース。
+	CVector3 effectpos = CVector3::Zero;	//エフェクトのポジション
 };
 

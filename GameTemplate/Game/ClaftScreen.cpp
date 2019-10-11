@@ -13,11 +13,11 @@ ClaftScreen::ClaftScreen()
 ClaftScreen::~ClaftScreen()
 {
 	DeleteGO(m_spriteRender);
-	//DeleteGO(m_BuhinModelRender1);
+	DeleteGO(m_BuhinModelRender1);
 	//DeleteGO(m_BuhinModelRender1_2);
 	//DeleteGO(m_BuhinModelRender1_3);
 	//DeleteGO(m_BuhinModelRender1_4);
-	//DeleteGO(m_BuhinModelRender2);
+	DeleteGO(m_BuhinModelRender2);
 	DeleteGO(m_bgmSoundSource);
 }
 
@@ -171,6 +171,7 @@ void ClaftScreen::claft()
 			m_taiya->Init(L"sprite/taiya2.dds", 250.0f, 250.0f);
 			m_taiyapos.x = 400.0f;
 			m_taiyapos.y = 150.0f;
+
 			//エフェクトを作成。
 			prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
 			//エフェクトを再生。
@@ -201,7 +202,7 @@ void ClaftScreen::claft()
 
 
 			effect->SetScale(scale);
-			effect->SetPosition(m_taiyapos);
+			effect->SetPosition(effectpos);
 			m_taiya->SetPosition(m_taiyapos);
 			//effect->SetPosition(m_Buhin1pos);
 			//m_BuhinModelRender1->SetPosition(m_Buhin1pos);
@@ -238,7 +239,7 @@ void ClaftScreen::claft()
 			scale.z = 50.0f;
 
 			effect->SetScale(scale);
-			effect->SetPosition(m_gaisoupos);
+			effect->SetPosition(effectpos);
 			//m_BuhinModelRender2->SetPosition(m_Buhin2pos);
 			//ボディを回転
 			qrot2.SetRotationDeg(CVector3::AxisY, rot2);
@@ -272,6 +273,10 @@ bool ClaftScreen::Start()
 
 	m_spriteRender = NewGO<prefab::CSpriteRender>(0);
 	m_spriteRender->Init(L"sprite/ClaftScreen.dds",400.0f,250.0f);
+
+	//エフェクトの位置
+	effectpos.x = -450.0f;
+	effectpos.y = 250.0f;
 
 	//クラフト画面の位置
 	m_position.x = 450.0f;
@@ -321,6 +326,15 @@ void ClaftScreen::Update()
 		{
 			if (GameOver == false)
 			{
+				//エフェクトを作成。
+				prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
+				//エフェクトを再生。
+				effect->Play(L"effect/create.efk");
+				CVector3 scale = CVector3::One;
+				scale.x = 50.0f;
+				scale.y = 50.0f;
+				scale.z = 50.0f;
+
 				DeleteGO(m_taiya);
 				DeleteGO(m_gaisou);
 				m_BuhinModelRender1 = NewGO<prefab::CSkinModelRender>(0, "taiyakansei");
@@ -331,6 +345,9 @@ void ClaftScreen::Update()
 				m_taiyapos.y = 250.0f;
 				m_gaisoupos.x = -300.0f;
 				m_gaisoupos.y = 250.0f;
+
+				effect->SetScale(scale);
+				effect->SetPosition(effectpos);
 				m_BuhinModelRender1->SetPosition(m_taiyapos);
 				m_BuhinModelRender2->SetPosition(m_gaisoupos);
 				GameOver = true;
