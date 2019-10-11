@@ -23,6 +23,7 @@ public:
 	bool restart = false;
 	bool title = false;
 	bool Newgo = false;
+	bool fadedown = false;
 
 	GameDelete* m_GameDelete = nullptr;
 };

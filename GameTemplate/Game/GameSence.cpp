@@ -27,7 +27,7 @@ bool GameSence::Start()
 	NewGO<GameDelete>(0, "GameDelete");
 
 	m_TimerFont = NewGO<prefab::CFontRender>(0);
-	m_TimerFont->SetText(L"あと30.0秒");						//時間のテキストを呼び出す
+	m_TimerFont->SetText(L"あと60.0秒");						//時間のテキストを呼び出す
 	m_TimerFont->SetPosition(m_FontPosition);					//フォントの位置を教える
 	m_TimerFont->SetScale(1.5f);								//フォントのスケールをセットする
 
