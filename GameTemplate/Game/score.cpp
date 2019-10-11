@@ -25,7 +25,7 @@ bool score::Start()
 	{
 		Score = 0;
 	}
-	swprintf_s(ScoreMoji, L"%3.3d点", Score);				//スコアのセット
+	swprintf_s(ScoreMoji, L"%2.2d点", Score);				//スコアのセット
 	m_scoreFont = NewGO<prefab::CFontRender>(0);
 	m_scoreFont->SetText(ScoreMoji);						//文字列をセット
 	m_scoreFont->SetColor(m_FontColor);						//フォントの色をセット
@@ -51,7 +51,7 @@ void score::Update()
 			Score = 0;
 		}
 	}
-	swprintf_s(ScoreMoji, L"%3.3d点", Score);				//スコアのセット
+	swprintf_s(ScoreMoji, L"%2.2d点", Score);				//スコアのセット
 	m_scoreFont->SetText(ScoreMoji);						//文字列をセット
 
 	if (m_Delete->DeleteScore)
