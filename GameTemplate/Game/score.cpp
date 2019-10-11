@@ -15,7 +15,11 @@ bool score::Start()
 {
 	m_Sence = FindGO< GameSence>("GameSence");
 	Score = Random().GetRandInt();
-	swprintf_s(ScoreMoji, L"%03d点", Score);				//スコアのセット
+	if (Score < 0)
+	{
+		Score = 0;
+	}
+	swprintf_s(ScoreMoji, L"%03.3d点", Score);				//スコアのセット
 	m_scoreFont = NewGO<prefab::CFontRender>(0);
 	m_scoreFont->SetText(ScoreMoji);						//文字列をセット
 	m_scoreFont->SetColor(m_FontColor);						//フォントの色をセット
@@ -36,8 +40,12 @@ void score::Update()
 	else
 	{
 		Score = Random().GetRandInt();
+		if (Score < 0)
+		{
+			Score = 0;
+		}
 	}
-	swprintf_s(ScoreMoji, L"%03d点", Score);				//スコアのセット
+	swprintf_s(ScoreMoji, L"%03.3d点", Score);				//スコアのセット
 	m_scoreFont->SetText(ScoreMoji);						//文字列をセット
 
 	if (m_Delete->DeleteScore)

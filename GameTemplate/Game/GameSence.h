@@ -15,7 +15,7 @@ public:
 	CVector2 m_FontPosition = { -600.0f,300.0f };	//フォントの文字
 	CVector4 m_Color = CVector4::White;				//フォントのカラー
 	wchar_t timer[128];
-	float time = 120.0f;
+	float time = 30.0f;
 	bool New = false;								//リザルトを出すよ
 	bool GameOver = false;							//ゲームが強制的に終了するよ
 	GameDelete* m_Delete = nullptr;					
