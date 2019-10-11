@@ -3,6 +3,7 @@
 #include "Arm.h"
 #include "ClaftScreen.h"
 #include "BeltCon.h"
+#include "GameDelete.h"
 #include "GameSence.h"
 
 Buhin::Buhin()
@@ -20,6 +21,7 @@ Buhin::~Buhin()
 
 bool Buhin::Start()
 {
+	GD = FindGO<GameDelete>("GameDelete");
 	arm = FindGO<Arm>("Arm");
 	CS = FindGO<ClaftScreen>("cs");
 	//FindしてBeltConの値を参照できるように
@@ -113,7 +115,9 @@ bool Buhin::Start()
 
 void Buhin::Update()
 {
-
+	if (CS->GameOver == true) {
+		DeleteGO(this);
+	}
 	//クエリでアームにキャッチされているのかの判定を行う
 	QueryGOs<Arm>("Arm", [&](Arm* arm)->bool {
 		CVector3 diff;
