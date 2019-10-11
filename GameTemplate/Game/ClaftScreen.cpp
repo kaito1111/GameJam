@@ -321,8 +321,11 @@ void ClaftScreen::Update()
 		{
 			if (GameOver == false)
 			{
+				DeleteGO(m_taiya);
+				DeleteGO(m_gaisou);
 				m_BuhinModelRender1 = NewGO<prefab::CSkinModelRender>(0, "taiyakansei");
 				m_BuhinModelRender1->Init(L"modelData/taiyakansei.cmo");
+				m_BuhinModelRender1->SetPosition(m_taiyapos);
 				GameOver = true;
 			}
 			if (GameOver == true)
@@ -332,8 +335,8 @@ void ClaftScreen::Update()
 				buhinscale.x += 0.02f;
 				buhinscale.y += 0.02f;
 				buhinscale.z += 0.02f;
-				m_Buhin1pos.x += 5.0f;
-				m_Buhin1pos.y -= 3.0f;
+				m_taiyapos.x += 5.0f;
+				m_taiyapos.y -= 3.0f;
 				//m_Buhin1_2pos.x += 5.0f;
 				//m_Buhin1_2pos.y -= 3.0f;
 				//m_Buhin1_3pos.x += 5.0f;
@@ -349,7 +352,7 @@ void ClaftScreen::Update()
 				buhinscale2.z += 0.007f;
 
 				m_BuhinModelRender1->SetScale(buhinscale);
-				m_BuhinModelRender1->SetPosition(m_Buhin1pos);
+				m_BuhinModelRender1->SetPosition(m_taiyapos);
 				//m_BuhinModelRender1_2->SetScale(buhinscale);
 				//m_BuhinModelRender1_2->SetPosition(m_Buhin1_2pos);
 				//m_BuhinModelRender1_3->SetScale(buhinscale);
