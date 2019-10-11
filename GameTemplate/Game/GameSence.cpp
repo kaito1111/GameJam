@@ -14,6 +14,7 @@ GameSence::GameSence()
 GameSence::~GameSence()
 {
 	DeleteGO(m_TimerFont);
+	DeleteGO(m_BGM);
 }
 
 bool GameSence::Start()
@@ -29,8 +30,6 @@ bool GameSence::Start()
 	m_TimerFont->SetText(L"あと30.0秒");						//時間のテキストを呼び出す
 	m_TimerFont->SetPosition(m_FontPosition);					//フォントの位置を教える
 	m_TimerFont->SetScale(1.5f);								//フォントのスケールをセットする
-
-
 
 	m_BGM = NewGO<prefab::CSoundSource>(0);
 	m_BGM->Init(L"sound/bgm_kouho1.wav");				//BGMをセットする

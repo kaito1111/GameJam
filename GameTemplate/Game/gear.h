@@ -1,5 +1,7 @@
 #pragma once
 #include "GameDelete.h"
+#include "Arm.h"
+
 class gear : public IGameObject
 {
 public:
@@ -15,4 +17,5 @@ public:
 	CVector3 m_Scale = { 0.5f,0.5f,0.5f };
 	float Rotritu = 0.0f;
 	GameDelete* m_Delete = nullptr;
+	Arm* m_Arm = nullptr;
 };

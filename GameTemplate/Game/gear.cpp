@@ -20,13 +20,18 @@ bool gear::Start()
 	m_GearModel->SetRotation(m_Rot);
 
 	m_Delete = FindGO< GameDelete>("GameDelete");
+	m_Arm = FindGO< Arm>("Arm");
 	return true;
 }
 
 void gear::Update()
 {
 	CQuaternion m_Rot2 = CQuaternion::Identity;
-	Rotritu -= 2.0;
+	if (m_Arm->Set)
+	{
+		Rotritu -= 2.0;
+	}
+	
 	m_Rot.SetRotationDeg(CVector3::AxisY, Rotritu);
 	m_Rot.Multiply(m_Rot2);
 	m_GearModel->SetRotation(m_Rot);
