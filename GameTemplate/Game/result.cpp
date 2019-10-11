@@ -108,7 +108,7 @@ void result::Update()
 				Newgo = true;
 			}
 		}
-		if (restart)
+		if (title)
 		{
 			if (!Newgo)
 			{
