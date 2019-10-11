@@ -105,6 +105,19 @@ bool Buhin::Start()
 		//ゴミのモデルデータのロード
 		m_skinModelRender->Init(L"modelData/garakuta2.cmo");
 	}
+	else if (IamTake == 1) {
+		m_position.x = -800;
+		m_position.y = -210;
+
+		//大きさ
+		Scale.x = 5;
+		Scale.y = 5;
+		Scale.z = 5;
+		m_skinModelRender->SetScale(Scale);
+
+		//ゴミのモデルデータのロード
+		m_skinModelRender->Init(L"modelData/garakuta3.cmo");
+	}
 
 	//流れる速さ
 	m_moveSpeed.x = 2.5f;
@@ -246,14 +259,14 @@ void Buhin::hantei() {
 		//フレーム
 		Iamframe = 1;
 	}
-	else if(rand <= 2){
+	else if(rand == 2){
 		//ゴミ
-		IamGomi = 1;
-	}
-	/*else if (rand <= 3) {
-		IamTake = 1
-	}*/
-	else {
 		IamGomi2 = 1;
+	}
+	else if (rand == 3) {
+		IamTake = 1;
+	}
+	else {
+		IamGomi = 1;
 	}
 }

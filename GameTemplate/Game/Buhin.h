@@ -18,7 +18,7 @@ public:
 	bool Iamframe = false;
 	bool IamGomi = false;
 	bool IamGomi2 = false;
-	//bool IamTake = false;
+	bool IamTake = false;
 	//デリーとクラス
 	GameDelete* GD;
 	//アームクラス

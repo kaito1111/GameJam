@@ -44,6 +44,7 @@
     <MeshContentTask Include="Assets\modelData\garakuta2.FBX" />
     <MeshContentTask Include="Assets\modelData\body.FBX" />
     <MeshContentTask Include="Assets\modelData\taiyakansei.FBX" />
+    <MeshContentTask Include="Assets\modelData\garakuta3.FBX" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BeltCon.h" />
