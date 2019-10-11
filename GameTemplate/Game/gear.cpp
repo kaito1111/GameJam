@@ -21,13 +21,14 @@ bool gear::Start()
 
 	m_Delete = FindGO< GameDelete>("GameDelete");
 	m_Arm = FindGO< Arm>("Arm");
+	m_Sense = FindGO<GameSence>("GameSence");
 	return true;
 }
 
 void gear::Update()
 {
 	CQuaternion m_Rot2 = CQuaternion::Identity;
-	if (m_Arm->Set)
+	if (m_Arm->Set|| m_Sense->GameOver)
 	{
 		Rotritu -= 2.0;
 	}
