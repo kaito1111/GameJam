@@ -250,6 +250,9 @@ void Buhin::hantei() {
 		//ÉSÉ~
 		IamGomi = 1;
 	}
+	/*else if (rand <= 3) {
+		IamTake = 1
+	}*/
 	else {
 		IamGomi2 = 1;
 	}
