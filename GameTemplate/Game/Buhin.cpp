@@ -50,7 +50,7 @@ bool Buhin::Start()
 
 		//座標
 		m_position.x = -800;
-		m_position.y = -280;
+		m_position.y = -260;
 
 		//角度
 		qRot.SetRotationDeg(CVector3::AxisY, 90.0f);
@@ -63,7 +63,7 @@ bool Buhin::Start()
 	else if (Iamframe == 1) {
 		//座標
 		m_position.x = -800;
-		m_position.y = -320;
+		m_position.y = -280;
 		
 		//大きさ
 		Scale.x = 1;
@@ -115,6 +115,7 @@ bool Buhin::Start()
 
 void Buhin::Update()
 {
+	//クラフトスクリーンのGameOverフラグがTrueならば
 	if (CS->GameOver == true) {
 		DeleteGO(this);
 	}
@@ -160,7 +161,7 @@ void Buhin::Update()
 			m_position.x = arm->m_ArmPosition.x;
 		}
 		else if (Iamframe == 1) {
-			m_position.y = arm->m_ArmPosition.y - 210;
+			m_position.y = arm->m_ArmPosition.y - 150;
 			m_position.x = arm->m_ArmPosition.x;
 		}
 		else {
@@ -179,7 +180,7 @@ void Buhin::Update()
 				m_position.y = -280.0f;
 			}
 			else if (Iamframe == 1) {
-				m_position.y = -320.0f;
+				m_position.y = -260.0f;
 			}
 			else if (IamGomi == 1) {
 				m_position.y = -330.0f;
