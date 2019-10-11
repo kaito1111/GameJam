@@ -22,4 +22,6 @@ public:
 	float StartGame = 0.0f; 						//ƒQ[ƒ€‚ªn‚Ü‚é
 	Arm* m_Arm = nullptr;
 	prefab::CSoundSource* m_BGM = nullptr;			//BGM‚ğo‚·
+	float hozon = 0.0f;
+	bool timerhozon = false;
 };

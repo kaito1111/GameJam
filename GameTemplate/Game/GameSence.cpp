@@ -64,6 +64,18 @@ void GameSence::Update()
 			New = true;
 		}
 	}
+	QueryGOs< ClaftScreen>("cs", [&](ClaftScreen* m_claft)->bool {
+		if (m_claft->GameOver)
+		{
+			if (!timerhozon)
+			{
+				hozon = time;
+				timerhozon = true;
+			}
+			time = hozon;
+		}
+		return true;
+		});
 
 	swprintf_s(timer, L"あと%.1f秒", time);					//現在の時間を設定する
 	m_TimerFont->SetPosition(m_FontPosition);					//フォントの位置を教える
