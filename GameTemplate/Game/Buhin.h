@@ -18,6 +18,8 @@ public:
 	bool Iamframe = false;
 	bool IamGomi = false;
 	bool IamGomi2 = false;
+	//デリーとクラス
+	GameDelete* GD;
 	//アームクラス
 	Arm* arm;
 	//ベルトコンベアクラス
