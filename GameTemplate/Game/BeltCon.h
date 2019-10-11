@@ -1,6 +1,7 @@
 #pragma once
 #include "Arm.h"
 #include "GameDelete.h"
+class gear;
 class GameSence;
 class BeltCon : public IGameObject
 {
@@ -32,5 +33,7 @@ public:
 	int waruh = 5;
 	int count[2] = { 0,0 };
 	GameSence* m_Sence = nullptr;
+
+	gear* m_gear[5];
 };
 
