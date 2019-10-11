@@ -11,6 +11,8 @@
     <ImageContentTask Include="Assets\sprite\result_select.png" />
     <ImageContentTask Include="Assets\sprite\空test.png" />
     <ImageContentTask Include="Assets\sprite\haikei.png" />
+    <ImageContentTask Include="Assets\sprite\taiya2.png" />
+    <ImageContentTask Include="Assets\sprite\gaisou.png" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BeltCon.cpp" />
