@@ -29,6 +29,7 @@
     <ClCompile Include="Arm.cpp" />
     <ClCompile Include="Buckground.cpp" />
     <ClCompile Include="GameDelete.cpp" />
+    <ClCompile Include="gear.cpp" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\claftscreen.FBX" />
@@ -45,6 +46,7 @@
     <MeshContentTask Include="Assets\modelData\body.FBX" />
     <MeshContentTask Include="Assets\modelData\taiyakansei.FBX" />
     <MeshContentTask Include="Assets\modelData\garakuta3.FBX" />
+    <MeshContentTask Include="Assets\modelData\gear.FBX" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BeltCon.h" />
@@ -61,6 +63,7 @@
     <ClInclude Include="Arm.h" />
     <ClInclude Include="Buckground.h" />
     <ClInclude Include="GameDelete.h" />
+    <ClInclude Include="gear.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
