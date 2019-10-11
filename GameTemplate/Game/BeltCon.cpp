@@ -2,6 +2,7 @@
 #include "BeltCon.h"
 #include "Buhin.h"
 #include "tkEngine/timer/tkGameTime.h"
+#include "GameSence.h"
 
 BeltCon::BeltCon()
 {
@@ -19,7 +20,7 @@ bool BeltCon::Start()
 	//データの読み込み
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/BeltC.cmo");
-
+	m_Sence = FindGO< GameSence>("GameSence");
 	//サウンド
 	ss = NewGO<prefab::CSoundSource>(0);
 	float vol = 0.5f;
@@ -59,7 +60,11 @@ void BeltCon::Update()
 	}
 
 	//経過時間
-	m_timer += GameTime().GetFrameDeltaTime();
+	if (!m_Sence->GameOver)
+	{
+		m_timer += GameTime().GetFrameDeltaTime();
+	}
+	
 	// m_timer > Xf のXの値をいじるとスポーン時間が変わります
 	if (m_timer > 2.0f) {
 		//乱数
