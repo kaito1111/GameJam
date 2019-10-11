@@ -2,6 +2,7 @@
 #include "GameDelete.h"
 
 class ClaftScreen;
+class GameSence;
 
 class Arm : public IGameObject
 {
@@ -30,4 +31,5 @@ public:
 	GameDelete* m_Delete = nullptr;
 	float MoveOto = 0.0f;										//“®‚­‰¹‚ÌŠÔ
 	bool MoveSound = false;										//“®‚­‰¹‚ªo‚éƒtƒ‰ƒO
+	GameSence* m_Senne = nullptr;
 };

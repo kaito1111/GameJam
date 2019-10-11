@@ -2,6 +2,7 @@
 #include "Arm.h"
 #include "Buhin.h"
 #include "ClaftScreen.h"
+#include "GameSence.h"
 
 Arm::Arm()
 {
@@ -17,23 +18,24 @@ Arm::~Arm()
 
 bool Arm::Start()
 {
-	m_ArmModel = NewGO < prefab::CSkinModelRender>(0);				//クレーンの腕のモデルを出した
+	m_ArmModel = NewGO < prefab::CSkinModelRender>(0);		//クレーンの腕のモデルを出した
 	m_ArmModel->Init(L"modelData/arm_ude.cmo");
-	m_ArmModel->SetPosition(m_ArmPosition);							//位置をセットした
-	m_ArmModel->SetScale(m_Scale * 2);								//大きさをセットした	
-	m_ArmtumeRight = NewGO<prefab::CSkinModelRender>(0);			//クレーンのつめの右のモデルを出した
+	m_ArmModel->SetPosition(m_ArmPosition);					//位置をセットした
+	m_ArmModel->SetScale(m_Scale * 2);						//大きさをセットした	
+	m_ArmtumeRight = NewGO<prefab::CSkinModelRender>(0);	//クレーンのつめの右のモデルを出した
 	m_ArmtumeRight->Init(L"modelData/arm_tume.cmo");
 	m_TumePos = m_ArmPosition;
 	m_TumePos.y = m_ArmPosition.y - 20.0f;
-	m_ArmtumeRight->SetPosition(m_TumePos);			//クレーンのつめの右のポジションを教えた
-	m_ArmtumeRight->SetScale(m_Scale * 2);			//クレーンのつめの右のスケールを教えた
-	m_ArmtumeLeft = NewGO<prefab::CSkinModelRender>(0);			//クレーンのつめの左のスキンモデル
+	m_ArmtumeRight->SetPosition(m_TumePos);					//クレーンのつめの右のポジションを教えた
+	m_ArmtumeRight->SetScale(m_Scale * 2);					//クレーンのつめの右のスケールを教えた
+	m_ArmtumeLeft = NewGO<prefab::CSkinModelRender>(0);		//クレーンのつめの左のスキンモデル
 	m_ArmtumeLeft->Init(L"modelData/arm_tume.cmo");
-	m_ArmtumeLeft->SetPosition(m_TumePos);			//クレーンのつめの左のポジションを教えた
-	m_ArmtumeLeft->SetScale(m_Scale * 2);			//クレーンのつめの左のスケールを教えた
+	m_ArmtumeLeft->SetPosition(m_TumePos);					//クレーンのつめの左のポジションを教えた
+	m_ArmtumeLeft->SetScale(m_Scale * 2);					//クレーンのつめの左のスケールを教えた
 	m_Rot.SetRotationDeg(CVector3::AxisY, 180.0f);			//クレーンのつめの左を反転した
-	m_ArmtumeLeft->SetRotation(m_Rot);			//クレーンのつめの左の反転したを教えた
+	m_ArmtumeLeft->SetRotation(m_Rot);						//クレーンのつめの左の反転したを教えた
 
+	m_Senne = FindGO< GameSence>("GameSence");
 	m_Claft = FindGO<ClaftScreen>("cs");
 	m_Delete = FindGO<GameDelete>("GameDelete");
 	return true;
@@ -41,6 +43,7 @@ bool Arm::Start()
 
 void Arm::Update()
 {
+	CVector3 m_MoveSpeed = CVector3::Zero;
 	if (m_Delete->DeleteArm)
 	{
 		DeleteGO(this);
@@ -56,7 +59,6 @@ void Arm::Update()
 	{
 		if (Drop)													//動けるようにする
 		{
-			CVector3 m_MoveSpeed = CVector3::Zero;
 			float DropTime = GameTime().GetFrameDeltaTime() * 200.0f;//大体基本になる時間
 			if (Set && Pad(0).IsPress(enButtonB))					//下に動くかどうかを判定する
 			{
@@ -70,6 +72,13 @@ void Arm::Update()
 			if (!Set)												//動かなかったとき
 			{
 				m_MoveSpeed.y = -DropTime;							//下に動く
+				if (m_ArmPosition.y <= -100.0f)						//それ以上下に行くな
+				{
+					m_ArmPosition.y = -100.0f;
+					ArmDown += GameTime().GetFrameDeltaTime();
+					Rotrate += 2.0f;
+					InitOto = false;
+				}
 				if (ArmDown >= 1.0f)								//下にいる時間
 				{
 					m_MoveSpeed.y = DropTime;						//上に上がる
@@ -81,13 +90,6 @@ void Arm::Update()
 						m_SS->SetVolume(0.5f);
 						InitOto = true;
 					}
-				}
-				if (m_ArmPosition.y <= -100.0f)						//それ以上下に行くな
-				{
-					m_ArmPosition.y = -100.0f;
-					ArmDown += GameTime().GetFrameDeltaTime();
-					Rotrate += 2.0f;
-					InitOto = false;
 				}
 			}
 			else
@@ -118,13 +120,12 @@ void Arm::Update()
 						MoveOto = 0.0f;
 					}
 				}
-			}
-			m_ArmPosition += m_MoveSpeed;							//動く速度を位置にたす
-			if (m_ArmPosition.x <= 50.0f)							//それ以上右に行くな
+			}							//動く速度を位置にたす
+			if (m_ArmPosition.x < 50.0f)							//それ以上右に行くな
 			{
 				m_ArmPosition.x = 50.0f;
 			}
-			if (m_ArmPosition.x >= 480.0f)							//それ以上左に行くな
+			if (m_ArmPosition.x > 480.0f)							//それ以上左に行くな
 			{
 				m_ArmPosition.x = 480.0f;
 			}
@@ -146,6 +147,11 @@ void Arm::Update()
 
 		}
 	}
+	if (m_Senne->GameOver)
+	{
+		m_MoveSpeed = { 0.0f,0.0f,0.0f };
+	}
+	m_ArmPosition += m_MoveSpeed;
 	m_ChechRotLeft.SetRotationDeg(CVector3::AxisZ, Rotrate);		//つめの左の回転率をセットする
 	m_ChechRotRight.SetRotationDeg(CVector3::AxisZ, Rotrate);		//つめの右の回転率をセットする
 	m_ChechRotLeft.Multiply(m_Rot);									//つめの左の回転率を反転させる

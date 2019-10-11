@@ -62,7 +62,7 @@ void result::Update()
 			m_SelectPosition.x = -300.0f;
 		}
 		m_SpriteSelect->SetPosition(m_SelectPosition);
-		if (m_SelectPosition.x == 300.0f && Pad(0).IsPress(enButtonB) && fadeout)		//フェードとリスタートの文
+		if (m_SelectPosition.x == 300.0f && Pad(0).IsPress(enButtonB) && !fadeout)		//フェードとリスタートの文
 		{
 			m_Spritefade->Init(L"sprite/haikei.dds", 1280.0f, 720.0f);
 			NewGO<GameSence>(0, "GameSence");
@@ -70,7 +70,7 @@ void result::Update()
 			m_FadeColor.a = 1.0f;
 			//DeleteGO(this);
 		}
-		if (m_SelectPosition.x == -300.0f && Pad(0).IsPress(enButtonB) && fadeout)		//フェードとタイトルへ行く文
+		if (m_SelectPosition.x == -300.0f && Pad(0).IsPress(enButtonB) && !fadeout)		//フェードとタイトルへ行く文
 		{
 			NewGO<Title>(0);
 			m_Spritefade->Init(L"sprite/haikei.dds", 1280.0f, 720.0f);
@@ -82,7 +82,7 @@ void result::Update()
 	{
 		m_FadeColor.a -= 0.05f;
 	}
-	if (m_FadeColor.a <= 0.0f)								//ゲームにあるインスタンスをすべて消す
+	if (m_FadeColor.a <= -0.5f)								//ゲームにあるインスタンスをすべて消す
 	{
 		m_GameDelete->DeleteArm = true;
 		m_GameDelete->DeleteGameSence = true;
