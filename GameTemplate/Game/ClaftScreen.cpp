@@ -13,11 +13,11 @@ ClaftScreen::ClaftScreen()
 ClaftScreen::~ClaftScreen()
 {
 	DeleteGO(m_spriteRender);
-	//DeleteGO(m_BuhinModelRender1);
+	DeleteGO(m_BuhinModelRender1);
 	//DeleteGO(m_BuhinModelRender1_2);
 	//DeleteGO(m_BuhinModelRender1_3);
 	//DeleteGO(m_BuhinModelRender1_4);
-	//DeleteGO(m_BuhinModelRender2);
+	DeleteGO(m_BuhinModelRender2);
 	DeleteGO(m_bgmSoundSource);
 }
 
