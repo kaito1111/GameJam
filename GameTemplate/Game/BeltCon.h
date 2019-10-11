@@ -1,5 +1,6 @@
 #pragma once
 #include "Arm.h"
+#include "GameDelete.h"
 class GameSence;
 class BeltCon : public IGameObject
 {
@@ -15,6 +16,8 @@ public:
 	prefab::CSoundSource* ss;
 	//クラス変数
 	Arm* arm;
+	//クラス変数
+	GameDelete* GD;
 	//スケール
 	CVector3 scale;
 	//座標

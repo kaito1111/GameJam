@@ -3,6 +3,7 @@
 #include "Buhin.h"
 #include "tkEngine/timer/tkGameTime.h"
 #include "GameSence.h"
+#include "GameDelete.h"
 
 BeltCon::BeltCon()
 {
@@ -16,6 +17,7 @@ BeltCon::~BeltCon()
 
 bool BeltCon::Start()
 {
+	GD = FindGO<GameDelete>(0);
 	arm = FindGO<Arm>("Arm");
 	//ÉfÅ[É^ÇÃì«Ç›çûÇ›
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
