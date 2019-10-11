@@ -40,7 +40,9 @@ void result::Update()
 		if (!New)
 		{
 			m_SpriteTitle->Init(L"sprite/result_restart.dds", 400.0f, 300.0f);
+			m_SpriteTitle->SetPosition(m_TitlePosition);
 			m_SpriteReStart->Init(L"sprite/result_title.dds", 400.0f, 300.0f);
+			m_SpriteReStart->SetPosition(m_ReStartPosition);
 			m_SpriteSelect->Init(L"sprite/result_select.dds", 405.0f, 305.0);
 			New = true;
 		}
@@ -114,7 +116,7 @@ void result::Update()
 				Newgo = true;
 			}
 		}
-		//DeleteGO(this);
+		DeleteGO(this);
 	}
 	m_Spritefade->SetMulColor(m_FadeColor);					//ŠG‚Ì”Z‚³
 }
