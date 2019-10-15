@@ -101,7 +101,7 @@ void result::Update()
 		}
 	}
 
-	if (m_FadeColor.a <= 0.05f&&fadedown)								//ゲームにあるインスタンスをすべて消す
+	if (m_FadeColor.a <= 0.5f&&fadedown)								//ゲームにあるインスタンスをすべて消す
 	{
 		if (restart)
 		{
